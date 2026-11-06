@@ -1,0 +1,6 @@
+@AstroBusTeam_BackEnd_HostAddress = http://localhost:5038
+
+GET {{AstroBusTeam_BackEnd_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
