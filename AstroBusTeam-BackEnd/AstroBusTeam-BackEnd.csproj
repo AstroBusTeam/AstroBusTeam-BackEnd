@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Alerts\" />
+      <Folder Include="Alerts\Interfaces\REST\Transform\" />
     </ItemGroup>
 
 </Project>
