@@ -1,6 +1,241 @@
-@AstroBusTeam_BackEnd_HostAddress = http://localhost:5038
+@host = http://localhost:5038
+@api = {{host}}/api/v1
 
-GET {{AstroBusTeam_BackEnd_HostAddress}}/weatherforecast/
-Accept: application/json
+### Drivers
+GET {{api}}/drivers
 
-###
+### Drivers with filters
+GET {{api}}/drivers?employeeCode=SF-90210
+
+### Driver by id
+GET {{api}}/drivers/1
+
+### Create Driver
+POST {{api}}/drivers
+Content-Type: application/json
+
+{
+  "employeeCode": "SF-99001",
+  "firstName": "Luis",
+  "lastName": "Paredes",
+  "dni": "45678901",
+  "category": "A-IIIb",
+  "licenseNumber": "Q45678901",
+  "licenseExpiry": "2028-03-15",
+  "points": 15,
+  "rating": 4.5,
+  "yearsExperience": 6,
+  "status": "active"
+}
+
+### Update Driver
+PUT {{api}}/drivers/1
+Content-Type: application/json
+
+{
+  "employeeCode": "SF-99001",
+  "firstName": "Luis",
+  "lastName": "Paredes",
+  "dni": "45678901",
+  "category": "A-IIIb",
+  "licenseNumber": "Q45678901",
+  "licenseExpiry": "2028-03-15",
+  "points": 15,
+  "rating": 4.5,
+  "yearsExperience": 6,
+  "status": "active"
+}
+
+### Delete Driver
+DELETE {{api}}/drivers/99
+
+### Vehicles
+GET {{api}}/vehicles
+
+### Vehicle by id
+GET {{api}}/vehicles/1
+
+### Create Vehicle
+POST {{api}}/vehicles
+Content-Type: application/json
+
+{
+  "code": "BUS-1001",
+  "plate": "XYZ-123",
+  "model": "Volvo B11R",
+  "capacity": 48,
+  "status": "available",
+  "latitude": -12.0464,
+  "longitude": -77.0428
+}
+
+### Update Vehicle
+PUT {{api}}/vehicles/1
+Content-Type: application/json
+
+{
+  "code": "BUS-1001",
+  "plate": "XYZ-123",
+  "model": "Volvo B11R",
+  "capacity": 48,
+  "status": "available",
+  "latitude": -12.0464,
+  "longitude": -77.0428
+}
+
+### Delete Vehicle
+DELETE {{api}}/vehicles/99
+
+### Assignments
+GET {{api}}/assignments
+
+### Assignments with filters
+GET {{api}}/assignments?driverId=1&status=active
+
+### Assignment by id
+GET {{api}}/assignments/1
+
+### Create Assignment
+POST {{api}}/assignments
+Content-Type: application/json
+
+{
+  "driverId": 3,
+  "vehicleId": 5,
+  "route": "R-10 Terminal Sur - Centro",
+  "startTime": "06:00",
+  "status": "active"
+}
+
+### Delete Assignment
+DELETE {{api}}/assignments/99
+
+### Shifts
+GET {{api}}/shifts
+
+### Shifts with filters
+GET {{api}}/shifts?driverId=1
+
+### Shift by id
+GET {{api}}/shifts/1
+
+### Create Shift
+POST {{api}}/shifts
+Content-Type: application/json
+
+{
+  "driverId": 1,
+  "vehicleId": 1,
+  "routeCode": "R-42",
+  "routeName": "Terminal Norte - Estación Central",
+  "date": "2026-11-03",
+  "startTime": "2026-11-03T08:00:00",
+  "endTime": null
+}
+
+### Update Shift
+PUT {{api}}/shifts/1
+Content-Type: application/json
+
+{
+  "driverId": 1,
+  "vehicleId": 1,
+  "routeCode": "R-42",
+  "routeName": "Terminal Norte - Estación Central",
+  "date": "2026-11-03",
+  "startTime": "2026-11-03T08:00:00",
+  "endTime": null,
+  "distanceKm": 0,
+  "passengers": 0,
+  "revenue": 0,
+  "incidents": 0,
+  "status": "active",
+  "speedKmh": 0,
+  "maxSpeedKmh": 0,
+  "averageSpeedKmh": 0,
+  "speedSamples": 0,
+  "overspeedEvents": 0
+}
+
+### Alerts
+GET {{api}}/alerts
+
+### Alerts with filters
+GET {{api}}/alerts?status=pending
+
+### Alert by id
+GET {{api}}/alerts/1
+
+### Create Alert
+POST {{api}}/alerts
+Content-Type: application/json
+
+{
+  "code": "AL-9930",
+  "vehicleId": 4,
+  "type": "Botón de pánico",
+  "receiver": "CENTRAL_OPERACIONES",
+  "latitude": -12.042,
+  "longitude": -77.034
+}
+
+### Update Alert
+PUT {{api}}/alerts/1
+Content-Type: application/json
+
+{
+  "code": "AL-9930",
+  "vehicleId": 4,
+  "type": "Botón de pánico",
+  "receiver": "CENTRAL_OPERACIONES",
+  "attempts": 1,
+  "status": "pending",
+  "createdAt": "2026-11-03T14:22:05",
+  "latitude": -12.042,
+  "longitude": -77.034
+}
+
+### Delete Alert
+DELETE {{api}}/alerts/99
+
+### Recipients
+GET {{api}}/recipients
+
+### Recipient by id
+GET {{api}}/recipients/1
+
+### Update Recipient
+PUT {{api}}/recipients/1
+Content-Type: application/json
+
+{
+  "name": "Ricardo S.",
+  "role": "Supervisor de zona centro",
+  "channel": "SMS / PUSH",
+  "active": true
+}
+
+### Deliveries
+GET {{api}}/deliveries
+
+### Delivery by id
+GET {{api}}/deliveries/1
+
+### Create Delivery
+POST {{api}}/deliveries
+Content-Type: application/json
+
+{
+  "recipientName": "Ricardo S.",
+  "channel": "SMS / PUSH",
+  "alertType": "Fallo de infraestructura",
+  "priority": "Media"
+}
+
+### Verify a driver identity (IAM)
+POST {{api}}/authentication/driver-verification
+Content-Type: application/json
+
+{
+  "employeeCode": "SF-90210"
+}
