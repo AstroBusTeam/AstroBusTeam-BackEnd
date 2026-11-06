@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Alerts\Domain\" />
+      <Folder Include="Alerts\Domain\Model\" />
     </ItemGroup>
 
 </Project>
