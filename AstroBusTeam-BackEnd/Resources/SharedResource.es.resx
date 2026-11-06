@@ -1,0 +1,1068 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="ActiveShiftAlreadyExists" xml:space="preserve">
+        <value>El conductor ya tiene un turno activo.</value>
+    </data>
+    <data name="AlertAttempts" xml:space="preserve">
+        <value>Intentos de envío (1 a 3)</value>
+    </data>
+    <data name="AlertAttemptsCannotDecrease" xml:space="preserve">
+        <value>El número de intentos de una alerta no puede disminuir.</value>
+    </data>
+    <data name="AlertCode" xml:space="preserve">
+        <value>Código de la alerta (se genera si se omite)</value>
+    </data>
+    <data name="AlertCreatedAt" xml:space="preserve">
+        <value>Fecha y hora en que ocurrió la alerta</value>
+    </data>
+    <data name="AlertId" xml:space="preserve">
+        <value>Identificador generado por el servidor de la alerta.</value>
+    </data>
+    <data name="AlertLatitude" xml:space="preserve">
+        <value>Latitud</value>
+    </data>
+    <data name="AlertLongitude" xml:space="preserve">
+        <value>Longitud</value>
+    </data>
+    <data name="AlertNotFound" xml:space="preserve">
+        <value>No se encontró la alerta.</value>
+    </data>
+    <data name="AlertReceiver" xml:space="preserve">
+        <value>Receptor de la alerta</value>
+    </data>
+    <data name="AlertResourceSchema" xml:space="preserve">
+        <value>Datos que el servidor devuelve de una alerta.</value>
+    </data>
+    <data name="AlertStatus" xml:space="preserve">
+        <value>Estado de la alerta (pending, confirmed o critical)</value>
+    </data>
+    <data name="AlertType" xml:space="preserve">
+        <value>Tipo de alerta</value>
+    </data>
+    <data name="AlertVehicleId" xml:space="preserve">
+        <value>ID del vehículo</value>
+    </data>
+    <data name="AlertVehicleNotFound" xml:space="preserve">
+        <value>El vehículo de la alerta no existe.</value>
+    </data>
+    <data name="AssignmentDriverId" xml:space="preserve">
+        <value>ID del conductor</value>
+    </data>
+    <data name="AssignmentDriverNotActive" xml:space="preserve">
+        <value>El conductor no está activo y no puede ser asignado.</value>
+    </data>
+    <data name="AssignmentDriverNotFound" xml:space="preserve">
+        <value>El conductor de la asignación no existe.</value>
+    </data>
+    <data name="AssignmentId" xml:space="preserve">
+        <value>Identificador generado por el servidor de la asignación.</value>
+    </data>
+    <data name="AssignmentNotFound" xml:space="preserve">
+        <value>No se encontró la asignación.</value>
+    </data>
+    <data name="AssignmentResourceSchema" xml:space="preserve">
+        <value>Datos que el servidor devuelve de una asignación.</value>
+    </data>
+    <data name="AssignmentRoute" xml:space="preserve">
+        <value>Ruta</value>
+    </data>
+    <data name="AssignmentStartTime" xml:space="preserve">
+        <value>Hora de inicio (HH:mm)</value>
+    </data>
+    <data name="AssignmentStatus" xml:space="preserve">
+        <value>Estado de la asignación (active o inactive)</value>
+    </data>
+    <data name="AssignmentVehicleId" xml:space="preserve">
+        <value>ID del vehículo</value>
+    </data>
+    <data name="AssignmentVehicleInMaintenance" xml:space="preserve">
+        <value>El vehículo está en mantenimiento y no puede ser asignado.</value>
+    </data>
+    <data name="AssignmentVehicleNotFound" xml:space="preserve">
+        <value>El vehículo de la asignación no existe.</value>
+    </data>
+    <data name="CreateAlert201" xml:space="preserve">
+        <value>Se creó la alerta.</value>
+    </data>
+    <data name="CreateAlert400" xml:space="preserve">
+        <value>La solicitud no es válida.</value>
+    </data>
+    <data name="CreateAlert409" xml:space="preserve">
+        <value>La solicitud entra en conflicto con el estado actual de los datos.</value>
+    </data>
+    <data name="CreateAlert500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="CreateAlertDescription" xml:space="preserve">
+        <value>Crea una nueva alerta.</value>
+    </data>
+    <data name="CreateAlertResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para crear una alerta.</value>
+    </data>
+    <data name="CreateAlertSummary" xml:space="preserve">
+        <value>Crear una alerta</value>
+    </data>
+    <data name="CreateAssignment201" xml:space="preserve">
+        <value>Se creó la asignación.</value>
+    </data>
+    <data name="CreateAssignment400" xml:space="preserve">
+        <value>La solicitud no es válida.</value>
+    </data>
+    <data name="CreateAssignment409" xml:space="preserve">
+        <value>La solicitud entra en conflicto con el estado actual de los datos.</value>
+    </data>
+    <data name="CreateAssignment500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="CreateAssignmentDescription" xml:space="preserve">
+        <value>Crea una nueva asignación.</value>
+    </data>
+    <data name="CreateAssignmentResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para crear una asignación.</value>
+    </data>
+    <data name="CreateAssignmentSummary" xml:space="preserve">
+        <value>Crear una asignación</value>
+    </data>
+    <data name="CreateDelivery201" xml:space="preserve">
+        <value>Se creó la entrega.</value>
+    </data>
+    <data name="CreateDelivery400" xml:space="preserve">
+        <value>La solicitud no es válida.</value>
+    </data>
+    <data name="CreateDelivery500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="CreateDeliveryDescription" xml:space="preserve">
+        <value>Crea una nueva entrega.</value>
+    </data>
+    <data name="CreateDeliveryResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para crear una entrega.</value>
+    </data>
+    <data name="CreateDeliverySummary" xml:space="preserve">
+        <value>Crear una entrega</value>
+    </data>
+    <data name="CreateDriver201" xml:space="preserve">
+        <value>Se creó el conductor.</value>
+    </data>
+    <data name="CreateDriver400" xml:space="preserve">
+        <value>La solicitud no es válida.</value>
+    </data>
+    <data name="CreateDriver409" xml:space="preserve">
+        <value>La solicitud entra en conflicto con el estado actual de los datos.</value>
+    </data>
+    <data name="CreateDriver500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="CreateDriverDescription" xml:space="preserve">
+        <value>Crea un nuevo conductor.</value>
+    </data>
+    <data name="CreateDriverResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para crear un conductor.</value>
+    </data>
+    <data name="CreateDriverSummary" xml:space="preserve">
+        <value>Crear un conductor</value>
+    </data>
+    <data name="CreateRecipientResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para crear un destinatario.</value>
+    </data>
+    <data name="CreateShift201" xml:space="preserve">
+        <value>Se creó el turno.</value>
+    </data>
+    <data name="CreateShift400" xml:space="preserve">
+        <value>La solicitud no es válida.</value>
+    </data>
+    <data name="CreateShift409" xml:space="preserve">
+        <value>La solicitud entra en conflicto con el estado actual de los datos.</value>
+    </data>
+    <data name="CreateShift500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="CreateShiftDescription" xml:space="preserve">
+        <value>Crea un nuevo turno.</value>
+    </data>
+    <data name="CreateShiftResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para crear un turno.</value>
+    </data>
+    <data name="CreateShiftSummary" xml:space="preserve">
+        <value>Crear un turno</value>
+    </data>
+    <data name="CreateVehicle201" xml:space="preserve">
+        <value>Se creó el vehículo.</value>
+    </data>
+    <data name="CreateVehicle400" xml:space="preserve">
+        <value>La solicitud no es válida.</value>
+    </data>
+    <data name="CreateVehicle409" xml:space="preserve">
+        <value>La solicitud entra en conflicto con el estado actual de los datos.</value>
+    </data>
+    <data name="CreateVehicle500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="CreateVehicleDescription" xml:space="preserve">
+        <value>Crea un nuevo vehículo.</value>
+    </data>
+    <data name="CreateVehicleResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para crear un vehículo.</value>
+    </data>
+    <data name="CreateVehicleSummary" xml:space="preserve">
+        <value>Crear un vehículo</value>
+    </data>
+    <data name="DeleteAlert200" xml:space="preserve">
+        <value>Se eliminó la alerta.</value>
+    </data>
+    <data name="DeleteAlert404" xml:space="preserve">
+        <value>No se encontró la alerta.</value>
+    </data>
+    <data name="DeleteAlert500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="DeleteAlertDescription" xml:space="preserve">
+        <value>Elimina una alerta por su identificador.</value>
+    </data>
+    <data name="DeleteAlertSummary" xml:space="preserve">
+        <value>Eliminar una alerta</value>
+    </data>
+    <data name="DeleteAssignment200" xml:space="preserve">
+        <value>Se eliminó la asignación.</value>
+    </data>
+    <data name="DeleteAssignment404" xml:space="preserve">
+        <value>No se encontró la asignación.</value>
+    </data>
+    <data name="DeleteAssignment500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="DeleteAssignmentDescription" xml:space="preserve">
+        <value>Elimina una asignación por su identificador.</value>
+    </data>
+    <data name="DeleteAssignmentSummary" xml:space="preserve">
+        <value>Eliminar una asignación</value>
+    </data>
+    <data name="DeleteDriver200" xml:space="preserve">
+        <value>Se eliminó el conductor.</value>
+    </data>
+    <data name="DeleteDriver404" xml:space="preserve">
+        <value>No se encontró el conductor.</value>
+    </data>
+    <data name="DeleteDriver409" xml:space="preserve">
+        <value>La solicitud entra en conflicto con el estado actual de los datos.</value>
+    </data>
+    <data name="DeleteDriver500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="DeleteDriverDescription" xml:space="preserve">
+        <value>Elimina un conductor por su identificador.</value>
+    </data>
+    <data name="DeleteDriverSummary" xml:space="preserve">
+        <value>Eliminar un conductor</value>
+    </data>
+    <data name="DeleteVehicle200" xml:space="preserve">
+        <value>Se eliminó el vehículo.</value>
+    </data>
+    <data name="DeleteVehicle404" xml:space="preserve">
+        <value>No se encontró el vehículo.</value>
+    </data>
+    <data name="DeleteVehicle409" xml:space="preserve">
+        <value>La solicitud entra en conflicto con el estado actual de los datos.</value>
+    </data>
+    <data name="DeleteVehicle500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="DeleteVehicleDescription" xml:space="preserve">
+        <value>Elimina un vehículo por su identificador.</value>
+    </data>
+    <data name="DeleteVehicleSummary" xml:space="preserve">
+        <value>Eliminar un vehículo</value>
+    </data>
+    <data name="DeliveryAlertType" xml:space="preserve">
+        <value>Tipo de alerta entregada</value>
+    </data>
+    <data name="DeliveryChannel" xml:space="preserve">
+        <value>Canal de notificación</value>
+    </data>
+    <data name="DeliveryId" xml:space="preserve">
+        <value>Identificador generado por el servidor de la entrega.</value>
+    </data>
+    <data name="DeliveryPriority" xml:space="preserve">
+        <value>Prioridad del mensaje</value>
+    </data>
+    <data name="DeliveryRecipientName" xml:space="preserve">
+        <value>Nombre del destinatario</value>
+    </data>
+    <data name="DeliveryResourceSchema" xml:space="preserve">
+        <value>Datos que el servidor devuelve de una entrega.</value>
+    </data>
+    <data name="DeliverySentAt" xml:space="preserve">
+        <value>Fecha y hora de la entrega</value>
+    </data>
+    <data name="DeliveryStatus" xml:space="preserve">
+        <value>Estado de la entrega (sent o failed)</value>
+    </data>
+    <data name="DriverAlreadyAssigned" xml:space="preserve">
+        <value>El conductor ya tiene una asignación activa.</value>
+    </data>
+    <data name="DriverCategory" xml:space="preserve">
+        <value>Categoría de licencia</value>
+    </data>
+    <data name="DriverDni" xml:space="preserve">
+        <value>DNI</value>
+    </data>
+    <data name="DriverEmployeeCode" xml:space="preserve">
+        <value>Código de empleado</value>
+    </data>
+    <data name="DriverFirstName" xml:space="preserve">
+        <value>Nombres</value>
+    </data>
+    <data name="DriverHasActiveAssignment" xml:space="preserve">
+        <value>El conductor tiene una asignación activa y no puede eliminarse.</value>
+    </data>
+    <data name="DriverId" xml:space="preserve">
+        <value>Identificador generado por el servidor del conductor.</value>
+    </data>
+    <data name="DriverIdentityDriverId" xml:space="preserve">
+        <value>ID del conductor</value>
+    </data>
+    <data name="DriverIdentityEmployeeCode" xml:space="preserve">
+        <value>Código de empleado</value>
+    </data>
+    <data name="DriverIdentityFullName" xml:space="preserve">
+        <value>Nombres y apellidos</value>
+    </data>
+    <data name="DriverIdentityResourceSchema" xml:space="preserve">
+        <value>Identidad verificada de un conductor y la unidad que tiene asignada.</value>
+    </data>
+    <data name="DriverIdentityRoute" xml:space="preserve">
+        <value>Ruta de la asignación activa</value>
+    </data>
+    <data name="DriverIdentityVehicleCode" xml:space="preserve">
+        <value>Código de la unidad asignada</value>
+    </data>
+    <data name="DriverIdentityVehicleId" xml:space="preserve">
+        <value>ID del vehículo asignado</value>
+    </data>
+    <data name="DriverLastName" xml:space="preserve">
+        <value>Apellidos</value>
+    </data>
+    <data name="DriverLicenseExpiry" xml:space="preserve">
+        <value>Fecha de vencimiento de la licencia</value>
+    </data>
+    <data name="DriverLicenseNumber" xml:space="preserve">
+        <value>Número de licencia</value>
+    </data>
+    <data name="DriverNotFound" xml:space="preserve">
+        <value>No se encontró el conductor.</value>
+    </data>
+    <data name="DriverPoints" xml:space="preserve">
+        <value>Puntos de la licencia</value>
+    </data>
+    <data name="DriverRating" xml:space="preserve">
+        <value>Calificación de 0 a 5</value>
+    </data>
+    <data name="DriverResourceSchema" xml:space="preserve">
+        <value>Datos que el servidor devuelve de un conductor.</value>
+    </data>
+    <data name="DriverStatus" xml:space="preserve">
+        <value>Estado del conductor (active o inactive)</value>
+    </data>
+    <data name="DriverYearsExperience" xml:space="preserve">
+        <value>Años de experiencia</value>
+    </data>
+    <data name="DuplicateAlertCode" xml:space="preserve">
+        <value>Ya existe una alerta con este código.</value>
+    </data>
+    <data name="DuplicateDni" xml:space="preserve">
+        <value>Ya existe un conductor con este DNI.</value>
+    </data>
+    <data name="DuplicateEmployeeCode" xml:space="preserve">
+        <value>Ya existe un conductor con este código de empleado.</value>
+    </data>
+    <data name="DuplicateLicensePlate" xml:space="preserve">
+        <value>Ya existe un vehículo con esta placa.</value>
+    </data>
+    <data name="DuplicateVehicleCode" xml:space="preserve">
+        <value>Ya existe un vehículo con este código de unidad.</value>
+    </data>
+    <data name="GetAlertById200" xml:space="preserve">
+        <value>La alerta.</value>
+    </data>
+    <data name="GetAlertById404" xml:space="preserve">
+        <value>No se encontró la alerta.</value>
+    </data>
+    <data name="GetAlertByIdDescription" xml:space="preserve">
+        <value>Devuelve la alerta con el identificador indicado.</value>
+    </data>
+    <data name="GetAlertByIdSummary" xml:space="preserve">
+        <value>Obtener una alerta por ID</value>
+    </data>
+    <data name="GetAlertsFromQuery200" xml:space="preserve">
+        <value>La lista de alertas.</value>
+    </data>
+    <data name="GetAlertsFromQuery400" xml:space="preserve">
+        <value>Un parámetro de consulta no es válido.</value>
+    </data>
+    <data name="GetAlertsFromQueryDescription" xml:space="preserve">
+        <value>Devuelve todas las alertas, opcionalmente filtradas por parámetros de consulta.</value>
+    </data>
+    <data name="GetAlertsFromQuerySummary" xml:space="preserve">
+        <value>Listar alertas</value>
+    </data>
+    <data name="GetAssignmentById200" xml:space="preserve">
+        <value>La asignación.</value>
+    </data>
+    <data name="GetAssignmentById404" xml:space="preserve">
+        <value>No se encontró la asignación.</value>
+    </data>
+    <data name="GetAssignmentByIdDescription" xml:space="preserve">
+        <value>Devuelve la asignación con el identificador indicado.</value>
+    </data>
+    <data name="GetAssignmentByIdSummary" xml:space="preserve">
+        <value>Obtener una asignación por ID</value>
+    </data>
+    <data name="GetAssignmentsFromQuery200" xml:space="preserve">
+        <value>La lista de asignaciones.</value>
+    </data>
+    <data name="GetAssignmentsFromQuery400" xml:space="preserve">
+        <value>Un parámetro de consulta no es válido.</value>
+    </data>
+    <data name="GetAssignmentsFromQueryDescription" xml:space="preserve">
+        <value>Devuelve todas las asignaciones, opcionalmente filtradas por parámetros de consulta.</value>
+    </data>
+    <data name="GetAssignmentsFromQuerySummary" xml:space="preserve">
+        <value>Listar asignaciones</value>
+    </data>
+    <data name="GetDeliveriesFromQuery200" xml:space="preserve">
+        <value>La lista de entregas.</value>
+    </data>
+    <data name="GetDeliveriesFromQuery400" xml:space="preserve">
+        <value>Un parámetro de consulta no es válido.</value>
+    </data>
+    <data name="GetDeliveriesFromQueryDescription" xml:space="preserve">
+        <value>Devuelve todas las entregas, opcionalmente filtradas por parámetros de consulta.</value>
+    </data>
+    <data name="GetDeliveriesFromQuerySummary" xml:space="preserve">
+        <value>Listar entregas</value>
+    </data>
+    <data name="GetDeliveryById200" xml:space="preserve">
+        <value>La entrega.</value>
+    </data>
+    <data name="GetDeliveryById404" xml:space="preserve">
+        <value>No se encontró la entrega.</value>
+    </data>
+    <data name="GetDeliveryByIdDescription" xml:space="preserve">
+        <value>Devuelve la entrega con el identificador indicado.</value>
+    </data>
+    <data name="GetDeliveryByIdSummary" xml:space="preserve">
+        <value>Obtener una entrega por ID</value>
+    </data>
+    <data name="GetDriverById200" xml:space="preserve">
+        <value>El conductor.</value>
+    </data>
+    <data name="GetDriverById404" xml:space="preserve">
+        <value>No se encontró el conductor.</value>
+    </data>
+    <data name="GetDriverByIdDescription" xml:space="preserve">
+        <value>Devuelve el conductor con el identificador indicado.</value>
+    </data>
+    <data name="GetDriverByIdSummary" xml:space="preserve">
+        <value>Obtener un conductor por ID</value>
+    </data>
+    <data name="GetDriversFromQuery200" xml:space="preserve">
+        <value>La lista de conductores.</value>
+    </data>
+    <data name="GetDriversFromQuery400" xml:space="preserve">
+        <value>Un parámetro de consulta no es válido.</value>
+    </data>
+    <data name="GetDriversFromQueryDescription" xml:space="preserve">
+        <value>Devuelve todos los conductores, opcionalmente filtrados por parámetros de consulta.</value>
+    </data>
+    <data name="GetDriversFromQuerySummary" xml:space="preserve">
+        <value>Listar conductores</value>
+    </data>
+    <data name="GetRecipientById200" xml:space="preserve">
+        <value>El destinatario.</value>
+    </data>
+    <data name="GetRecipientById404" xml:space="preserve">
+        <value>No se encontró el destinatario.</value>
+    </data>
+    <data name="GetRecipientByIdDescription" xml:space="preserve">
+        <value>Devuelve el destinatario con el identificador indicado.</value>
+    </data>
+    <data name="GetRecipientByIdSummary" xml:space="preserve">
+        <value>Obtener un destinatario por ID</value>
+    </data>
+    <data name="GetRecipientsFromQuery200" xml:space="preserve">
+        <value>La lista de destinatarios.</value>
+    </data>
+    <data name="GetRecipientsFromQuery400" xml:space="preserve">
+        <value>Un parámetro de consulta no es válido.</value>
+    </data>
+    <data name="GetRecipientsFromQueryDescription" xml:space="preserve">
+        <value>Devuelve todos los destinatarios, opcionalmente filtrados por parámetros de consulta.</value>
+    </data>
+    <data name="GetRecipientsFromQuerySummary" xml:space="preserve">
+        <value>Listar destinatarios</value>
+    </data>
+    <data name="GetShiftById200" xml:space="preserve">
+        <value>El turno.</value>
+    </data>
+    <data name="GetShiftById404" xml:space="preserve">
+        <value>No se encontró el turno.</value>
+    </data>
+    <data name="GetShiftByIdDescription" xml:space="preserve">
+        <value>Devuelve el turno con el identificador indicado.</value>
+    </data>
+    <data name="GetShiftByIdSummary" xml:space="preserve">
+        <value>Obtener un turno por ID</value>
+    </data>
+    <data name="GetShiftsFromQuery200" xml:space="preserve">
+        <value>La lista de turnos.</value>
+    </data>
+    <data name="GetShiftsFromQuery400" xml:space="preserve">
+        <value>Un parámetro de consulta no es válido.</value>
+    </data>
+    <data name="GetShiftsFromQueryDescription" xml:space="preserve">
+        <value>Devuelve todos los turnos, opcionalmente filtrados por parámetros de consulta.</value>
+    </data>
+    <data name="GetShiftsFromQuerySummary" xml:space="preserve">
+        <value>Listar turnos</value>
+    </data>
+    <data name="GetVehicleById200" xml:space="preserve">
+        <value>El vehículo.</value>
+    </data>
+    <data name="GetVehicleById404" xml:space="preserve">
+        <value>No se encontró el vehículo.</value>
+    </data>
+    <data name="GetVehicleByIdDescription" xml:space="preserve">
+        <value>Devuelve el vehículo con el identificador indicado.</value>
+    </data>
+    <data name="GetVehicleByIdSummary" xml:space="preserve">
+        <value>Obtener un vehículo por ID</value>
+    </data>
+    <data name="GetVehiclesFromQuery200" xml:space="preserve">
+        <value>La lista de vehículos.</value>
+    </data>
+    <data name="GetVehiclesFromQuery400" xml:space="preserve">
+        <value>Un parámetro de consulta no es válido.</value>
+    </data>
+    <data name="GetVehiclesFromQueryDescription" xml:space="preserve">
+        <value>Devuelve todos los vehículos, opcionalmente filtrados por parámetros de consulta.</value>
+    </data>
+    <data name="GetVehiclesFromQuerySummary" xml:space="preserve">
+        <value>Listar vehículos</value>
+    </data>
+    <data name="InvalidAlertData" xml:space="preserve">
+        <value>Los datos de la alerta contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidAlertQuery" xml:space="preserve">
+        <value>Los parámetros de consulta de alertas contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidAlertRequest" xml:space="preserve">
+        <value>La solicitud de alerta contiene valores no válidos.</value>
+    </data>
+    <data name="InvalidAssignmentData" xml:space="preserve">
+        <value>Los datos de la asignación contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidAssignmentQuery" xml:space="preserve">
+        <value>Los parámetros de consulta de asignaciones contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidAssignmentRequest" xml:space="preserve">
+        <value>La solicitud de asignación contiene valores no válidos.</value>
+    </data>
+    <data name="InvalidDeliveryData" xml:space="preserve">
+        <value>Los datos de la entrega contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidDeliveryQuery" xml:space="preserve">
+        <value>Los parámetros de consulta de entregas contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidDeliveryRequest" xml:space="preserve">
+        <value>La solicitud de entrega contiene valores no válidos.</value>
+    </data>
+    <data name="InvalidDriverData" xml:space="preserve">
+        <value>Los datos del conductor contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidDriverQuery" xml:space="preserve">
+        <value>Los parámetros de consulta de conductores contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidDriverRequest" xml:space="preserve">
+        <value>La solicitud de conductor contiene valores no válidos.</value>
+    </data>
+    <data name="InvalidModelStateTitle" xml:space="preserve">
+        <value>La solicitud contiene valores no válidos.</value>
+    </data>
+    <data name="InvalidRecipientData" xml:space="preserve">
+        <value>Los datos del destinatario contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidRecipientQuery" xml:space="preserve">
+        <value>Los parámetros de consulta de destinatarios contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidRecipientRequest" xml:space="preserve">
+        <value>La solicitud de destinatario contiene valores no válidos.</value>
+    </data>
+    <data name="InvalidShiftData" xml:space="preserve">
+        <value>Los datos del turno contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidShiftQuery" xml:space="preserve">
+        <value>Los parámetros de consulta de turnos contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidShiftRequest" xml:space="preserve">
+        <value>La solicitud de turno contiene valores no válidos.</value>
+    </data>
+    <data name="InvalidShiftStateTransition" xml:space="preserve">
+        <value>Un turno que ya terminó no puede reabrirse.</value>
+    </data>
+    <data name="InvalidVehicleData" xml:space="preserve">
+        <value>Los datos del vehículo contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidVehicleQuery" xml:space="preserve">
+        <value>Los parámetros de consulta de vehículos contienen valores no válidos.</value>
+    </data>
+    <data name="InvalidVehicleRequest" xml:space="preserve">
+        <value>La solicitud de vehículo contiene valores no válidos.</value>
+    </data>
+    <data name="InvalidVerifyDriverRequest" xml:space="preserve">
+        <value>La solicitud de verificación de identidad contiene valores no válidos.</value>
+    </data>
+    <data name="RecipientActive" xml:space="preserve">
+        <value>Indica si el destinatario recibe alertas</value>
+    </data>
+    <data name="RecipientChannel" xml:space="preserve">
+        <value>Canal de notificación</value>
+    </data>
+    <data name="RecipientId" xml:space="preserve">
+        <value>Identificador generado por el servidor del destinatario.</value>
+    </data>
+    <data name="RecipientName" xml:space="preserve">
+        <value>Nombre del destinatario</value>
+    </data>
+    <data name="RecipientNotFound" xml:space="preserve">
+        <value>No se encontró el destinatario.</value>
+    </data>
+    <data name="RecipientResourceSchema" xml:space="preserve">
+        <value>Datos que el servidor devuelve de un destinatario.</value>
+    </data>
+    <data name="RecipientRole" xml:space="preserve">
+        <value>Rol del destinatario</value>
+    </data>
+    <data name="RequiredAlertCode" xml:space="preserve">
+        <value>El campo «código de la alerta» es obligatorio.</value>
+    </data>
+    <data name="RequiredAlertReceiver" xml:space="preserve">
+        <value>El campo «receptor de la alerta» es obligatorio.</value>
+    </data>
+    <data name="RequiredAlertStatus" xml:space="preserve">
+        <value>El campo «estado de la alerta» es obligatorio.</value>
+    </data>
+    <data name="RequiredAlertType" xml:space="preserve">
+        <value>El campo «tipo de alerta» es obligatorio.</value>
+    </data>
+    <data name="RequiredAssignmentRoute" xml:space="preserve">
+        <value>El campo «ruta» es obligatorio.</value>
+    </data>
+    <data name="RequiredAssignmentStartTime" xml:space="preserve">
+        <value>El campo «hora de inicio» es obligatorio.</value>
+    </data>
+    <data name="RequiredAssignmentStatus" xml:space="preserve">
+        <value>El campo «estado de la asignación» es obligatorio.</value>
+    </data>
+    <data name="RequiredDeliveryAlertType" xml:space="preserve">
+        <value>El campo «tipo de alerta entregada» es obligatorio.</value>
+    </data>
+    <data name="RequiredDeliveryChannel" xml:space="preserve">
+        <value>El campo «canal de notificación» es obligatorio.</value>
+    </data>
+    <data name="RequiredDeliveryPriority" xml:space="preserve">
+        <value>El campo «prioridad del mensaje» es obligatorio.</value>
+    </data>
+    <data name="RequiredDeliveryRecipientName" xml:space="preserve">
+        <value>El campo «nombre del destinatario» es obligatorio.</value>
+    </data>
+    <data name="RequiredDeliveryStatus" xml:space="preserve">
+        <value>El campo «estado de la entrega» es obligatorio.</value>
+    </data>
+    <data name="RequiredDriverCategory" xml:space="preserve">
+        <value>El campo «categoría de licencia» es obligatorio.</value>
+    </data>
+    <data name="RequiredDriverDni" xml:space="preserve">
+        <value>El campo «dni» es obligatorio.</value>
+    </data>
+    <data name="RequiredDriverEmployeeCode" xml:space="preserve">
+        <value>El campo «código de empleado» es obligatorio.</value>
+    </data>
+    <data name="RequiredDriverFirstName" xml:space="preserve">
+        <value>El campo «nombres» es obligatorio.</value>
+    </data>
+    <data name="RequiredDriverLastName" xml:space="preserve">
+        <value>El campo «apellidos» es obligatorio.</value>
+    </data>
+    <data name="RequiredDriverLicenseNumber" xml:space="preserve">
+        <value>El campo «número de licencia» es obligatorio.</value>
+    </data>
+    <data name="RequiredDriverStatus" xml:space="preserve">
+        <value>El campo «estado del conductor» es obligatorio.</value>
+    </data>
+    <data name="RequiredRecipientChannel" xml:space="preserve">
+        <value>El campo «canal de notificación» es obligatorio.</value>
+    </data>
+    <data name="RequiredRecipientName" xml:space="preserve">
+        <value>El campo «nombre del destinatario» es obligatorio.</value>
+    </data>
+    <data name="RequiredRecipientRole" xml:space="preserve">
+        <value>El campo «rol del destinatario» es obligatorio.</value>
+    </data>
+    <data name="RequiredShiftRouteCode" xml:space="preserve">
+        <value>El campo «código de la ruta» es obligatorio.</value>
+    </data>
+    <data name="RequiredShiftRouteName" xml:space="preserve">
+        <value>El campo «nombre de la ruta» es obligatorio.</value>
+    </data>
+    <data name="RequiredShiftStatus" xml:space="preserve">
+        <value>El campo «estado del turno» es obligatorio.</value>
+    </data>
+    <data name="RequiredVehicleCode" xml:space="preserve">
+        <value>El campo «código de la unidad» es obligatorio.</value>
+    </data>
+    <data name="RequiredVehicleModel" xml:space="preserve">
+        <value>El campo «modelo» es obligatorio.</value>
+    </data>
+    <data name="RequiredVehiclePlate" xml:space="preserve">
+        <value>El campo «placa» es obligatorio.</value>
+    </data>
+    <data name="RequiredVehicleStatus" xml:space="preserve">
+        <value>El campo «estado del vehículo» es obligatorio.</value>
+    </data>
+    <data name="RequiredVerifyDriverEmployeeCode" xml:space="preserve">
+        <value>El campo «código de empleado» es obligatorio.</value>
+    </data>
+    <data name="ShiftAverageSpeedKmh" xml:space="preserve">
+        <value>Velocidad promedio en km/h</value>
+    </data>
+    <data name="ShiftDate" xml:space="preserve">
+        <value>Fecha del turno</value>
+    </data>
+    <data name="ShiftDistanceKm" xml:space="preserve">
+        <value>Distancia recorrida en km</value>
+    </data>
+    <data name="ShiftDriverId" xml:space="preserve">
+        <value>ID del conductor</value>
+    </data>
+    <data name="ShiftDriverNotFound" xml:space="preserve">
+        <value>El conductor del turno no existe.</value>
+    </data>
+    <data name="ShiftEndTime" xml:space="preserve">
+        <value>Fecha y hora de término (null mientras el turno está activo)</value>
+    </data>
+    <data name="ShiftId" xml:space="preserve">
+        <value>Identificador generado por el servidor del turno.</value>
+    </data>
+    <data name="ShiftIncidents" xml:space="preserve">
+        <value>Incidentes registrados</value>
+    </data>
+    <data name="ShiftMaxSpeedKmh" xml:space="preserve">
+        <value>Velocidad máxima en km/h</value>
+    </data>
+    <data name="ShiftNotFound" xml:space="preserve">
+        <value>No se encontró el turno.</value>
+    </data>
+    <data name="ShiftOverspeedEvents" xml:space="preserve">
+        <value>Veces que se superó el límite de velocidad</value>
+    </data>
+    <data name="ShiftPassengers" xml:space="preserve">
+        <value>Pasajeros transportados</value>
+    </data>
+    <data name="ShiftResourceSchema" xml:space="preserve">
+        <value>Datos que el servidor devuelve de un turno.</value>
+    </data>
+    <data name="ShiftRevenue" xml:space="preserve">
+        <value>Recaudación</value>
+    </data>
+    <data name="ShiftRouteCode" xml:space="preserve">
+        <value>Código de la ruta</value>
+    </data>
+    <data name="ShiftRouteName" xml:space="preserve">
+        <value>Nombre de la ruta</value>
+    </data>
+    <data name="ShiftSpeedKmh" xml:space="preserve">
+        <value>Velocidad actual en km/h (0 al cerrar el turno)</value>
+    </data>
+    <data name="ShiftSpeedSamples" xml:space="preserve">
+        <value>Cantidad de mediciones de velocidad</value>
+    </data>
+    <data name="ShiftStartTime" xml:space="preserve">
+        <value>Fecha y hora de inicio</value>
+    </data>
+    <data name="ShiftStatus" xml:space="preserve">
+        <value>Estado del turno (active, finished o interrupted)</value>
+    </data>
+    <data name="ShiftVehicleId" xml:space="preserve">
+        <value>ID del vehículo</value>
+    </data>
+    <data name="ShiftVehicleNotFound" xml:space="preserve">
+        <value>El vehículo del turno no existe.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingAlert" xml:space="preserve">
+        <value>Ocurrió un error inesperado al crear la alerta.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingAssignment" xml:space="preserve">
+        <value>Ocurrió un error inesperado al crear la asignación.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingDelivery" xml:space="preserve">
+        <value>Ocurrió un error inesperado al crear la entrega.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingDriver" xml:space="preserve">
+        <value>Ocurrió un error inesperado al crear el conductor.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingShift" xml:space="preserve">
+        <value>Ocurrió un error inesperado al crear el turno.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingVehicle" xml:space="preserve">
+        <value>Ocurrió un error inesperado al crear el vehículo.</value>
+    </data>
+    <data name="UnexpectedErrorDeletingAlert" xml:space="preserve">
+        <value>Ocurrió un error inesperado al eliminar la alerta.</value>
+    </data>
+    <data name="UnexpectedErrorDeletingAssignment" xml:space="preserve">
+        <value>Ocurrió un error inesperado al eliminar la asignación.</value>
+    </data>
+    <data name="UnexpectedErrorDeletingDriver" xml:space="preserve">
+        <value>Ocurrió un error inesperado al eliminar el conductor.</value>
+    </data>
+    <data name="UnexpectedErrorDeletingVehicle" xml:space="preserve">
+        <value>Ocurrió un error inesperado al eliminar el vehículo.</value>
+    </data>
+    <data name="UnexpectedErrorProcessingRequest" xml:space="preserve">
+        <value>Ocurrió un error inesperado al procesar su solicitud.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingAlert" xml:space="preserve">
+        <value>Ocurrió un error inesperado al actualizar la alerta.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingDriver" xml:space="preserve">
+        <value>Ocurrió un error inesperado al actualizar el conductor.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingRecipient" xml:space="preserve">
+        <value>Ocurrió un error inesperado al actualizar el destinatario.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingShift" xml:space="preserve">
+        <value>Ocurrió un error inesperado al actualizar el turno.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingVehicle" xml:space="preserve">
+        <value>Ocurrió un error inesperado al actualizar el vehículo.</value>
+    </data>
+    <data name="UnexpectedErrorVerifyingDriver" xml:space="preserve">
+        <value>Ocurrió un error inesperado al verificar la identidad del conductor.</value>
+    </data>
+    <data name="UnexpectedServerError" xml:space="preserve">
+        <value>Error inesperado del servidor</value>
+    </data>
+    <data name="UpdateAlert200" xml:space="preserve">
+        <value>Se actualizó la alerta.</value>
+    </data>
+    <data name="UpdateAlert400" xml:space="preserve">
+        <value>La solicitud no es válida.</value>
+    </data>
+    <data name="UpdateAlert404" xml:space="preserve">
+        <value>No se encontró la alerta.</value>
+    </data>
+    <data name="UpdateAlert409" xml:space="preserve">
+        <value>La solicitud entra en conflicto con el estado actual de los datos.</value>
+    </data>
+    <data name="UpdateAlert500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="UpdateAlertDescription" xml:space="preserve">
+        <value>Reemplaza los datos de una alerta existente.</value>
+    </data>
+    <data name="UpdateAlertResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para actualizar una alerta.</value>
+    </data>
+    <data name="UpdateAlertSummary" xml:space="preserve">
+        <value>Actualizar una alerta</value>
+    </data>
+    <data name="UpdateAssignmentResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para actualizar una asignación.</value>
+    </data>
+    <data name="UpdateDeliveryResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para actualizar una entrega.</value>
+    </data>
+    <data name="UpdateDriver200" xml:space="preserve">
+        <value>Se actualizó el conductor.</value>
+    </data>
+    <data name="UpdateDriver400" xml:space="preserve">
+        <value>La solicitud no es válida.</value>
+    </data>
+    <data name="UpdateDriver404" xml:space="preserve">
+        <value>No se encontró el conductor.</value>
+    </data>
+    <data name="UpdateDriver409" xml:space="preserve">
+        <value>La solicitud entra en conflicto con el estado actual de los datos.</value>
+    </data>
+    <data name="UpdateDriver500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="UpdateDriverDescription" xml:space="preserve">
+        <value>Reemplaza los datos de un conductor existente.</value>
+    </data>
+    <data name="UpdateDriverResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para actualizar un conductor.</value>
+    </data>
+    <data name="UpdateDriverSummary" xml:space="preserve">
+        <value>Actualizar un conductor</value>
+    </data>
+    <data name="UpdateRecipient200" xml:space="preserve">
+        <value>Se actualizó el destinatario.</value>
+    </data>
+    <data name="UpdateRecipient400" xml:space="preserve">
+        <value>La solicitud no es válida.</value>
+    </data>
+    <data name="UpdateRecipient404" xml:space="preserve">
+        <value>No se encontró el destinatario.</value>
+    </data>
+    <data name="UpdateRecipient500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="UpdateRecipientDescription" xml:space="preserve">
+        <value>Reemplaza los datos de un destinatario existente.</value>
+    </data>
+    <data name="UpdateRecipientResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para actualizar un destinatario.</value>
+    </data>
+    <data name="UpdateRecipientSummary" xml:space="preserve">
+        <value>Actualizar un destinatario</value>
+    </data>
+    <data name="UpdateShift200" xml:space="preserve">
+        <value>Se actualizó el turno.</value>
+    </data>
+    <data name="UpdateShift400" xml:space="preserve">
+        <value>La solicitud no es válida.</value>
+    </data>
+    <data name="UpdateShift404" xml:space="preserve">
+        <value>No se encontró el turno.</value>
+    </data>
+    <data name="UpdateShift409" xml:space="preserve">
+        <value>La solicitud entra en conflicto con el estado actual de los datos.</value>
+    </data>
+    <data name="UpdateShift500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="UpdateShiftDescription" xml:space="preserve">
+        <value>Reemplaza los datos de un turno existente.</value>
+    </data>
+    <data name="UpdateShiftResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para actualizar un turno.</value>
+    </data>
+    <data name="UpdateShiftSummary" xml:space="preserve">
+        <value>Actualizar un turno</value>
+    </data>
+    <data name="UpdateVehicle200" xml:space="preserve">
+        <value>Se actualizó el vehículo.</value>
+    </data>
+    <data name="UpdateVehicle400" xml:space="preserve">
+        <value>La solicitud no es válida.</value>
+    </data>
+    <data name="UpdateVehicle404" xml:space="preserve">
+        <value>No se encontró el vehículo.</value>
+    </data>
+    <data name="UpdateVehicle409" xml:space="preserve">
+        <value>La solicitud entra en conflicto con el estado actual de los datos.</value>
+    </data>
+    <data name="UpdateVehicle500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="UpdateVehicleDescription" xml:space="preserve">
+        <value>Reemplaza los datos de un vehículo existente.</value>
+    </data>
+    <data name="UpdateVehicleResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para actualizar un vehículo.</value>
+    </data>
+    <data name="UpdateVehicleSummary" xml:space="preserve">
+        <value>Actualizar un vehículo</value>
+    </data>
+    <data name="VehicleAlreadyAssigned" xml:space="preserve">
+        <value>El vehículo ya tiene una asignación activa.</value>
+    </data>
+    <data name="VehicleCapacity" xml:space="preserve">
+        <value>Capacidad de pasajeros</value>
+    </data>
+    <data name="VehicleCode" xml:space="preserve">
+        <value>Código de la unidad</value>
+    </data>
+    <data name="VehicleHasActiveAssignment" xml:space="preserve">
+        <value>El vehículo tiene una asignación activa y no puede eliminarse.</value>
+    </data>
+    <data name="VehicleId" xml:space="preserve">
+        <value>Identificador generado por el servidor del vehículo.</value>
+    </data>
+    <data name="VehicleLatitude" xml:space="preserve">
+        <value>Latitud</value>
+    </data>
+    <data name="VehicleLongitude" xml:space="preserve">
+        <value>Longitud</value>
+    </data>
+    <data name="VehicleModel" xml:space="preserve">
+        <value>Modelo</value>
+    </data>
+    <data name="VehicleNotFound" xml:space="preserve">
+        <value>No se encontró el vehículo.</value>
+    </data>
+    <data name="VehiclePlate" xml:space="preserve">
+        <value>Placa</value>
+    </data>
+    <data name="VehicleResourceSchema" xml:space="preserve">
+        <value>Datos que el servidor devuelve de un vehículo.</value>
+    </data>
+    <data name="VehicleStatus" xml:space="preserve">
+        <value>Estado del vehículo (available, in-service o maintenance)</value>
+    </data>
+    <data name="VerifyDriver200" xml:space="preserve">
+        <value>La identidad verificada del conductor y la unidad asignada.</value>
+    </data>
+    <data name="VerifyDriver400" xml:space="preserve">
+        <value>El cuerpo de la solicitud no es válido.</value>
+    </data>
+    <data name="VerifyDriver403" xml:space="preserve">
+        <value>El conductor no puede iniciar un turno.</value>
+    </data>
+    <data name="VerifyDriver404" xml:space="preserve">
+        <value>No existe un conductor con este código de empleado.</value>
+    </data>
+    <data name="VerifyDriver500" xml:space="preserve">
+        <value>Error inesperado del servidor.</value>
+    </data>
+    <data name="VerifyDriverAssignedVehicleNotFound" xml:space="preserve">
+        <value>El vehículo asignado al conductor ya no existe.</value>
+    </data>
+    <data name="VerifyDriverDescription" xml:space="preserve">
+        <value>Valida un código de empleado: el conductor debe existir, estar activo y tener una asignación activa.</value>
+    </data>
+    <data name="VerifyDriverEmployeeCode" xml:space="preserve">
+        <value>Código de empleado del conductor</value>
+    </data>
+    <data name="VerifyDriverForbiddenTitle" xml:space="preserve">
+        <value>La verificación de identidad falló</value>
+    </data>
+    <data name="VerifyDriverNoActiveAssignment" xml:space="preserve">
+        <value>El conductor no tiene una asignación activa a una unidad.</value>
+    </data>
+    <data name="VerifyDriverNotActive" xml:space="preserve">
+        <value>El conductor no está activo.</value>
+    </data>
+    <data name="VerifyDriverNotFound" xml:space="preserve">
+        <value>No existe un conductor con este código de empleado.</value>
+    </data>
+    <data name="VerifyDriverResourceSchema" xml:space="preserve">
+        <value>Datos necesarios para verificar la identidad de un conductor.</value>
+    </data>
+    <data name="VerifyDriverSummary" xml:space="preserve">
+        <value>Verificar la identidad de un conductor</value>
+    </data>
+</root>
