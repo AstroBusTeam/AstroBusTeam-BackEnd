@@ -22,6 +22,7 @@
 
     <ItemGroup>
       <Folder Include="Alerts\Domain\Model\" />
+      <Folder Include="Alerts\Infrastructure\Persistence\EFC\Configuration\" />
     </ItemGroup>
 
 </Project>
