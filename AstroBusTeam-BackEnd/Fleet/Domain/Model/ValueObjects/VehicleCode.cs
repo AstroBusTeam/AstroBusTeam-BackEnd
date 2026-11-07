@@ -1,0 +1,35 @@
+namespace SecurityBus.API.Fleet.Domain.Model.ValueObjects;
+
+/// <summary>
+///     Value object representing a validated unit code.
+/// </summary>
+public sealed record VehicleCode
+{
+    private const int MaxLength = 20;
+
+    /// <summary>
+    ///     Initializes a new <see cref="VehicleCode"/> with the given raw string value.
+    /// </summary>
+    /// <param name="value">The raw value. Must be non-null, non-whitespace, and at most 20 characters.</param>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="value"/> is null, empty, whitespace, exceeds the maximum length or has an invalid format.</exception>
+    public VehicleCode(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            throw new ArgumentException("VehicleCode cannot be null, empty, or whitespace.", nameof(value));
+
+        var normalized = value.Trim().ToUpperInvariant();
+
+        if (normalized.Length > MaxLength)
+            throw new ArgumentException($"VehicleCode cannot be longer than {MaxLength} characters.", nameof(value));
+
+        Value = normalized;
+    }
+
+    /// <summary>
+    ///     Gets the underlying primitive value.
+    /// </summary>
+    public string Value { get; }
+
+    /// <inheritdoc />
+    public override string ToString() => Value;
+}
