@@ -1,6 +1,6 @@
-using SecurityBus.API.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
 
-namespace SecurityBus.API.Operations.Domain.Model.Aggregates;
+namespace AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
 
 /// <summary>
 ///     Audit extension for Shift aggregate.

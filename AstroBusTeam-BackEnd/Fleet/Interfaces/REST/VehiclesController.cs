@@ -1,15 +1,15 @@
 using System.Net.Mime;
-using SecurityBus.API.Fleet.Application.Services;
-using SecurityBus.API.Fleet.Domain.Model.Queries;
-using SecurityBus.API.Fleet.Domain.Model.ValueObjects;
-using SecurityBus.API.Fleet.Domain.Model.Commands;
-using SecurityBus.API.Fleet.Interfaces.REST.Resources;
-using SecurityBus.API.Fleet.Interfaces.REST.Transform;
-using SecurityBus.API.Resources;
+using AstroBusTeamBackEnd.Fleet.Application.Services;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Queries;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Fleet.Interfaces.REST.Resources;
+using AstroBusTeamBackEnd.Fleet.Interfaces.REST.Transform;
+using AstroBusTeamBackEnd.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
-namespace SecurityBus.API.Fleet.Interfaces.REST;
+namespace AstroBusTeamBackEnd.Fleet.Interfaces.REST;
 
 /// <summary>
 ///     Vehicles' controller.

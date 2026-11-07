@@ -1,8 +1,8 @@
-using SecurityBus.API.Operations.Domain.Model.Commands;
-using SecurityBus.API.Operations.Domain.Model.ValueObjects;
-using SecurityBus.API.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Operations.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
 
-namespace SecurityBus.API.Operations.Domain.Model.Aggregates;
+namespace AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
 
 /// <summary>
 ///     Represents a shift in the Operations bounded context.

@@ -1,6 +1,6 @@
-using SecurityBus.API.Iam.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Iam.Domain.Model.ValueObjects;
 
-namespace SecurityBus.API.Iam.Domain.Model.Commands;
+namespace AstroBusTeamBackEnd.Iam.Domain.Model.Commands;
 
 /// <summary>
 ///     Command to verify the identity of a driver who is starting a shift

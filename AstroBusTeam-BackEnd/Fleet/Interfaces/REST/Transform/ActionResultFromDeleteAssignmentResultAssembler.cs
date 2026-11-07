@@ -1,11 +1,11 @@
-using SecurityBus.API.Fleet.Application.Errors;
-using SecurityBus.API.Fleet.Domain.Model.Aggregates;
-using SecurityBus.API.Resources;
-using SecurityBus.API.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Fleet.Application.Errors;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Resources;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
-namespace SecurityBus.API.Fleet.Interfaces.REST.Transform;
+namespace AstroBusTeamBackEnd.Fleet.Interfaces.REST.Transform;
 
 /// <summary>
 ///     Assembles an HTTP action result from the result of the command handling to delete a assignment in the application layer.

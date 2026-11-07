@@ -1,6 +1,6 @@
-using SecurityBus.API.Alerts.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
 
-namespace SecurityBus.API.Alerts.Domain.Model.Commands;
+namespace AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
 
 /// <summary>
 ///     Command to update a alert

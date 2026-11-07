@@ -1,6 +1,6 @@
-using SecurityBus.API.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
 
-namespace SecurityBus.API.Alerts.Domain.Model.Aggregates;
+namespace AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
 
 /// <summary>
 ///     Audit extension for Recipient aggregate.

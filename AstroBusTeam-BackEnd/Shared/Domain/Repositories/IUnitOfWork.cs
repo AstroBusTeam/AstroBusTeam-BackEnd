@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Shared.Domain.Repositories;
+namespace AstroBusTeamBackEnd.Shared.Domain.Repositories;
 
 /// <summary>
 ///     Unit of work interface

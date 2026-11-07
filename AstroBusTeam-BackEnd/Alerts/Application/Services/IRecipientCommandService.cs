@@ -1,9 +1,9 @@
-using SecurityBus.API.Alerts.Application.Errors;
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Domain.Model.Commands;
-using SecurityBus.API.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Alerts.Application.Errors;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
 
-namespace SecurityBus.API.Alerts.Application.Services;
+namespace AstroBusTeamBackEnd.Alerts.Application.Services;
 
 /// <summary>
 ///     Command service interface for recipient operations.

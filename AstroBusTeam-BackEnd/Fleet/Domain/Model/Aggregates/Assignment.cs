@@ -1,8 +1,8 @@
-using SecurityBus.API.Fleet.Domain.Model.Commands;
-using SecurityBus.API.Fleet.Domain.Model.ValueObjects;
-using SecurityBus.API.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
 
-namespace SecurityBus.API.Fleet.Domain.Model.Aggregates;
+namespace AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
 
 /// <summary>
 ///     Represents a assignment in the Fleet bounded context.

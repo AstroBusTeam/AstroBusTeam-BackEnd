@@ -1,11 +1,11 @@
-using SecurityBus.API.Fleet.Interfaces.ACL;
-using SecurityBus.API.Iam.Application.Errors;
-using SecurityBus.API.Iam.Application.Services;
-using SecurityBus.API.Iam.Domain.Model.Commands;
-using SecurityBus.API.Iam.Domain.Model.ValueObjects;
-using SecurityBus.API.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Fleet.Interfaces.ACL;
+using AstroBusTeamBackEnd.Iam.Application.Errors;
+using AstroBusTeamBackEnd.Iam.Application.Services;
+using AstroBusTeamBackEnd.Iam.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Iam.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
 
-namespace SecurityBus.API.Iam.Application.Internal.CommandServices;
+namespace AstroBusTeamBackEnd.Iam.Application.Internal.CommandServices;
 
 /// <summary>
 ///     Application service that verifies the identity of a driver.

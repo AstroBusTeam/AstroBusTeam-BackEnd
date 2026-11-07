@@ -1,9 +1,9 @@
-using SecurityBus.API.Fleet.Domain.Model.Aggregates;
-using SecurityBus.API.Operations.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Configuration;
+namespace AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Configuration;
 
 /// <summary>
 ///     Inserts the sample data into an empty database.

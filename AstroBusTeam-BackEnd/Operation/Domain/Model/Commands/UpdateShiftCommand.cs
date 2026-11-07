@@ -1,6 +1,6 @@
-using SecurityBus.API.Operations.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Operations.Domain.Model.ValueObjects;
 
-namespace SecurityBus.API.Operations.Domain.Model.Commands;
+namespace AstroBusTeamBackEnd.Operations.Domain.Model.Commands;
 
 /// <summary>
 ///     Command to update a shift

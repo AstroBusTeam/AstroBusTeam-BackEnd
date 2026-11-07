@@ -1,9 +1,9 @@
-using SecurityBus.API.Operations.Application.Errors;
-using SecurityBus.API.Operations.Domain.Model.Aggregates;
-using SecurityBus.API.Operations.Domain.Model.Commands;
-using SecurityBus.API.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Operations.Application.Errors;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
 
-namespace SecurityBus.API.Operations.Application.Services;
+namespace AstroBusTeamBackEnd.Operations.Application.Services;
 
 /// <summary>
 ///     Command service interface for shift operations.

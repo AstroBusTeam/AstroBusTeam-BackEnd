@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstroBusTeam-BackEnd", "AstroBusTeam-BackEnd\AstroBusTeam-BackEnd.csproj", "{E75417FF-AE11-4B21-8159-B2D3CBB2B289}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstroBusTeamBackEnd", "AstroBusTeamBackEnd\AstroBusTeamBackEnd.csproj", "{E75417FF-AE11-4B21-8159-B2D3CBB2B289}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

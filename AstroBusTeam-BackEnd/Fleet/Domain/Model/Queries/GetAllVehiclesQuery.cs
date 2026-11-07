@@ -1,6 +1,6 @@
-using SecurityBus.API.Fleet.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
 
-namespace SecurityBus.API.Fleet.Domain.Model.Queries;
+namespace AstroBusTeamBackEnd.Fleet.Domain.Model.Queries;
 
 /// <summary>
 ///     Query to get all vehicles, optionally filtered

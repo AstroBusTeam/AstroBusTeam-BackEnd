@@ -1,7 +1,7 @@
-using SecurityBus.API.Operations.Domain.Model.Aggregates;
-using SecurityBus.API.Operations.Domain.Model.Queries;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Queries;
 
-namespace SecurityBus.API.Operations.Application.Services;
+namespace AstroBusTeamBackEnd.Operations.Application.Services;
 
 /// <summary>
 ///     Query service interface for shift operations.

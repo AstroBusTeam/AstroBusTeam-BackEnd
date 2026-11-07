@@ -1,8 +1,8 @@
-using SecurityBus.API.Fleet.Domain.Model.Aggregates;
-using SecurityBus.API.Fleet.Domain.Model.ValueObjects;
-using SecurityBus.API.Shared.Domain.Repositories;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Shared.Domain.Repositories;
 
-namespace SecurityBus.API.Fleet.Domain.Repositories;
+namespace AstroBusTeamBackEnd.Fleet.Domain.Repositories;
 
 /// <summary>
 ///     The Driver repository contract.

@@ -1,15 +1,15 @@
-using SecurityBus.API.Fleet.Interfaces.ACL;
-using SecurityBus.API.Alerts.Application.Errors;
-using SecurityBus.API.Alerts.Application.Services;
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Domain.Model.Commands;
-using SecurityBus.API.Alerts.Domain.Repositories;
-using SecurityBus.API.Shared.Application.Extensions;
-using SecurityBus.API.Shared.Application.Patterns;
-using SecurityBus.API.Shared.Domain.Repositories;
+using AstroBusTeamBackEnd.Fleet.Interfaces.ACL;
+using AstroBusTeamBackEnd.Alerts.Application.Errors;
+using AstroBusTeamBackEnd.Alerts.Application.Services;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Alerts.Domain.Repositories;
+using AstroBusTeamBackEnd.Shared.Application.Extensions;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Shared.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Alerts.Application.Internal.CommandServices;
+namespace AstroBusTeamBackEnd.Alerts.Application.Internal.CommandServices;
 
 /// <summary>
 ///     Application service for handling alert commands.

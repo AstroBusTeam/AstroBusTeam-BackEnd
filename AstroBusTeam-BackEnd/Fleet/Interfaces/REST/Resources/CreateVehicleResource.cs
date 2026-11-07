@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace SecurityBus.API.Fleet.Interfaces.REST.Resources;
+namespace AstroBusTeamBackEnd.Fleet.Interfaces.REST.Resources;
 
 /// <summary>
 ///     Represents the data required to create a vehicle.

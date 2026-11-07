@@ -1,8 +1,8 @@
-using SecurityBus.API.Shared.Domain.Model;
-using SecurityBus.API.Operations.Domain.Model.Aggregates;
-using SecurityBus.API.Operations.Interfaces.REST.Resources;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Operations.Interfaces.REST.Resources;
 
-namespace SecurityBus.API.Operations.Interfaces.REST.Transform;
+namespace AstroBusTeamBackEnd.Operations.Interfaces.REST.Transform;
 
 /// <summary>
 ///     Assembles a ShiftResource from a Shift.

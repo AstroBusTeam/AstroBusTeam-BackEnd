@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Alerts.Interfaces.REST.Resources;
+namespace AstroBusTeamBackEnd.Alerts.Interfaces.REST.Resources;
 
 /// <summary>
 ///     Represents the data provided by the server about a recipient.

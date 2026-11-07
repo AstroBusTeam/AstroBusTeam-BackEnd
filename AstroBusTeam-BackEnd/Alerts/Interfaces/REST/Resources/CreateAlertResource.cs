@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace SecurityBus.API.Alerts.Interfaces.REST.Resources;
+namespace AstroBusTeamBackEnd.Alerts.Interfaces.REST.Resources;
 
 /// <summary>
 ///     Represents the data required to create a alert.

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace SecurityBus.API.Iam.Interfaces.REST.Resources;
+namespace AstroBusTeamBackEnd.Iam.Interfaces.REST.Resources;
 
 /// <summary>
 ///     Represents the data required to verify the identity of a driver.

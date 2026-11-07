@@ -1,15 +1,15 @@
 using System.Net.Mime;
-using SecurityBus.API.Operations.Application.Services;
-using SecurityBus.API.Operations.Domain.Model.Queries;
-using SecurityBus.API.Operations.Domain.Model.ValueObjects;
-using SecurityBus.API.Operations.Domain.Model.Commands;
-using SecurityBus.API.Operations.Interfaces.REST.Resources;
-using SecurityBus.API.Operations.Interfaces.REST.Transform;
-using SecurityBus.API.Resources;
+using AstroBusTeamBackEnd.Operations.Application.Services;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Queries;
+using AstroBusTeamBackEnd.Operations.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Operations.Interfaces.REST.Resources;
+using AstroBusTeamBackEnd.Operations.Interfaces.REST.Transform;
+using AstroBusTeamBackEnd.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
-namespace SecurityBus.API.Operations.Interfaces.REST;
+namespace AstroBusTeamBackEnd.Operations.Interfaces.REST;
 
 /// <summary>
 ///     Shifts' controller.

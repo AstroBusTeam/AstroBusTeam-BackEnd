@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Alerts.Domain.Model.ValueObjects;
+namespace AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
 
 /// <summary>
 ///     Value object representing a validated alert status (pending, confirmed or critical).

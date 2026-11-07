@@ -1,7 +1,7 @@
-using SecurityBus.API.Shared.Infrastructure.Interfaces.ASP.Configuration.Extensions;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Interfaces.ASP.Configuration.Extensions;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
-namespace SecurityBus.API.Shared.Infrastructure.Interfaces.ASP.Configuration;
+namespace AstroBusTeamBackEnd.Shared.Infrastructure.Interfaces.ASP.Configuration;
 
 /// <summary>
 ///     An MVC controller-model convention that rewrites <c>[controller]</c> route tokens

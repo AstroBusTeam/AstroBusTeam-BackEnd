@@ -1,11 +1,11 @@
-using SecurityBus.API.Operations.Domain.Model.Aggregates;
-using SecurityBus.API.Operations.Domain.Model.ValueObjects;
-using SecurityBus.API.Operations.Domain.Repositories;
-using SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Configuration;
-using SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Repositories;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Operations.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Operations.Domain.Repositories;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Configuration;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Operations.Infrastructure.Persistence.EFC.Repositories;
+namespace AstroBusTeamBackEnd.Operations.Infrastructure.Persistence.EFC.Repositories;
 
 /// <summary>
 ///     Entity Framework repository for shift persistence.

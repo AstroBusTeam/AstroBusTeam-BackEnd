@@ -1,9 +1,9 @@
-using SecurityBus.API.Fleet.Application.Services;
-using SecurityBus.API.Fleet.Domain.Model.Aggregates;
-using SecurityBus.API.Fleet.Domain.Model.Queries;
-using SecurityBus.API.Fleet.Domain.Repositories;
+using AstroBusTeamBackEnd.Fleet.Application.Services;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Queries;
+using AstroBusTeamBackEnd.Fleet.Domain.Repositories;
 
-namespace SecurityBus.API.Fleet.Application.Internal.QueryServices;
+namespace AstroBusTeamBackEnd.Fleet.Application.Internal.QueryServices;
 
 /// <summary>
 ///     Application service for querying assignments.

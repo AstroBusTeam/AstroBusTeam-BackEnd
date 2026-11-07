@@ -1,7 +1,7 @@
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Domain.Model.Queries;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Queries;
 
-namespace SecurityBus.API.Alerts.Application.Services;
+namespace AstroBusTeamBackEnd.Alerts.Application.Services;
 
 /// <summary>
 ///     Query service interface for recipient operations.

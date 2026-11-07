@@ -1,8 +1,8 @@
-using SecurityBus.API.Alerts.Domain.Model.Commands;
-using SecurityBus.API.Alerts.Domain.Model.ValueObjects;
-using SecurityBus.API.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
 
-namespace SecurityBus.API.Alerts.Domain.Model.Aggregates;
+namespace AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
 
 /// <summary>
 ///     Represents a recipient in the Alerts bounded context.

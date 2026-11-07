@@ -1,14 +1,14 @@
-using SecurityBus.API.Fleet.Domain.Model.Aggregates;
-using SecurityBus.API.Fleet.Domain.Model.Commands;
-using SecurityBus.API.Fleet.Domain.Model.ValueObjects;
-using SecurityBus.API.Operations.Domain.Model.Aggregates;
-using SecurityBus.API.Operations.Domain.Model.Commands;
-using SecurityBus.API.Operations.Domain.Model.ValueObjects;
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Domain.Model.Commands;
-using SecurityBus.API.Alerts.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Operations.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
 
-namespace SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Configuration;
+namespace AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Configuration;
 
 /// <summary>
 ///     Sample data taken from the Fake API (db.json) so the real API can be used by the existing frontend right away.

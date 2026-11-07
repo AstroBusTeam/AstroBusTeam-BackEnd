@@ -1,11 +1,11 @@
-using SecurityBus.API.Fleet.Domain.Model.Aggregates;
-using SecurityBus.API.Fleet.Domain.Model.ValueObjects;
-using SecurityBus.API.Fleet.Domain.Repositories;
-using SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Configuration;
-using SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Repositories;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Fleet.Domain.Repositories;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Configuration;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Fleet.Infrastructure.Persistence.EFC.Repositories;
+namespace AstroBusTeamBackEnd.Fleet.Infrastructure.Persistence.EFC.Repositories;
 
 /// <summary>
 ///     Entity Framework repository for assignment persistence.

@@ -1,8 +1,8 @@
-using SecurityBus.API.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Interceptors;
+namespace AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Interceptors;
 
 /// <summary>
 ///     EF Core interceptor that automatically populates audit timestamps on any entity

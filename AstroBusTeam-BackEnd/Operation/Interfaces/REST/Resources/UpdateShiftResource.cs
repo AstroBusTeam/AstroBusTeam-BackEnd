@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace SecurityBus.API.Operations.Interfaces.REST.Resources;
+namespace AstroBusTeamBackEnd.Operations.Interfaces.REST.Resources;
 
 /// <summary>
 ///     Represents the data required to update a shift. The identifier is taken from the route.

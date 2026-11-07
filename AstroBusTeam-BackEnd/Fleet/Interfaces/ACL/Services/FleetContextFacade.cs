@@ -1,7 +1,7 @@
-using SecurityBus.API.Fleet.Domain.Model.ValueObjects;
-using SecurityBus.API.Fleet.Domain.Repositories;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Fleet.Domain.Repositories;
 
-namespace SecurityBus.API.Fleet.Interfaces.ACL.Services;
+namespace AstroBusTeamBackEnd.Fleet.Interfaces.ACL.Services;
 
 /// <summary>
 ///     Implementation of the Fleet anti-corruption layer facade.

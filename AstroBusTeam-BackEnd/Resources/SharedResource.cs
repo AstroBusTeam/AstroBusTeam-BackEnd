@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Resources;
+namespace AstroBusTeamBackEnd.Resources;
 
 /// <summary>
 ///     Marker class used by ASP.NET Core's <c>IStringLocalizer</c> to locate the shared

@@ -1,7 +1,7 @@
-using SecurityBus.API.Iam.Domain.Model.ValueObjects;
-using SecurityBus.API.Iam.Interfaces.REST.Resources;
+using AstroBusTeamBackEnd.Iam.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Iam.Interfaces.REST.Resources;
 
-namespace SecurityBus.API.Iam.Interfaces.REST.Transform;
+namespace AstroBusTeamBackEnd.Iam.Interfaces.REST.Transform;
 
 /// <summary>
 ///     Assembles a DriverIdentityResource from a DriverIdentity value object.

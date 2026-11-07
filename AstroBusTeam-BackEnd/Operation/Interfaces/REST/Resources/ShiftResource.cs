@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Operations.Interfaces.REST.Resources;
+namespace AstroBusTeamBackEnd.Operations.Interfaces.REST.Resources;
 
 /// <summary>
 ///     Represents the data provided by the server about a shift.

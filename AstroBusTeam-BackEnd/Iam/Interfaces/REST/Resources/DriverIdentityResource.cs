@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Iam.Interfaces.REST.Resources;
+namespace AstroBusTeamBackEnd.Iam.Interfaces.REST.Resources;
 
 /// <summary>
 ///     Represents the verified identity of a driver and the unit the driver is assigned to.

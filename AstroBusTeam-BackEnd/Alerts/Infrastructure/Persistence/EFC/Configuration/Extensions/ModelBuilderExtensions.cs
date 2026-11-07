@@ -1,8 +1,8 @@
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Alerts.Infrastructure.Persistence.EFC.Configuration.Extensions;
+namespace AstroBusTeamBackEnd.Alerts.Infrastructure.Persistence.EFC.Configuration.Extensions;
 
 /// <summary>
 ///     Model builder extensions for the Alerts bounded context.

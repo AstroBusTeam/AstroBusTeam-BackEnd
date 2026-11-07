@@ -1,11 +1,11 @@
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Domain.Model.ValueObjects;
-using SecurityBus.API.Alerts.Domain.Repositories;
-using SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Configuration;
-using SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Repositories;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Alerts.Domain.Repositories;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Configuration;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Alerts.Infrastructure.Persistence.EFC.Repositories;
+namespace AstroBusTeamBackEnd.Alerts.Infrastructure.Persistence.EFC.Repositories;
 
 /// <summary>
 ///     Entity Framework repository for alert persistence.

@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Operations.Domain.Model.Queries;
+namespace AstroBusTeamBackEnd.Operations.Domain.Model.Queries;
 
 /// <summary>
 ///     Query to get a shift by ID

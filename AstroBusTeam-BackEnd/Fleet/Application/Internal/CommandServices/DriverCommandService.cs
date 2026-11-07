@@ -1,14 +1,14 @@
-using SecurityBus.API.Fleet.Application.Errors;
-using SecurityBus.API.Fleet.Application.Services;
-using SecurityBus.API.Fleet.Domain.Model.Aggregates;
-using SecurityBus.API.Fleet.Domain.Model.Commands;
-using SecurityBus.API.Fleet.Domain.Repositories;
-using SecurityBus.API.Shared.Application.Extensions;
-using SecurityBus.API.Shared.Application.Patterns;
-using SecurityBus.API.Shared.Domain.Repositories;
+using AstroBusTeamBackEnd.Fleet.Application.Errors;
+using AstroBusTeamBackEnd.Fleet.Application.Services;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Fleet.Domain.Repositories;
+using AstroBusTeamBackEnd.Shared.Application.Extensions;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Shared.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Fleet.Application.Internal.CommandServices;
+namespace AstroBusTeamBackEnd.Fleet.Application.Internal.CommandServices;
 
 /// <summary>
 ///     Application service for handling driver commands.

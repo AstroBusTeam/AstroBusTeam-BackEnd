@@ -1,15 +1,15 @@
-using SecurityBus.API.Fleet.Interfaces.ACL;
-using SecurityBus.API.Operations.Application.Errors;
-using SecurityBus.API.Operations.Application.Services;
-using SecurityBus.API.Operations.Domain.Model.Aggregates;
-using SecurityBus.API.Operations.Domain.Model.Commands;
-using SecurityBus.API.Operations.Domain.Repositories;
-using SecurityBus.API.Shared.Application.Extensions;
-using SecurityBus.API.Shared.Application.Patterns;
-using SecurityBus.API.Shared.Domain.Repositories;
+using AstroBusTeamBackEnd.Fleet.Interfaces.ACL;
+using AstroBusTeamBackEnd.Operations.Application.Errors;
+using AstroBusTeamBackEnd.Operations.Application.Services;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Operations.Domain.Repositories;
+using AstroBusTeamBackEnd.Shared.Application.Extensions;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Shared.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Operations.Application.Internal.CommandServices;
+namespace AstroBusTeamBackEnd.Operations.Application.Internal.CommandServices;
 
 /// <summary>
 ///     Application service for handling shift commands.

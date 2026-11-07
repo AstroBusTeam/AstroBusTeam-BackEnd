@@ -1,6 +1,6 @@
-using SecurityBus.API.Fleet.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
 
-namespace SecurityBus.API.Fleet.Domain.Model.Commands;
+namespace AstroBusTeamBackEnd.Fleet.Domain.Model.Commands;
 
 /// <summary>
 ///     Command to update a vehicle

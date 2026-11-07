@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Shared.Domain.Model;
+namespace AstroBusTeamBackEnd.Shared.Domain.Model;
 
 /// <summary>
 ///     Provides the current local date and time with the same format the Fake API used: no offset and whole seconds.

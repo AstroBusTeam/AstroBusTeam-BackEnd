@@ -1,9 +1,9 @@
-using SecurityBus.API.Iam.Application.Errors;
-using SecurityBus.API.Iam.Domain.Model.Commands;
-using SecurityBus.API.Iam.Domain.Model.ValueObjects;
-using SecurityBus.API.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Iam.Application.Errors;
+using AstroBusTeamBackEnd.Iam.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Iam.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
 
-namespace SecurityBus.API.Iam.Application.Services;
+namespace AstroBusTeamBackEnd.Iam.Application.Services;
 
 /// <summary>
 ///     Command service interface for driver identity verification.

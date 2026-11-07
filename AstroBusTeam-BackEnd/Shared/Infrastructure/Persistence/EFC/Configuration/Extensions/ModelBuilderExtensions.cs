@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
+namespace AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
 
 /// <summary>
 ///     Model builder extensions

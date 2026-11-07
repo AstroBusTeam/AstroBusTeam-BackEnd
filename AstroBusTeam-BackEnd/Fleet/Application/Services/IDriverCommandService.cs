@@ -1,9 +1,9 @@
-using SecurityBus.API.Fleet.Application.Errors;
-using SecurityBus.API.Fleet.Domain.Model.Aggregates;
-using SecurityBus.API.Fleet.Domain.Model.Commands;
-using SecurityBus.API.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Fleet.Application.Errors;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
 
-namespace SecurityBus.API.Fleet.Application.Services;
+namespace AstroBusTeamBackEnd.Fleet.Application.Services;
 
 /// <summary>
 ///     Command service interface for driver operations.

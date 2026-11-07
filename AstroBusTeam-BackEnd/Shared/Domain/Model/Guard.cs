@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Shared.Domain.Model;
+namespace AstroBusTeamBackEnd.Shared.Domain.Model;
 
 /// <summary>
 ///     Small guard clauses used by aggregates and value objects to protect their invariants.

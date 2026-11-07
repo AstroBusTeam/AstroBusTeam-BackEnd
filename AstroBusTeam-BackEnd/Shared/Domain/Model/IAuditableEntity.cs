@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Shared.Domain.Model;
+namespace AstroBusTeamBackEnd.Shared.Domain.Model;
 
 /// <summary>
 ///     Marks an entity as carrying audit timestamps managed by the persistence layer.

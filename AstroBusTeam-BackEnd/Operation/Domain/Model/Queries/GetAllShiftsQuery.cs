@@ -1,6 +1,6 @@
-using SecurityBus.API.Operations.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Operations.Domain.Model.ValueObjects;
 
-namespace SecurityBus.API.Operations.Domain.Model.Queries;
+namespace AstroBusTeamBackEnd.Operations.Domain.Model.Queries;
 
 /// <summary>
 ///     Query to get all shifts, optionally filtered

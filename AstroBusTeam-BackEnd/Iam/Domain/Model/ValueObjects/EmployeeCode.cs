@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Iam.Domain.Model.ValueObjects;
+namespace AstroBusTeamBackEnd.Iam.Domain.Model.ValueObjects;
 
 /// <summary>
 ///     Value object representing the employee code a driver uses to verify their identity.

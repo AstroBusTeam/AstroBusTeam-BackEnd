@@ -1,7 +1,7 @@
-using SecurityBus.API.Fleet.Domain.Model.Aggregates;
-using SecurityBus.API.Fleet.Interfaces.REST.Resources;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Fleet.Interfaces.REST.Resources;
 
-namespace SecurityBus.API.Fleet.Interfaces.REST.Transform;
+namespace AstroBusTeamBackEnd.Fleet.Interfaces.REST.Transform;
 
 /// <summary>
 ///     Assembles a VehicleResource from a Vehicle.

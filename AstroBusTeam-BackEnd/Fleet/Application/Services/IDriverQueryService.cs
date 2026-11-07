@@ -1,7 +1,7 @@
-using SecurityBus.API.Fleet.Domain.Model.Aggregates;
-using SecurityBus.API.Fleet.Domain.Model.Queries;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Queries;
 
-namespace SecurityBus.API.Fleet.Application.Services;
+namespace AstroBusTeamBackEnd.Fleet.Application.Services;
 
 /// <summary>
 ///     Query service interface for driver operations.

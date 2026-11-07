@@ -1,8 +1,8 @@
-using SecurityBus.API.Operations.Domain.Model.Aggregates;
-using SecurityBus.API.Operations.Domain.Model.ValueObjects;
-using SecurityBus.API.Shared.Domain.Repositories;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Operations.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Shared.Domain.Repositories;
 
-namespace SecurityBus.API.Operations.Domain.Repositories;
+namespace AstroBusTeamBackEnd.Operations.Domain.Repositories;
 
 /// <summary>
 ///     The Shift repository contract.

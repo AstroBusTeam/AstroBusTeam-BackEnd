@@ -1,8 +1,8 @@
-using SecurityBus.API.Shared.Domain.Model;
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Interfaces.REST.Resources;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Interfaces.REST.Resources;
 
-namespace SecurityBus.API.Alerts.Interfaces.REST.Transform;
+namespace AstroBusTeamBackEnd.Alerts.Interfaces.REST.Transform;
 
 /// <summary>
 ///     Assembles a DeliveryResource from a Delivery.

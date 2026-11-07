@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Fleet.Domain.Model.Queries;
+namespace AstroBusTeamBackEnd.Fleet.Domain.Model.Queries;
 
 /// <summary>
 ///     Query to get a vehicle by ID

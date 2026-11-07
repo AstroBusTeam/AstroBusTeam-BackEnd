@@ -1,9 +1,9 @@
-using SecurityBus.API.Shared.Domain.Model;
-using SecurityBus.API.Operations.Domain.Model.Commands;
-using SecurityBus.API.Operations.Domain.Model.ValueObjects;
-using SecurityBus.API.Operations.Interfaces.REST.Resources;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Operations.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Operations.Interfaces.REST.Resources;
 
-namespace SecurityBus.API.Operations.Interfaces.REST.Transform;
+namespace AstroBusTeamBackEnd.Operations.Interfaces.REST.Transform;
 
 /// <summary>
 ///     Assembles an UpdateShiftCommand from an UpdateShiftResource.

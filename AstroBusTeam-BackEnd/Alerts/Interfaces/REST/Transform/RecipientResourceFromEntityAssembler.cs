@@ -1,7 +1,7 @@
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Interfaces.REST.Resources;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Interfaces.REST.Resources;
 
-namespace SecurityBus.API.Alerts.Interfaces.REST.Transform;
+namespace AstroBusTeamBackEnd.Alerts.Interfaces.REST.Transform;
 
 /// <summary>
 ///     Assembles a RecipientResource from a Recipient.

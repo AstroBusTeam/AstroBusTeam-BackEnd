@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Operations.Application.Errors;
+namespace AstroBusTeamBackEnd.Operations.Application.Errors;
 
 /// <summary>
 /// Represents errors that can occur when updating a shift.

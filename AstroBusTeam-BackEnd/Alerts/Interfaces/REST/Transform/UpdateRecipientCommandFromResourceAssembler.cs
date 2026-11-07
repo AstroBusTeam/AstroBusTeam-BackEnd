@@ -1,8 +1,8 @@
-using SecurityBus.API.Alerts.Domain.Model.Commands;
-using SecurityBus.API.Alerts.Domain.Model.ValueObjects;
-using SecurityBus.API.Alerts.Interfaces.REST.Resources;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Alerts.Interfaces.REST.Resources;
 
-namespace SecurityBus.API.Alerts.Interfaces.REST.Transform;
+namespace AstroBusTeamBackEnd.Alerts.Interfaces.REST.Transform;
 
 /// <summary>
 ///     Assembles an UpdateRecipientCommand from an UpdateRecipientResource.

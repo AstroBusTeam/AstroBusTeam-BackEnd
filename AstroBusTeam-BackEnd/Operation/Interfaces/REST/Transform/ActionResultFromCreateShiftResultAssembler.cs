@@ -1,11 +1,11 @@
-using SecurityBus.API.Operations.Application.Errors;
-using SecurityBus.API.Operations.Domain.Model.Aggregates;
-using SecurityBus.API.Resources;
-using SecurityBus.API.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Operations.Application.Errors;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Resources;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
-namespace SecurityBus.API.Operations.Interfaces.REST.Transform;
+namespace AstroBusTeamBackEnd.Operations.Interfaces.REST.Transform;
 
 /// <summary>
 ///     Assembles an HTTP action result from the result of the command handling to create a shift in the application layer.

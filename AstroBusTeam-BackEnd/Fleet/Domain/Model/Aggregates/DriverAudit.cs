@@ -1,6 +1,6 @@
-using SecurityBus.API.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
 
-namespace SecurityBus.API.Fleet.Domain.Model.Aggregates;
+namespace AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
 
 /// <summary>
 ///     Audit extension for Driver aggregate.

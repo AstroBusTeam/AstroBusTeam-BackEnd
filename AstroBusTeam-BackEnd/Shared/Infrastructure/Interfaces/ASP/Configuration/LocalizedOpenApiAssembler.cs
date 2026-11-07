@@ -1,10 +1,10 @@
-using SecurityBus.API.Resources;
+using AstroBusTeamBackEnd.Resources;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Localization;
 using Microsoft.OpenApi;
 
-namespace SecurityBus.API.Shared.Infrastructure.Interfaces.ASP.Configuration;
+namespace AstroBusTeamBackEnd.Shared.Infrastructure.Interfaces.ASP.Configuration;
 
 /// <summary>
 ///     Assembles localized OpenAPI metadata (summaries, descriptions, and response texts)

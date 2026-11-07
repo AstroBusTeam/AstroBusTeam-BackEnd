@@ -1,7 +1,7 @@
-using SecurityBus.API.Shared.Domain.Repositories;
-using SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Configuration;
+using AstroBusTeamBackEnd.Shared.Domain.Repositories;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Configuration;
 
-namespace SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Repositories;
+namespace AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Repositories;
 
 /// <summary>
 ///     Unit of work implementation for coordinating database transactions.

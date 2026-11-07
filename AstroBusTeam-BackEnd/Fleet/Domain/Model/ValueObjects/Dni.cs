@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace SecurityBus.API.Fleet.Domain.Model.ValueObjects;
+namespace AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
 
 /// <summary>
 ///     Value object representing a validated national id (dni).

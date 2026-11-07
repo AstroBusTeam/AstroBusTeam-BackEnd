@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Shared.Application.Extensions;
+namespace AstroBusTeamBackEnd.Shared.Application.Extensions;
 
 /// <summary>
 ///     Helpers to classify persistence exceptions without coupling services to a database driver.

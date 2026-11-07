@@ -1,11 +1,11 @@
-using SecurityBus.API.Fleet.Infrastructure.Persistence.EFC.Configuration.Extensions;
-using SecurityBus.API.Operations.Infrastructure.Persistence.EFC.Configuration.Extensions;
-using SecurityBus.API.Alerts.Infrastructure.Persistence.EFC.Configuration.Extensions;
-using SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
-using SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Interceptors;
+using AstroBusTeamBackEnd.Fleet.Infrastructure.Persistence.EFC.Configuration.Extensions;
+using AstroBusTeamBackEnd.Operations.Infrastructure.Persistence.EFC.Configuration.Extensions;
+using AstroBusTeamBackEnd.Alerts.Infrastructure.Persistence.EFC.Configuration.Extensions;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Interceptors;
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Configuration;
+namespace AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Configuration;
 
 /// <summary>
 ///     Application database context

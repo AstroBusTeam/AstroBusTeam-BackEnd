@@ -1,12 +1,12 @@
 using System.Net.Mime;
-using SecurityBus.API.Iam.Application.Services;
-using SecurityBus.API.Iam.Interfaces.REST.Resources;
-using SecurityBus.API.Iam.Interfaces.REST.Transform;
-using SecurityBus.API.Resources;
+using AstroBusTeamBackEnd.Iam.Application.Services;
+using AstroBusTeamBackEnd.Iam.Interfaces.REST.Resources;
+using AstroBusTeamBackEnd.Iam.Interfaces.REST.Transform;
+using AstroBusTeamBackEnd.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
-namespace SecurityBus.API.Iam.Interfaces.REST;
+namespace AstroBusTeamBackEnd.Iam.Interfaces.REST;
 
 /// <summary>
 ///     Authentication controller. Verifies the identity of a driver before a shift starts.

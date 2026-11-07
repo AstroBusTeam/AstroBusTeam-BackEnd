@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Iam.Application.Errors;
+namespace AstroBusTeamBackEnd.Iam.Application.Errors;
 
 /// <summary>
 /// Represents errors that can occur when verifying the identity of a driver.

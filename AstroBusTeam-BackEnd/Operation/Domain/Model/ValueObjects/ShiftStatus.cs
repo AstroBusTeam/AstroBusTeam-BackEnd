@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Operations.Domain.Model.ValueObjects;
+namespace AstroBusTeamBackEnd.Operations.Domain.Model.ValueObjects;
 
 /// <summary>
 ///     Value object representing a validated shift status (active, finished or interrupted).

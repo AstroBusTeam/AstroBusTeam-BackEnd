@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Fleet.Application.Errors;
+namespace AstroBusTeamBackEnd.Fleet.Application.Errors;
 
 /// <summary>
 /// Represents errors that can occur when creating a driver.

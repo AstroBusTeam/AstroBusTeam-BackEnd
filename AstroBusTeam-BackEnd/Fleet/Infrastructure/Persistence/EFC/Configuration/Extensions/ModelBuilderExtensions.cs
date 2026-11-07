@@ -1,8 +1,8 @@
-using SecurityBus.API.Fleet.Domain.Model.Aggregates;
-using SecurityBus.API.Fleet.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Fleet.Infrastructure.Persistence.EFC.Configuration.Extensions;
+namespace AstroBusTeamBackEnd.Fleet.Infrastructure.Persistence.EFC.Configuration.Extensions;
 
 /// <summary>
 ///     Model builder extensions for the Fleet bounded context.

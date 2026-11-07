@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Iam.Domain.Model.ValueObjects;
+namespace AstroBusTeamBackEnd.Iam.Domain.Model.ValueObjects;
 
 /// <summary>
 ///     Value object representing a verified driver identity together with the unit the driver is assigned to.

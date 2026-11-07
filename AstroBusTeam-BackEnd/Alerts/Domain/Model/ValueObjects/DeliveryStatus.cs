@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Alerts.Domain.Model.ValueObjects;
+namespace AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
 
 /// <summary>
 ///     Value object representing a validated delivery status (sent or failed).
