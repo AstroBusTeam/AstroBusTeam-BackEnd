@@ -1,5 +1,3 @@
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Fleet.Domain.Model.Aggregates;
 using SecurityBus.API.Fleet.Infrastructure.Persistence.EFC.Configuration.Extensions;
 using SecurityBus.API.Operations.Infrastructure.Persistence.EFC.Configuration.Extensions;
 using SecurityBus.API.Alerts.Infrastructure.Persistence.EFC.Configuration.Extensions;
@@ -35,22 +33,6 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.ApplyOperationsConfiguration();
         builder.ApplyAlertsConfiguration();
 
-        // Foreign keys between bounded contexts. The aggregates keep only the identifier of the related
-        // aggregate (no navigation properties), so each relationship is declared here with HasOne<T>().
-        // Restrict: a driver or vehicle that is still referenced cannot be deleted.
-        builder.Entity<Assignment>()
-            .HasOne<Driver>().WithMany()
-            .HasForeignKey(assignment => assignment.DriverId)
-            .OnDelete(DeleteBehavior.Restrict);
-        builder.Entity<Assignment>()
-            .HasOne<Vehicle>().WithMany()
-            .HasForeignKey(assignment => assignment.VehicleId)
-            .OnDelete(DeleteBehavior.Restrict);
-        builder.Entity<Alert>()
-            .HasOne<Vehicle>().WithMany()
-            .HasForeignKey(alert => alert.VehicleId)
-            .OnDelete(DeleteBehavior.Restrict);
-        // TODO: when the Operations context is merged, relate Shift with Driver and Vehicle in the same way.
         builder.UseSnakeCaseNamingConvention();
     }
 }
