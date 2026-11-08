@@ -5,18 +5,13 @@ using AstroBusTeamBackEnd.Fleet.Interfaces.REST.Resources;
 namespace AstroBusTeamBackEnd.Fleet.Interfaces.REST.Transform;
 
 /// <summary>
-///     Assembles a CreateDriverCommand from a CreateDriverResource.
+///     Assembler that converts a create driver resource into a command
 /// </summary>
 public static class CreateDriverCommandFromResourceAssembler
 {
     /// <summary>
-    ///     Assembles a CreateDriverCommand from a CreateDriverResource.
+    ///     Converts the resource into a command.
     /// </summary>
-    /// <param name="resource">The CreateDriverResource resource</param>
-    /// <returns>
-    ///     A CreateDriverCommand assembled from the CreateDriverResource
-    /// </returns>
-    /// <exception cref="ArgumentException">Thrown when a value object rejects its raw value.</exception>
     public static CreateDriverCommand ToCommandFromResource(CreateDriverResource resource)
     {
         return new CreateDriverCommand(
@@ -24,12 +19,13 @@ public static class CreateDriverCommandFromResourceAssembler
             resource.FirstName,
             resource.LastName,
             new Dni(resource.Dni),
-            resource.Category,
+            resource.LicenseCategory,
             new LicenseNumber(resource.LicenseNumber),
             resource.LicenseExpiry,
             resource.Points,
             resource.Rating,
             resource.YearsExperience,
+            resource.Phone,
             new DriverStatus(resource.Status));
     }
 }

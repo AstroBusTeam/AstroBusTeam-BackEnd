@@ -21,6 +21,11 @@ public enum UpdateAlertError
 	DuplicateAlertCode,
 
 	/// <summary>
+	/// A referenced record (driver, shift, alert type, receiver or user) does not exist.
+	/// </summary>
+	InvalidReference,
+
+	/// <summary>
 	/// The number of attempts of an alert cannot decrease.
 	/// </summary>
 	AttemptsCannotDecrease,

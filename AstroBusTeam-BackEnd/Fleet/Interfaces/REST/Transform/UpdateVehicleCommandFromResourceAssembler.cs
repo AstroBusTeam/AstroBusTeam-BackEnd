@@ -5,19 +5,13 @@ using AstroBusTeamBackEnd.Fleet.Interfaces.REST.Resources;
 namespace AstroBusTeamBackEnd.Fleet.Interfaces.REST.Transform;
 
 /// <summary>
-///     Assembles an UpdateVehicleCommand from an UpdateVehicleResource.
+///     Assembler that converts an update vehicle resource into a command
 /// </summary>
 public static class UpdateVehicleCommandFromResourceAssembler
 {
     /// <summary>
-    ///     Assembles an UpdateVehicleCommand from an UpdateVehicleResource.
+    ///     Converts the resource into a command.
     /// </summary>
-    /// <param name="id">The identifier of the vehicle taken from the route</param>
-    /// <param name="resource">The UpdateVehicleResource resource</param>
-    /// <returns>
-    ///     An UpdateVehicleCommand assembled from the UpdateVehicleResource
-    /// </returns>
-    /// <exception cref="ArgumentException">Thrown when a value object rejects its raw value.</exception>
     public static UpdateVehicleCommand ToCommandFromResource(int id, UpdateVehicleResource resource) =>
         new(id,
             new VehicleCode(resource.Code),
@@ -25,6 +19,6 @@ public static class UpdateVehicleCommandFromResourceAssembler
             resource.Model,
             resource.Capacity,
             new VehicleStatus(resource.Status),
-            resource.Latitude,
-            resource.Longitude);
+            resource.CurrentLatitude,
+            resource.CurrentLongitude);
 }

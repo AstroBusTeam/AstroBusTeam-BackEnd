@@ -1,26 +1,32 @@
-using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
-using AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
 using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Iam.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Operations.Domain.Model.Aggregates;
 using Microsoft.EntityFrameworkCore;
 
 namespace AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Configuration;
 
 /// <summary>
-///     Inserts the sample data into an empty database.
+///     Loads the sample data into the empty tables
 /// </summary>
 /// <remarks>
-///     Each table is seeded only when it is empty, so the seeder is safe to run on every startup. Tables are
-///     seeded one at a time, in dependency order, so the generated identifiers match the Fake API (1, 2, 3...).
+///     The tables are filled in dependency order, so every foreign key points to a row that already exists.
 /// </remarks>
 public static class DatabaseSeeder
 {
     /// <summary>
-    ///     Seeds every empty table with the sample data.
+    ///     Seeds every empty table with its sample data.
     /// </summary>
     /// <param name="context">The database context.</param>
-    /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     public static async Task SeedAsync(AppDbContext context, CancellationToken cancellationToken = default)
     {
+        if (!await context.Set<ControlCenter>().AnyAsync(cancellationToken))
+        {
+            await context.Set<ControlCenter>().AddRangeAsync(SampleData.ControlCenters(), cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
+        }
+
         if (!await context.Set<Driver>().AnyAsync(cancellationToken))
         {
             await context.Set<Driver>().AddRangeAsync(SampleData.Drivers(), cancellationToken);
@@ -30,6 +36,18 @@ public static class DatabaseSeeder
         if (!await context.Set<Vehicle>().AnyAsync(cancellationToken))
         {
             await context.Set<Vehicle>().AddRangeAsync(SampleData.Vehicles(), cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
+        }
+
+        if (!await context.Set<BusRoute>().AnyAsync(cancellationToken))
+        {
+            await context.Set<BusRoute>().AddRangeAsync(SampleData.BusRoutes(), cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
+        }
+
+        if (!await context.Set<User>().AnyAsync(cancellationToken))
+        {
+            await context.Set<User>().AddRangeAsync(SampleData.Users(), cancellationToken);
             await context.SaveChangesAsync(cancellationToken);
         }
 
@@ -45,15 +63,39 @@ public static class DatabaseSeeder
             await context.SaveChangesAsync(cancellationToken);
         }
 
-        if (!await context.Set<Alert>().AnyAsync(cancellationToken))
+        if (!await context.Set<VehiclePosition>().AnyAsync(cancellationToken))
         {
-            await context.Set<Alert>().AddRangeAsync(SampleData.Alerts(), cancellationToken);
+            await context.Set<VehiclePosition>().AddRangeAsync(SampleData.VehiclePositions(), cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
+        }
+
+        if (!await context.Set<AlertType>().AnyAsync(cancellationToken))
+        {
+            await context.Set<AlertType>().AddRangeAsync(SampleData.AlertTypes(), cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
+        }
+
+        if (!await context.Set<NotificationChannel>().AnyAsync(cancellationToken))
+        {
+            await context.Set<NotificationChannel>().AddRangeAsync(SampleData.NotificationChannels(), cancellationToken);
             await context.SaveChangesAsync(cancellationToken);
         }
 
         if (!await context.Set<Recipient>().AnyAsync(cancellationToken))
         {
             await context.Set<Recipient>().AddRangeAsync(SampleData.Recipients(), cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
+        }
+
+        if (!await context.Set<Alert>().AnyAsync(cancellationToken))
+        {
+            await context.Set<Alert>().AddRangeAsync(SampleData.Alerts(), cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
+        }
+
+        if (!await context.Set<AlertAttempt>().AnyAsync(cancellationToken))
+        {
+            await context.Set<AlertAttempt>().AddRangeAsync(SampleData.AlertAttempts(), cancellationToken);
             await context.SaveChangesAsync(cancellationToken);
         }
 

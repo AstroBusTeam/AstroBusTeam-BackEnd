@@ -25,12 +25,17 @@ public interface IAssignmentCommandService
     Task<Result<Assignment, CreateAssignmentError>> Handle(CreateAssignmentCommand command, CancellationToken cancellationToken = default);
 
     /// <summary>
-    ///     Handle the delete assignment command.
+    ///     Handle the update assignment command.
     /// </summary>
-    /// <param name="command">DeleteAssignmentCommand command</param>
+    /// <param name="command">UpdateAssignmentCommand command</param>
     /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
     /// <returns>
     ///     A Result containing the assignment on success, or the error reason on failure.
     /// </returns>
+    Task<Result<Assignment, UpdateAssignmentError>> Handle(UpdateAssignmentCommand command, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Handles the deletion of an assignment.
+    /// </summary>
     Task<Result<Assignment, DeleteAssignmentError>> Handle(DeleteAssignmentCommand command, CancellationToken cancellationToken = default);
 }

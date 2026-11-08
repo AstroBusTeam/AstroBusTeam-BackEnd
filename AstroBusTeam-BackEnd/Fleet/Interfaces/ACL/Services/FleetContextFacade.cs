@@ -1,17 +1,16 @@
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
 using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
 using AstroBusTeamBackEnd.Fleet.Domain.Repositories;
 
 namespace AstroBusTeamBackEnd.Fleet.Interfaces.ACL.Services;
 
 /// <summary>
-///     Implementation of the Fleet anti-corruption layer facade.
+///     Implementation of the Fleet facade
 /// </summary>
-/// <param name="driverRepository">The driver repository</param>
-/// <param name="vehicleRepository">The vehicle repository</param>
-/// <param name="assignmentRepository">The assignment repository</param>
 public class FleetContextFacade(
     IDriverRepository driverRepository,
     IVehicleRepository vehicleRepository,
+    IBusRouteRepository routeRepository,
     IAssignmentRepository assignmentRepository) : IFleetContextFacade
 {
     /// <inheritdoc />
@@ -41,12 +40,33 @@ public class FleetContextFacade(
     }
 
     /// <inheritdoc />
+    public async Task<RouteSummary?> FindRouteByIdAsync(int routeId, CancellationToken cancellationToken = default)
+    {
+        var route = await routeRepository.FindByIdAsync(routeId, cancellationToken);
+        return route is null ? null : new RouteSummary(route.Id, route.Code, route.Name);
+    }
+
+    /// <inheritdoc />
+    public async Task<AssignmentSummary?> FindAssignmentByIdAsync(int assignmentId,
+        CancellationToken cancellationToken = default)
+    {
+        var assignment = await assignmentRepository.FindByIdAsync(assignmentId, cancellationToken);
+        return assignment is null ? null : await ToSummaryAsync(assignment, cancellationToken);
+    }
+
+    /// <inheritdoc />
     public async Task<AssignmentSummary?> FindActiveAssignmentByDriverIdAsync(int driverId,
         CancellationToken cancellationToken = default)
     {
         var assignment = await assignmentRepository.FindActiveByDriverIdAsync(driverId, cancellationToken);
-        return assignment is null
-            ? null
-            : new AssignmentSummary(assignment.Id, assignment.DriverId, assignment.VehicleId, assignment.Route);
+        return assignment is null ? null : await ToSummaryAsync(assignment, cancellationToken);
+    }
+
+    private async Task<AssignmentSummary> ToSummaryAsync(Assignment assignment, CancellationToken cancellationToken)
+    {
+        var route = await routeRepository.FindByIdAsync(assignment.RouteId, cancellationToken);
+        var routeText = route is null ? string.Empty : $"{route.Code} {route.Name}";
+        return new AssignmentSummary(assignment.Id, assignment.DriverId, assignment.VehicleId, assignment.RouteId,
+            routeText);
     }
 }

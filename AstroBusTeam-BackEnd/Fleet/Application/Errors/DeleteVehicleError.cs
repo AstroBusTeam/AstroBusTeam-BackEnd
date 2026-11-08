@@ -16,6 +16,11 @@ public enum DeleteVehicleError
 	VehicleHasActiveAssignment,
 
 	/// <summary>
+	/// The vehicle is referenced by other records (assignments, alerts or shifts) and cannot be deleted.
+	/// </summary>
+	VehicleHasRelatedData,
+
+	/// <summary>
 	/// An unexpected error occurred during the operation.
 	/// </summary>
 	UnexpectedError

@@ -1,16 +1,20 @@
 using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
-using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
 using AstroBusTeamBackEnd.Shared.Domain.Repositories;
 
 namespace AstroBusTeamBackEnd.Alerts.Domain.Repositories;
 
 /// <summary>
-///     The Recipient repository contract.
+///     Repository for recipients
 /// </summary>
 public interface IRecipientRepository : IBaseRepository<Recipient>
 {
     /// <summary>
-    ///     Find all recipients, optionally filtered, ordered by identifier
+    ///     Finds all recipients with their notification channels.
     /// </summary>
     Task<IEnumerable<Recipient>> FindAllAsync(CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Finds a recipient by identifier, including its notification channels.
+    /// </summary>
+    Task<Recipient?> FindByIdWithChannelsAsync(int id, CancellationToken cancellationToken = default);
 }

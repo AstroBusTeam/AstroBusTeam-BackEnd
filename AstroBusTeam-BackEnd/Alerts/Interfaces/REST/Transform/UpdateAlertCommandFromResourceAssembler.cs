@@ -1,4 +1,3 @@
-using AstroBusTeamBackEnd.Shared.Domain.Model;
 using AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
 using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
 using AstroBusTeamBackEnd.Alerts.Interfaces.REST.Resources;
@@ -6,28 +5,27 @@ using AstroBusTeamBackEnd.Alerts.Interfaces.REST.Resources;
 namespace AstroBusTeamBackEnd.Alerts.Interfaces.REST.Transform;
 
 /// <summary>
-///     Assembles an UpdateAlertCommand from an UpdateAlertResource.
+///     Assembler that converts an update alert resource into a command
 /// </summary>
 public static class UpdateAlertCommandFromResourceAssembler
 {
     /// <summary>
-    ///     Assembles an UpdateAlertCommand from an UpdateAlertResource.
+    ///     Converts the resource into a command.
     /// </summary>
-    /// <param name="id">The identifier of the alert taken from the route</param>
-    /// <param name="resource">The UpdateAlertResource resource</param>
-    /// <returns>
-    ///     An UpdateAlertCommand assembled from the UpdateAlertResource
-    /// </returns>
-    /// <exception cref="ArgumentException">Thrown when a value object rejects its raw value.</exception>
     public static UpdateAlertCommand ToCommandFromResource(int id, UpdateAlertResource resource) =>
         new(id,
             new AlertCode(resource.Code),
             resource.VehicleId,
-            resource.Type,
-            resource.Receiver,
+            resource.DriverId,
+            resource.ShiftId,
+            resource.AlertTypeId,
+            resource.ReceiverId,
             resource.Attempts,
             new AlertStatus(resource.Status),
             resource.CreatedAt,
             resource.Latitude,
-            resource.Longitude);
+            resource.Longitude,
+            resource.ConfirmedAt,
+            resource.ConfirmedBy,
+            resource.Notes);
 }

@@ -5,78 +5,124 @@ using AstroBusTeamBackEnd.Shared.Domain.Model;
 namespace AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
 
 /// <summary>
-///     Represents a assignment in the Fleet bounded context.
+///     Represents the assignment of a driver and a vehicle to a route
 /// </summary>
 /// <remarks>
-///     This aggregate root protects its invariants: every creation and update goes through the same validation.
-///     Audit timestamps (CreatedAt, UpdatedAt) are managed by the persistence layer.
+///     <see cref="ActiveDriverId"/> and <see cref="ActiveVehicleId"/> are only filled while the assignment is
+///     active. A unique index over them guarantees that a driver or a vehicle has a single active assignment.
 /// </remarks>
 public partial class Assignment
 {
     /// <summary>
-    ///     Protected parameterless constructor for EF Core.
+    ///     Required by Entity Framework Core.
     /// </summary>
     protected Assignment()
     {
-        Route = string.Empty;
         Status = null!;
     }
 
     /// <summary>
-    ///     Creates a new Assignment from a creation command.
+    ///     Creates an assignment from a command.
     /// </summary>
-    /// <remarks>
-    ///     This constructor acts as the command handler for CreateAssignmentCommand.
-    /// </remarks>
-    /// <param name="command">The CreateAssignmentCommand command</param>
-    /// <exception cref="ArgumentNullException">Thrown when command is null.</exception>
+    /// <param name="command">The command with the assignment data.</param>
     public Assignment(CreateAssignmentCommand command)
     {
         ArgumentNullException.ThrowIfNull(command);
 
         DriverId = command.DriverId;
         VehicleId = command.VehicleId;
-        Route = command.Route;
+        RouteId = command.RouteId;
         StartTime = command.StartTime;
+        ValidFrom = command.ValidFrom;
+        ValidTo = command.ValidTo;
         Status = command.Status;
+        AssignedBy = command.AssignedBy;
+        SyncActiveKeys();
         Validate();
     }
 
     /// <summary>
-    ///     Gets the server-generated identifier for this assignment.
+    ///     Gets the identifier.
     /// </summary>
     public int Id { get; private set; }
 
     /// <summary>
-    ///     Gets the driver ID.
+    ///     Gets the identifier of the driver.
     /// </summary>
     public int DriverId { get; private set; }
 
     /// <summary>
-    ///     Gets the vehicle ID.
+    ///     Gets the identifier of the vehicle.
     /// </summary>
     public int VehicleId { get; private set; }
 
     /// <summary>
-    ///     Gets the route.
+    ///     Gets the identifier of the route.
     /// </summary>
-    public string Route { get; private set; }
+    public int RouteId { get; private set; }
 
     /// <summary>
-    ///     Gets the start time (HH:mm).
+    ///     Gets the daily start time.
     /// </summary>
     public TimeOnly StartTime { get; private set; }
 
     /// <summary>
-    ///     Gets the assignment status (active or inactive).
+    ///     Gets the first day the assignment is valid.
+    /// </summary>
+    public DateOnly ValidFrom { get; private set; }
+
+    /// <summary>
+    ///     Gets the last day the assignment is valid, if it has an end.
+    /// </summary>
+    public DateOnly? ValidTo { get; private set; }
+
+    /// <summary>
+    ///     Gets the status.
     /// </summary>
     public AssignmentStatus Status { get; private set; }
+
+    /// <summary>
+    ///     Gets the identifier of the user who made the assignment.
+    /// </summary>
+    public int? AssignedBy { get; private set; }
+
+    /// <summary>
+    ///     Gets the driver identifier while the assignment is active, otherwise null.
+    /// </summary>
+    public int? ActiveDriverId { get; private set; }
+
+    /// <summary>
+    ///     Gets the vehicle identifier while the assignment is active, otherwise null.
+    /// </summary>
+    public int? ActiveVehicleId { get; private set; }
+
+    /// <summary>
+    ///     Updates the status and the end date of the assignment from a command.
+    /// </summary>
+    /// <param name="command">The command with the new data.</param>
+    public void Update(UpdateAssignmentCommand command)
+    {
+        ArgumentNullException.ThrowIfNull(command);
+
+        Status = command.Status;
+        ValidTo = command.ValidTo;
+        SyncActiveKeys();
+        Validate();
+    }
+
+    private void SyncActiveKeys()
+    {
+        ActiveDriverId = Status.IsActive ? DriverId : null;
+        ActiveVehicleId = Status.IsActive ? VehicleId : null;
+    }
 
     private void Validate()
     {
         Guard.AtLeast(DriverId, 1, nameof(DriverId));
         Guard.AtLeast(VehicleId, 1, nameof(VehicleId));
-        Guard.NotBlank(Route, nameof(Route));
-        Guard.NotLongerThan(Route, 150, nameof(Route));
+        Guard.AtLeast(RouteId, 1, nameof(RouteId));
+        if (AssignedBy is not null) Guard.AtLeast(AssignedBy.Value, 1, nameof(AssignedBy));
+        if (ValidTo is not null && ValidTo < ValidFrom)
+            throw new ArgumentException("ValidTo cannot be earlier than ValidFrom.", nameof(ValidTo));
     }
 }

@@ -152,4 +152,45 @@ public class AssignmentsController(
                 statusCode: 500);
         }
     }
+
+    /// <summary>
+    ///     Updates the status and the end date of an assignment (for example, releases it).
+    /// </summary>
+    /// <param name="id">The identifier of the assignment.</param>
+    /// <param name="resource">The resource with the new status.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The updated assignment.</returns>
+    [HttpPut("{id}")]
+    [ProducesResponseType(typeof(AssignmentResource), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status409Conflict)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+    public async Task<ActionResult> UpdateAssignment(int id, [FromBody] UpdateAssignmentResource resource,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            var command = UpdateAssignmentCommandFromResourceAssembler.ToCommandFromResource(id, resource);
+            var result = await assignmentCommandService.Handle(command, cancellationToken);
+            return ActionResultFromUpdateAssignmentResultAssembler.ToActionResultFromUpdateAssignmentResult(result, this, localizer);
+        }
+        catch (Exception ex) when (ex is ArgumentException or FormatException)
+        {
+            logger.LogWarning(ex, "Validation failed while updating assignment {Id}", id);
+            return BadRequest(localizer["InvalidAssignmentRequest"].Value);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Unexpected error while updating assignment {Id}", id);
+            return Problem(
+                title: localizer["UnexpectedServerError"].Value,
+                detail: localizer["UnexpectedErrorUpdatingAssignment"].Value,
+                statusCode: 500);
+        }
+    }
 }

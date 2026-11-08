@@ -21,6 +21,11 @@ public enum CreateAlertError
 	DuplicateAlertCode,
 
 	/// <summary>
+	/// A referenced record (driver, shift, alert type, receiver or user) does not exist.
+	/// </summary>
+	InvalidReference,
+
+	/// <summary>
 	/// An unexpected error occurred during the operation.
 	/// </summary>
 	UnexpectedError

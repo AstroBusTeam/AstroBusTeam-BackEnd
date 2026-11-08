@@ -19,35 +19,18 @@ Content-Type: application/json
   "firstName": "Luis",
   "lastName": "Paredes",
   "dni": "45678901",
-  "category": "A-IIIb",
+  "licenseCategory": "A-IIIb",
   "licenseNumber": "Q45678901",
   "licenseExpiry": "2028-03-15",
   "points": 15,
   "rating": 4.5,
   "yearsExperience": 6,
+  "phone": "987654399",
   "status": "active"
 }
 
-### Update Driver
-PUT {{api}}/drivers/1
-Content-Type: application/json
-
-{
-  "employeeCode": "SF-99001",
-  "firstName": "Luis",
-  "lastName": "Paredes",
-  "dni": "45678901",
-  "category": "A-IIIb",
-  "licenseNumber": "Q45678901",
-  "licenseExpiry": "2028-03-15",
-  "points": 15,
-  "rating": 4.5,
-  "yearsExperience": 6,
-  "status": "active"
-}
-
-### Delete Driver
-DELETE {{api}}/drivers/99
+### Delete Driver (409 if it has assignments, shifts, alerts or a user)
+DELETE {{api}}/drivers/7
 
 ### Vehicles
 GET {{api}}/vehicles
@@ -60,31 +43,52 @@ POST {{api}}/vehicles
 Content-Type: application/json
 
 {
-  "code": "BUS-1001",
-  "plate": "XYZ-123",
-  "model": "Volvo B11R",
-  "capacity": 48,
+  "code": "BUS-9999",
+  "plate": "TST-001",
+  "model": "Volvo B8R",
+  "capacity": 45,
   "status": "available",
-  "latitude": -12.0464,
-  "longitude": -77.0428
+  "currentLatitude": -12.0464,
+  "currentLongitude": -77.0428
 }
 
-### Update Vehicle
-PUT {{api}}/vehicles/1
+### Delete Vehicle (409 when it has assignments, alerts, shifts or positions)
+DELETE {{api}}/vehicles/3
+
+### Routes
+GET {{api}}/routes
+
+### Route by id
+GET {{api}}/routes/1
+
+### Create Route
+POST {{api}}/routes
 Content-Type: application/json
 
 {
-  "code": "BUS-1001",
-  "plate": "XYZ-123",
-  "model": "Volvo B11R",
-  "capacity": 48,
-  "status": "available",
-  "latitude": -12.0464,
-  "longitude": -77.0428
+  "code": "R-99",
+  "name": "Ruta de prueba",
+  "origin": "Terminal Norte",
+  "destination": "Terminal Sur",
+  "distanceKm": 15.5,
+  "active": true
 }
 
-### Delete Vehicle
-DELETE {{api}}/vehicles/99
+### Update Route
+PUT {{api}}/routes/6
+Content-Type: application/json
+
+{
+  "code": "R-99",
+  "name": "Ruta de prueba actualizada",
+  "origin": "Terminal Norte",
+  "destination": "Terminal Sur",
+  "distanceKm": 16.0,
+  "active": true
+}
+
+### Delete Route (409 when assignments or shifts use it)
+DELETE {{api}}/routes/1
 
 ### Assignments
 GET {{api}}/assignments
@@ -101,14 +105,25 @@ Content-Type: application/json
 
 {
   "driverId": 3,
-  "vehicleId": 5,
-  "route": "R-10 Terminal Sur - Centro",
+  "vehicleId": 3,
+  "routeId": 1,
   "startTime": "06:00",
-  "status": "active"
+  "status": "active",
+  "validFrom": "2026-11-01",
+  "assignedBy": 1
 }
 
-### Delete Assignment
-DELETE {{api}}/assignments/99
+### Release Assignment (status inactive, keeps the history)
+PUT {{api}}/assignments/1
+Content-Type: application/json
+
+{
+  "status": "inactive",
+  "validTo": "2026-11-30"
+}
+
+### Delete Assignment (409 when shifts use it)
+DELETE {{api}}/assignments/1
 
 ### Shifts
 GET {{api}}/shifts
@@ -124,37 +139,87 @@ POST {{api}}/shifts
 Content-Type: application/json
 
 {
+  "assignmentId": 1,
   "driverId": 1,
   "vehicleId": 1,
-  "routeCode": "R-42",
-  "routeName": "Terminal Norte - Estación Central",
-  "date": "2026-11-03",
-  "startTime": "2026-11-03T08:00:00",
-  "endTime": null
+  "routeId": 1,
+  "shiftDate": "2026-11-07",
+  "startTime": "2026-11-07T08:00:00",
+  "status": "active"
 }
 
-### Update Shift
-PUT {{api}}/shifts/1
+### Update Shift (close it)
+PUT {{api}}/shifts/8
 Content-Type: application/json
 
 {
+  "assignmentId": 1,
   "driverId": 1,
   "vehicleId": 1,
-  "routeCode": "R-42",
-  "routeName": "Terminal Norte - Estación Central",
-  "date": "2026-11-03",
-  "startTime": "2026-11-03T08:00:00",
-  "endTime": null,
-  "distanceKm": 0,
-  "passengers": 0,
-  "revenue": 0,
-  "incidents": 0,
-  "status": "active",
-  "speedKmh": 0,
-  "maxSpeedKmh": 0,
-  "averageSpeedKmh": 0,
-  "speedSamples": 0,
-  "overspeedEvents": 0
+  "routeId": 1,
+  "shiftDate": "2026-11-07",
+  "startTime": "2026-11-07T08:00:00",
+  "endTime": "2026-11-07T16:00:00",
+  "distanceKm": 120.5,
+  "passengers": 310,
+  "revenue": 450.5,
+  "status": "finished",
+  "averageSpeedKmh": 38.5,
+  "maxSpeedKmh": 72.0,
+  "overspeedEvents": 2
+}
+
+### Vehicle positions
+GET {{api}}/vehicle-positions?vehicleId=1
+
+### Create Vehicle position
+POST {{api}}/vehicle-positions
+Content-Type: application/json
+
+{
+  "vehicleId": 1,
+  "shiftId": 1,
+  "latitude": -12.0480,
+  "longitude": -77.0410,
+  "speedKmh": 35.5
+}
+
+### Alert types
+GET {{api}}/alert-types
+
+### Create Alert type
+POST {{api}}/alert-types
+Content-Type: application/json
+
+{
+  "name": "Exceso de velocidad",
+  "defaultPriority": "medium",
+  "isPanic": false
+}
+
+### Notification channels
+GET {{api}}/notification-channels
+
+### Create Notification channel
+POST {{api}}/notification-channels
+Content-Type: application/json
+
+{
+  "code": "call"
+}
+
+### Control centers
+GET {{api}}/control-centers
+
+### Create Control center
+POST {{api}}/control-centers
+Content-Type: application/json
+
+{
+  "code": "CC-SUR-01",
+  "name": "Centro de Control Lima Sur",
+  "zone": "Lima Sur",
+  "active": true
 }
 
 ### Alerts
@@ -171,32 +236,52 @@ POST {{api}}/alerts
 Content-Type: application/json
 
 {
-  "code": "AL-9930",
-  "vehicleId": 4,
-  "type": "Botón de pánico",
-  "receiver": "CENTRAL_OPERACIONES",
-  "latitude": -12.042,
-  "longitude": -77.034
+  "vehicleId": 1,
+  "driverId": 1,
+  "shiftId": 1,
+  "alertTypeId": 1,
+  "receiverId": 1,
+  "latitude": -12.0464,
+  "longitude": -77.0428,
+  "notes": "Alerta de prueba"
 }
 
-### Update Alert
-PUT {{api}}/alerts/1
+### Update Alert (confirm it)
+PUT {{api}}/alerts/5
 Content-Type: application/json
 
 {
-  "code": "AL-9930",
-  "vehicleId": 4,
-  "type": "Botón de pánico",
-  "receiver": "CENTRAL_OPERACIONES",
-  "attempts": 1,
-  "status": "pending",
-  "createdAt": "2026-11-03T14:22:05",
-  "latitude": -12.042,
-  "longitude": -77.034
+  "code": "AL-1953",
+  "vehicleId": 1,
+  "driverId": 1,
+  "shiftId": 1,
+  "alertTypeId": 1,
+  "receiverId": 1,
+  "attempts": 2,
+  "status": "confirmed",
+  "createdAt": "2026-10-05T22:39:06",
+  "latitude": -12.0464,
+  "longitude": -77.0428,
+  "confirmedAt": "2026-10-05T22:41:00",
+  "confirmedBy": 2,
+  "notes": "Confirmada por el operador"
 }
 
-### Delete Alert
-DELETE {{api}}/alerts/99
+### Delete Alert (409 when deliveries use it)
+DELETE {{api}}/alerts/1
+
+### Alert attempts
+GET {{api}}/alert-attempts?alertId=1
+
+### Create Alert attempt
+POST {{api}}/alert-attempts
+Content-Type: application/json
+
+{
+  "alertId": 5,
+  "attemptNumber": 3,
+  "result": "success"
+}
 
 ### Recipients
 GET {{api}}/recipients
@@ -204,15 +289,18 @@ GET {{api}}/recipients
 ### Recipient by id
 GET {{api}}/recipients/1
 
-### Update Recipient
+### Update Recipient (the channels are the recipient_channels rows)
 PUT {{api}}/recipients/1
 Content-Type: application/json
 
 {
   "name": "Ricardo S.",
   "role": "Supervisor de zona centro",
-  "channel": "SMS / PUSH",
-  "active": true
+  "active": true,
+  "email": "ricardo.s@securitybus.pe",
+  "phone": "987000111",
+  "controlCenterId": 1,
+  "channelIds": [1, 2, 3]
 }
 
 ### Deliveries
@@ -226,13 +314,29 @@ POST {{api}}/deliveries
 Content-Type: application/json
 
 {
-  "recipientName": "Ricardo S.",
-  "channel": "SMS / PUSH",
-  "alertType": "Fallo de infraestructura",
-  "priority": "Media"
+  "alertId": 5,
+  "recipientId": 1,
+  "channelId": 1,
+  "alertTypeId": 1,
+  "priority": "high",
+  "status": "sent"
 }
 
-### Verify a driver identity (IAM)
+### Users (the password hash is never returned)
+GET {{api}}/users
+
+### Create User
+POST {{api}}/users
+Content-Type: application/json
+
+{
+  "username": "supervisor",
+  "password": "Supervisor#2026",
+  "role": "operator",
+  "active": true
+}
+
+### Driver verification (IAM)
 POST {{api}}/authentication/driver-verification
 Content-Type: application/json
 

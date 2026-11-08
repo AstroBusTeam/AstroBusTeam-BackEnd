@@ -4,21 +4,20 @@ using AstroBusTeamBackEnd.Alerts.Interfaces.REST.Resources;
 namespace AstroBusTeamBackEnd.Alerts.Interfaces.REST.Transform;
 
 /// <summary>
-///     Assembles a RecipientResource from a Recipient.
+///     Assembler that converts a recipient entity into a resource
 /// </summary>
 public static class RecipientResourceFromEntityAssembler
 {
     /// <summary>
-    ///     Assembles a RecipientResource from a Recipient.
+    ///     Converts the entity into a resource.
     /// </summary>
-    /// <param name="entity">The Recipient entity</param>
-    /// <returns>
-    ///     A RecipientResource assembled from the Recipient
-    /// </returns>
     public static RecipientResource ToResourceFromEntity(Recipient entity) =>
         new(entity.Id,
             entity.Name,
             entity.Role,
-            entity.Channel,
-            entity.Active);
+            entity.Email,
+            entity.Phone,
+            entity.ControlCenterId,
+            entity.Active,
+            entity.Channels.Select(link => link.ChannelId).OrderBy(id => id).ToList());
 }

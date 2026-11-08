@@ -34,6 +34,8 @@ public static class ActionResultFromDeleteAssignmentResultAssembler
                     DeleteAssignmentError.AssignmentNotFound =>
                         controller.NotFound(localizer["AssignmentNotFound"].Value),
 
+                    DeleteAssignmentError.AssignmentHasRelatedData =>
+                        controller.Conflict(localizer["AssignmentHasRelatedData"].Value),
                     DeleteAssignmentError.UnexpectedError =>
                         controller.Problem(
                             title: localizer["UnexpectedServerError"].Value,

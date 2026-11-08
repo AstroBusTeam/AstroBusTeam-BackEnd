@@ -22,9 +22,9 @@
 
     <ItemGroup>
       <Folder Include="Alerts\Application\" />
-      <Folder Include="Alerts\Domain\Model\" />
-      <Folder Include="Alerts\Infrastructure\Persistence\EFC\Configuration\" />
-      <Folder Include="Operation\" />
+      <Folder Include="Alerts\Domain\" />
+      <Folder Include="Alerts\Infrastructure\" />
+      <Folder Include="Alerts\Interfaces\" />
     </ItemGroup>
 
 </Project>

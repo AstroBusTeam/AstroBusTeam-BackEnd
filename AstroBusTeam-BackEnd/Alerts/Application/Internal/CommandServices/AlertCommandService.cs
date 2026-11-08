@@ -70,6 +70,12 @@ public class AlertCommandService(
             return new Result<Alert, CreateAlertError>.Failure(
                 CreateAlertError.DuplicateAlertCode);
         }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Invalid reference while creating alert");
+            return new Result<Alert, CreateAlertError>.Failure(
+                CreateAlertError.InvalidReference);
+        }
         catch (DbUpdateException ex)
         {
             logger.LogError(ex, "Database update failed while creating alert");
@@ -137,6 +143,12 @@ public class AlertCommandService(
             return new Result<Alert, UpdateAlertError>.Failure(
                 UpdateAlertError.DuplicateAlertCode);
         }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Invalid reference while updating alert");
+            return new Result<Alert, UpdateAlertError>.Failure(
+                UpdateAlertError.InvalidReference);
+        }
         catch (DbUpdateException ex)
         {
             logger.LogError(ex, "Database update failed while updating alert");
@@ -173,6 +185,12 @@ public class AlertCommandService(
             alertRepository.Remove(entity);
             await unitOfWork.CompleteAsync(cancellationToken);
             return new Result<Alert, DeleteAlertError>.Success(entity);
+        }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Alert {Id} cannot be deleted because it is referenced by other records", entity.Id);
+            return new Result<Alert, DeleteAlertError>.Failure(
+                DeleteAlertError.AlertHasRelatedData);
         }
         catch (DbUpdateException ex)
         {

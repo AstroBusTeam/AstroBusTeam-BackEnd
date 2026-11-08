@@ -37,6 +37,8 @@ public static class ActionResultFromUpdateRecipientResultAssembler
                     UpdateRecipientError.InvalidData =>
                         controller.BadRequest(localizer["InvalidRecipientData"].Value),
 
+                    UpdateRecipientError.InvalidReference =>
+                        controller.BadRequest(localizer["InvalidRecipientReference"].Value),
                     UpdateRecipientError.UnexpectedError =>
                         controller.Problem(
                             title: localizer["UnexpectedServerError"].Value,

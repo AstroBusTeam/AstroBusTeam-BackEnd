@@ -21,6 +21,11 @@ public enum CreateAssignmentError
 	VehicleNotFound,
 
 	/// <summary>
+	/// The route does not exist.
+	/// </summary>
+	RouteNotFound,
+
+	/// <summary>
 	/// The driver is not active and cannot be assigned.
 	/// </summary>
 	DriverNotActive,
@@ -39,6 +44,11 @@ public enum CreateAssignmentError
 	/// The vehicle already has an active assignment.
 	/// </summary>
 	VehicleAlreadyAssigned,
+
+	/// <summary>
+	/// A referenced record (for example the assigning user) does not exist.
+	/// </summary>
+	InvalidReference,
 
 	/// <summary>
 	/// An unexpected error occurred during the operation.

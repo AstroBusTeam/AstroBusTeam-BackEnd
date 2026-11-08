@@ -4,17 +4,13 @@ using AstroBusTeamBackEnd.Fleet.Interfaces.REST.Resources;
 namespace AstroBusTeamBackEnd.Fleet.Interfaces.REST.Transform;
 
 /// <summary>
-///     Assembles a VehicleResource from a Vehicle.
+///     Assembler that converts a vehicle entity into a resource
 /// </summary>
 public static class VehicleResourceFromEntityAssembler
 {
     /// <summary>
-    ///     Assembles a VehicleResource from a Vehicle.
+    ///     Converts the entity into a resource.
     /// </summary>
-    /// <param name="entity">The Vehicle entity</param>
-    /// <returns>
-    ///     A VehicleResource assembled from the Vehicle
-    /// </returns>
     public static VehicleResource ToResourceFromEntity(Vehicle entity) =>
         new(entity.Id,
             entity.Code.Value,
@@ -22,6 +18,8 @@ public static class VehicleResourceFromEntityAssembler
             entity.Model,
             entity.Capacity,
             entity.Status.Value,
-            entity.Latitude,
-            entity.Longitude);
+            entity.CurrentLatitude,
+            entity.CurrentLongitude,
+            entity.LastPositionAt,
+            entity.CreatedAt);
 }

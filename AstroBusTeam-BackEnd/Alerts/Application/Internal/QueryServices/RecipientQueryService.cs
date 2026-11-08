@@ -20,5 +20,5 @@ public class RecipientQueryService(IRecipientRepository recipientRepository) : I
 
     /// <inheritdoc />
     public async Task<Recipient?> Handle(GetRecipientByIdQuery query, CancellationToken cancellationToken = default) =>
-        await recipientRepository.FindByIdAsync(query.Id, cancellationToken);
+        await recipientRepository.FindByIdWithChannelsAsync(query.Id, cancellationToken);
 }

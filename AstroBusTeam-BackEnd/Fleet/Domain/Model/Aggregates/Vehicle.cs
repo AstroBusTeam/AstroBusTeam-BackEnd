@@ -1,20 +1,23 @@
 using AstroBusTeamBackEnd.Fleet.Domain.Model.Commands;
 using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
 using AstroBusTeamBackEnd.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
 
 namespace AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
 
 /// <summary>
-///     Represents a vehicle in the Fleet bounded context.
+///     Represents a vehicle (bus) of the fleet
 /// </summary>
 /// <remarks>
-///     This aggregate root protects its invariants: every creation and update goes through the same validation.
-///     Audit timestamps (CreatedAt, UpdatedAt) are managed by the persistence layer.
+///     The vehicle keeps its last known position. <see cref="LastPositionAt"/> is refreshed whenever the position
+///     changes.
 /// </remarks>
 public partial class Vehicle
 {
     /// <summary>
-    ///     Protected parameterless constructor for EF Core.
+    ///     Required by Entity Framework Core.
     /// </summary>
     protected Vehicle()
     {
@@ -25,13 +28,9 @@ public partial class Vehicle
     }
 
     /// <summary>
-    ///     Creates a new Vehicle from a creation command.
+    ///     Creates a vehicle from a command.
     /// </summary>
-    /// <remarks>
-    ///     This constructor acts as the command handler for CreateVehicleCommand.
-    /// </remarks>
-    /// <param name="command">The CreateVehicleCommand command</param>
-    /// <exception cref="ArgumentNullException">Thrown when command is null.</exception>
+    /// <param name="command">The command with the vehicle data.</param>
     public Vehicle(CreateVehicleCommand command)
     {
         ArgumentNullException.ThrowIfNull(command);
@@ -41,13 +40,14 @@ public partial class Vehicle
         Model = command.Model;
         Capacity = command.Capacity;
         Status = command.Status;
-        Latitude = command.Latitude;
-        Longitude = command.Longitude;
+        CurrentLatitude = command.CurrentLatitude;
+        CurrentLongitude = command.CurrentLongitude;
+        LastPositionAt = LocalClock.Now();
         Validate();
     }
 
     /// <summary>
-    ///     Gets the server-generated identifier for this vehicle.
+    ///     Gets the identifier.
     /// </summary>
     public int Id { get; private set; }
 
@@ -72,48 +72,52 @@ public partial class Vehicle
     public int Capacity { get; private set; }
 
     /// <summary>
-    ///     Gets the vehicle status (available, in-service or maintenance).
+    ///     Gets the status.
     /// </summary>
     public VehicleStatus Status { get; private set; }
 
     /// <summary>
-    ///     Gets the latitude.
+    ///     Gets the current latitude.
     /// </summary>
-    public double Latitude { get; private set; }
+    public double CurrentLatitude { get; private set; }
 
     /// <summary>
-    ///     Gets the longitude.
+    ///     Gets the current longitude.
     /// </summary>
-    public double Longitude { get; private set; }
+    public double CurrentLongitude { get; private set; }
 
     /// <summary>
-    ///     Updates the vehicle with the values of an update command.
+    ///     Gets the moment of the last reported position.
     /// </summary>
-    /// <remarks>
-    ///     This method acts as the command handler for UpdateVehicleCommand. The invariants are validated again.
-    /// </remarks>
-    /// <param name="command">The UpdateVehicleCommand command</param>
-    /// <exception cref="ArgumentNullException">Thrown when command is null.</exception>
+    public DateTime? LastPositionAt { get; private set; }
+
+    /// <summary>
+    ///     Updates the vehicle from a command.
+    /// </summary>
+    /// <param name="command">The command with the new data.</param>
     public void Update(UpdateVehicleCommand command)
     {
         ArgumentNullException.ThrowIfNull(command);
 
+        var positionChanged = CurrentLatitude != command.CurrentLatitude ||
+                              CurrentLongitude != command.CurrentLongitude;
         Code = command.Code;
         Plate = command.Plate;
         Model = command.Model;
         Capacity = command.Capacity;
         Status = command.Status;
-        Latitude = command.Latitude;
-        Longitude = command.Longitude;
+        CurrentLatitude = command.CurrentLatitude;
+        CurrentLongitude = command.CurrentLongitude;
+        if (positionChanged) LastPositionAt = LocalClock.Now();
         Validate();
     }
 
     private void Validate()
     {
         Guard.NotBlank(Model, nameof(Model));
-        Guard.NotLongerThan(Model, 100, nameof(Model));
+        Guard.NotLongerThan(Model, 60, nameof(Model));
         Guard.InRange(Capacity, 1, 200, nameof(Capacity));
-        Guard.InRange(Latitude, -90.0, 90.0, nameof(Latitude));
-        Guard.InRange(Longitude, -180.0, 180.0, nameof(Longitude));
+        Guard.InRange(CurrentLatitude, -90.0, 90.0, nameof(CurrentLatitude));
+        Guard.InRange(CurrentLongitude, -180.0, 180.0, nameof(CurrentLongitude));
     }
 }

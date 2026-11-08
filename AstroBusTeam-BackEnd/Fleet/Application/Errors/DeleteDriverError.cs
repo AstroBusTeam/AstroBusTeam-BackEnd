@@ -16,6 +16,11 @@ public enum DeleteDriverError
 	DriverHasActiveAssignment,
 
 	/// <summary>
+	/// The driver is referenced by other records (assignments or shifts) and cannot be deleted.
+	/// </summary>
+	DriverHasRelatedData,
+
+	/// <summary>
 	/// An unexpected error occurred during the operation.
 	/// </summary>
 	UnexpectedError

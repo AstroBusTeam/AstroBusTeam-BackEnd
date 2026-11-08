@@ -5,16 +5,21 @@ using AstroBusTeamBackEnd.Shared.Domain.Model;
 namespace AstroBusTeamBackEnd.Fleet.Domain.Model.Aggregates;
 
 /// <summary>
-///     Represents a driver in the Fleet bounded context.
+///     Represents a driver of the fleet
 /// </summary>
 /// <remarks>
-///     This aggregate root protects its invariants: every creation and update goes through the same validation.
-///     Audit timestamps (CreatedAt, UpdatedAt) are managed by the persistence layer.
+///     The driver keeps its personal and license data. The license category is one of the Peruvian categories
+///     listed in <see cref="LicenseCategories"/>.
 /// </remarks>
 public partial class Driver
 {
     /// <summary>
-    ///     Protected parameterless constructor for EF Core.
+    ///     The license categories accepted for a driver.
+    /// </summary>
+    public static readonly string[] LicenseCategories = ["A-I", "A-IIa", "A-IIb", "A-IIIa", "A-IIIb", "A-IIIc"];
+
+    /// <summary>
+    ///     Required by Entity Framework Core.
     /// </summary>
     protected Driver()
     {
@@ -22,19 +27,15 @@ public partial class Driver
         FirstName = string.Empty;
         LastName = string.Empty;
         Dni = null!;
-        Category = string.Empty;
+        LicenseCategory = string.Empty;
         LicenseNumber = null!;
         Status = null!;
     }
 
     /// <summary>
-    ///     Creates a new Driver from a creation command.
+    ///     Creates a driver from a command.
     /// </summary>
-    /// <remarks>
-    ///     This constructor acts as the command handler for CreateDriverCommand.
-    /// </remarks>
-    /// <param name="command">The CreateDriverCommand command</param>
-    /// <exception cref="ArgumentNullException">Thrown when command is null.</exception>
+    /// <param name="command">The command with the driver data.</param>
     public Driver(CreateDriverCommand command)
     {
         ArgumentNullException.ThrowIfNull(command);
@@ -43,18 +44,19 @@ public partial class Driver
         FirstName = command.FirstName;
         LastName = command.LastName;
         Dni = command.Dni;
-        Category = command.Category;
+        LicenseCategory = CanonicalCategory(command.LicenseCategory);
         LicenseNumber = command.LicenseNumber;
         LicenseExpiry = command.LicenseExpiry;
         Points = command.Points;
         Rating = command.Rating;
         YearsExperience = command.YearsExperience;
+        Phone = command.Phone;
         Status = command.Status;
         Validate();
     }
 
     /// <summary>
-    ///     Gets the server-generated identifier for this driver.
+    ///     Gets the identifier.
     /// </summary>
     public int Id { get; private set; }
 
@@ -74,14 +76,14 @@ public partial class Driver
     public string LastName { get; private set; }
 
     /// <summary>
-    ///     Gets the national ID (DNI).
+    ///     Gets the national identity document number.
     /// </summary>
     public Dni Dni { get; private set; }
 
     /// <summary>
     ///     Gets the license category.
     /// </summary>
-    public string Category { get; private set; }
+    public string LicenseCategory { get; private set; }
 
     /// <summary>
     ///     Gets the license number.
@@ -109,18 +111,19 @@ public partial class Driver
     public int YearsExperience { get; private set; }
 
     /// <summary>
-    ///     Gets the driver status (active or inactive).
+    ///     Gets the contact phone number.
+    /// </summary>
+    public string? Phone { get; private set; }
+
+    /// <summary>
+    ///     Gets the status.
     /// </summary>
     public DriverStatus Status { get; private set; }
 
     /// <summary>
-    ///     Updates the driver with the values of an update command.
+    ///     Updates the driver from a command.
     /// </summary>
-    /// <remarks>
-    ///     This method acts as the command handler for UpdateDriverCommand. The invariants are validated again.
-    /// </remarks>
-    /// <param name="command">The UpdateDriverCommand command</param>
-    /// <exception cref="ArgumentNullException">Thrown when command is null.</exception>
+    /// <param name="command">The command with the new data.</param>
     public void Update(UpdateDriverCommand command)
     {
         ArgumentNullException.ThrowIfNull(command);
@@ -129,26 +132,34 @@ public partial class Driver
         FirstName = command.FirstName;
         LastName = command.LastName;
         Dni = command.Dni;
-        Category = command.Category;
+        LicenseCategory = CanonicalCategory(command.LicenseCategory);
         LicenseNumber = command.LicenseNumber;
         LicenseExpiry = command.LicenseExpiry;
         Points = command.Points;
         Rating = command.Rating;
         YearsExperience = command.YearsExperience;
+        Phone = command.Phone;
         Status = command.Status;
         Validate();
+    }
+
+    private static string CanonicalCategory(string? value)
+    {
+        var trimmed = value?.Trim() ?? string.Empty;
+        return LicenseCategories.FirstOrDefault(c => string.Equals(c, trimmed, StringComparison.OrdinalIgnoreCase)) ??
+               trimmed;
     }
 
     private void Validate()
     {
         Guard.NotBlank(FirstName, nameof(FirstName));
-        Guard.NotLongerThan(FirstName, 100, nameof(FirstName));
+        Guard.NotLongerThan(FirstName, 80, nameof(FirstName));
         Guard.NotBlank(LastName, nameof(LastName));
-        Guard.NotLongerThan(LastName, 100, nameof(LastName));
-        Guard.NotBlank(Category, nameof(Category));
-        Guard.NotLongerThan(Category, 10, nameof(Category));
-        Guard.AtLeast(Points, 0, nameof(Points));
+        Guard.NotLongerThan(LastName, 80, nameof(LastName));
+        Guard.OneOf(LicenseCategory, LicenseCategories, nameof(LicenseCategory));
+        Guard.InRange(Points, 0, 32767, nameof(Points));
         Guard.InRange(Rating, 0m, 5m, nameof(Rating));
-        Guard.AtLeast(YearsExperience, 0, nameof(YearsExperience));
+        Guard.InRange(YearsExperience, 0, 32767, nameof(YearsExperience));
+        if (Phone is not null) Guard.NotLongerThan(Phone, 20, nameof(Phone));
     }
 }

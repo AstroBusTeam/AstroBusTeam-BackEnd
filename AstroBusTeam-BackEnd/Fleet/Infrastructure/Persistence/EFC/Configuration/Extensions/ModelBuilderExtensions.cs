@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore;
 namespace AstroBusTeamBackEnd.Fleet.Infrastructure.Persistence.EFC.Configuration.Extensions;
 
 /// <summary>
-///     Model builder extensions for the Fleet bounded context.
+///     Model builder extensions of the Fleet bounded context
 /// </summary>
 public static class ModelBuilderExtensions
 {
     /// <summary>
-    ///     Applies the Entity Framework configuration of the Fleet bounded context.
+    ///     Applies the Fleet configuration to the model.
     /// </summary>
-    /// <param name="builder">The model builder</param>
+    /// <param name="builder">The model builder.</param>
     public static void ApplyFleetConfiguration(this ModelBuilder builder)
     {
         // Driver
@@ -29,27 +29,33 @@ public static class ModelBuilderExtensions
             .HasMaxLength(20)
             .IsRequired();
         builder.Entity<Driver>().Property(d => d.FirstName)
-            .HasMaxLength(100)
+            .HasMaxLength(80)
             .IsRequired();
         builder.Entity<Driver>().Property(d => d.LastName)
-            .HasMaxLength(100)
+            .HasMaxLength(80)
             .IsRequired();
         builder.Entity<Driver>().Property(d => d.Dni)
             .HasConversion(valueObject => valueObject.Value, value => new Dni(value))
-            .HasMaxLength(8)
+            .HasColumnType("char(8)")
             .IsRequired();
-        builder.Entity<Driver>().Property(d => d.Category)
-            .HasMaxLength(10)
+        builder.Entity<Driver>().Property(d => d.LicenseCategory)
+            .HasColumnType("enum('A-I','A-IIa','A-IIb','A-IIIa','A-IIIb','A-IIIc')")
             .IsRequired();
         builder.Entity<Driver>().Property(d => d.LicenseNumber)
             .HasConversion(valueObject => valueObject.Value, value => new LicenseNumber(value))
             .HasMaxLength(20)
             .IsRequired();
+        builder.Entity<Driver>().Property(d => d.Points)
+            .HasColumnType("smallint");
         builder.Entity<Driver>().Property(d => d.Rating)
-            .HasPrecision(3, 1);
+            .HasPrecision(2, 1);
+        builder.Entity<Driver>().Property(d => d.YearsExperience)
+            .HasColumnType("smallint");
+        builder.Entity<Driver>().Property(d => d.Phone)
+            .HasMaxLength(20);
         builder.Entity<Driver>().Property(d => d.Status)
             .HasConversion(valueObject => valueObject.Value, value => new DriverStatus(value))
-            .HasMaxLength(20)
+            .HasColumnType("enum('active','inactive')")
             .IsRequired();
         builder.Entity<Driver>()
             .HasIndex(d => d.EmployeeCode)
@@ -70,12 +76,18 @@ public static class ModelBuilderExtensions
             .HasMaxLength(10)
             .IsRequired();
         builder.Entity<Vehicle>().Property(v => v.Model)
-            .HasMaxLength(100)
+            .HasMaxLength(60)
             .IsRequired();
+        builder.Entity<Vehicle>().Property(v => v.Capacity)
+            .HasColumnType("smallint");
         builder.Entity<Vehicle>().Property(v => v.Status)
             .HasConversion(valueObject => valueObject.Value, value => new VehicleStatus(value))
-            .HasMaxLength(20)
+            .HasColumnType("enum('available','in-service','maintenance')")
             .IsRequired();
+        builder.Entity<Vehicle>().Property(v => v.CurrentLatitude)
+            .HasColumnType("decimal(9,6)");
+        builder.Entity<Vehicle>().Property(v => v.CurrentLongitude)
+            .HasColumnType("decimal(9,6)");
         builder.Entity<Vehicle>()
             .HasIndex(v => v.Code)
             .IsUnique();
@@ -90,18 +102,34 @@ public static class ModelBuilderExtensions
                 value => TimeOnly.FromTimeSpan(value))
             .HasColumnType("time")
             .IsRequired();
+        builder.Entity<Assignment>().Property(a => a.ValidFrom)
+            .HasConversion(
+                value => value.ToDateTime(TimeOnly.MinValue),
+                value => DateOnly.FromDateTime(value))
+            .HasColumnType("date")
+            .IsRequired();
+        builder.Entity<Assignment>().Property(a => a.ValidTo)
+            .HasConversion(
+                value => value.HasValue ? value.Value.ToDateTime(TimeOnly.MinValue) : (DateTime?)null,
+                value => value.HasValue ? DateOnly.FromDateTime(value.Value) : (DateOnly?)null)
+            .HasColumnType("date");
         builder.Entity<Assignment>().HasKey(a => a.Id);
         builder.Entity<Assignment>().Property(a => a.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Assignment>().Property(a => a.Route)
-            .HasMaxLength(150)
-            .IsRequired();
         builder.Entity<Assignment>().Property(a => a.Status)
             .HasConversion(valueObject => valueObject.Value, value => new AssignmentStatus(value))
-            .HasMaxLength(20)
+            .HasColumnType("enum('active','inactive')")
             .IsRequired();
         builder.Entity<Assignment>()
             .HasIndex(a => new { a.DriverId, a.Status });
         builder.Entity<Assignment>()
             .HasIndex(a => new { a.VehicleId, a.Status });
+        builder.Entity<Assignment>()
+            .HasIndex(a => a.ActiveDriverId)
+            .IsUnique();
+        builder.Entity<Assignment>()
+            .HasIndex(a => a.ActiveVehicleId)
+            .IsUnique();
+
+        builder.ApplyBusRouteConfiguration();
     }
 }

@@ -8,6 +8,7 @@ using AstroBusTeamBackEnd.Shared.Application.Patterns;
 using AstroBusTeamBackEnd.Shared.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace AstroBusTeamBackEnd.Alerts.Application.Internal.CommandServices;
 
 /// <summary>
@@ -31,7 +32,7 @@ public class RecipientCommandService(
     public async Task<Result<Recipient, UpdateRecipientError>> Handle(UpdateRecipientCommand command,
         CancellationToken cancellationToken = default)
     {
-        var entity = await recipientRepository.FindByIdAsync(command.Id, cancellationToken);
+        var entity = await recipientRepository.FindByIdWithChannelsAsync(command.Id, cancellationToken);
         if (entity is null)
         {
             logger.LogWarning("Recipient {Id} was not found for update", command.Id);
@@ -52,6 +53,12 @@ public class RecipientCommandService(
             logger.LogWarning(ex, "Invalid data while updating recipient");
             return new Result<Recipient, UpdateRecipientError>.Failure(
                 UpdateRecipientError.InvalidData);
+        }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Invalid reference while updating recipient");
+            return new Result<Recipient, UpdateRecipientError>.Failure(
+                UpdateRecipientError.InvalidReference);
         }
         catch (DbUpdateException ex)
         {

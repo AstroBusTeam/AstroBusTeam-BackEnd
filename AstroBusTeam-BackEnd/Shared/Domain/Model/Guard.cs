@@ -44,4 +44,17 @@ public static class Guard
         if (value.CompareTo(min) < 0 || value.CompareTo(max) > 0)
             throw new ArgumentOutOfRangeException(name, value, $"{name} must be between {min} and {max}.");
     }
+
+    /// <summary>
+    ///     Ensures that a string is one of the allowed values.
+    /// </summary>
+    /// <param name="value">The value to check.</param>
+    /// <param name="allowed">The allowed values.</param>
+    /// <param name="name">The parameter name used in the exception.</param>
+    /// <exception cref="ArgumentException">Thrown when the value is not one of the allowed values.</exception>
+    public static void OneOf(string? value, string[] allowed, string name)
+    {
+        if (value is null || !allowed.Contains(value))
+            throw new ArgumentException($"{name} must be one of: {string.Join(", ", allowed)}.", name);
+    }
 }

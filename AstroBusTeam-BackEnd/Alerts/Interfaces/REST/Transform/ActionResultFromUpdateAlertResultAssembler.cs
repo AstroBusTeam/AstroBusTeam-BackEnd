@@ -43,6 +43,8 @@ public static class ActionResultFromUpdateAlertResultAssembler
                     UpdateAlertError.AttemptsCannotDecrease =>
                         controller.Conflict(localizer["AlertAttemptsCannotDecrease"].Value),
 
+                    UpdateAlertError.InvalidReference =>
+                        controller.BadRequest(localizer["InvalidAlertReference"].Value),
                     UpdateAlertError.UnexpectedError =>
                         controller.Problem(
                             title: localizer["UnexpectedServerError"].Value,

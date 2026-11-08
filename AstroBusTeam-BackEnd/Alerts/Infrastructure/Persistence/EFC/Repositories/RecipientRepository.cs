@@ -1,5 +1,4 @@
 using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
-using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
 using AstroBusTeamBackEnd.Alerts.Domain.Repositories;
 using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Configuration;
 using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Repositories;
@@ -8,20 +7,25 @@ using Microsoft.EntityFrameworkCore;
 namespace AstroBusTeamBackEnd.Alerts.Infrastructure.Persistence.EFC.Repositories;
 
 /// <summary>
-///     Entity Framework repository for recipient persistence.
+///     EF Core repository for recipients
 /// </summary>
-/// <remarks>
-///     This repository extends the generic BaseRepository with recipient-specific query methods.
-/// </remarks>
-/// <param name="context">The EF Core database context.</param>
 public class RecipientRepository(AppDbContext context)
     : BaseRepository<Recipient>(context), IRecipientRepository
 {
     /// <inheritdoc />
     public async Task<IEnumerable<Recipient>> FindAllAsync(CancellationToken cancellationToken = default)
     {
-        var query = Context.Set<Recipient>().AsQueryable();
+        return await Context.Set<Recipient>()
+            .Include(r => r.Channels)
+            .OrderBy(r => r.Id)
+            .ToListAsync(cancellationToken);
+    }
 
-        return await query.OrderBy(r => r.Id).ToListAsync(cancellationToken);
+    /// <inheritdoc />
+    public async Task<Recipient?> FindByIdWithChannelsAsync(int id, CancellationToken cancellationToken = default)
+    {
+        return await Context.Set<Recipient>()
+            .Include(r => r.Channels)
+            .FirstOrDefaultAsync(r => r.Id == id, cancellationToken);
     }
 }

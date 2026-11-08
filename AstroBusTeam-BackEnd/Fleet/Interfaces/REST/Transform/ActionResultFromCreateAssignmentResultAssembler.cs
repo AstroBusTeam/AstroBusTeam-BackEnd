@@ -43,6 +43,10 @@ public static class ActionResultFromCreateAssignmentResultAssembler
                     CreateAssignmentError.VehicleNotFound =>
                         controller.BadRequest(localizer["AssignmentVehicleNotFound"].Value),
 
+                    CreateAssignmentError.RouteNotFound =>
+                        controller.BadRequest(localizer["AssignmentRouteNotFound"].Value),
+                    CreateAssignmentError.InvalidReference =>
+                        controller.BadRequest(localizer["InvalidAssignmentReference"].Value),
                     CreateAssignmentError.DriverNotActive =>
                         controller.Conflict(localizer["AssignmentDriverNotActive"].Value),
 

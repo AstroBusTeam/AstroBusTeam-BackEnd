@@ -45,6 +45,12 @@ public class DeliveryCommandService(
             return new Result<Delivery, CreateDeliveryError>.Failure(
                 CreateDeliveryError.InvalidData);
         }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Invalid reference while creating delivery");
+            return new Result<Delivery, CreateDeliveryError>.Failure(
+                CreateDeliveryError.InvalidReference);
+        }
         catch (DbUpdateException ex)
         {
             logger.LogError(ex, "Database update failed while creating delivery");

@@ -37,6 +37,8 @@ public static class ActionResultFromCreateDeliveryResultAssembler
                     CreateDeliveryError.InvalidData =>
                         controller.BadRequest(localizer["InvalidDeliveryData"].Value),
 
+                    CreateDeliveryError.InvalidReference =>
+                        controller.BadRequest(localizer["InvalidDeliveryReference"].Value),
                     CreateDeliveryError.UnexpectedError =>
                         controller.Problem(
                             title: localizer["UnexpectedServerError"].Value,

@@ -26,4 +26,24 @@ public static class DbUpdateExceptionExtensions
 
         return false;
     }
+
+    /// <summary>
+    ///     Determines whether a <see cref="DbUpdateException"/> represents a foreign key constraint violation.
+    /// </summary>
+    /// <param name="exception">The exception to inspect.</param>
+    /// <returns>True if the exception is due to a MySQL foreign key error (codes 1451 or 1452), false otherwise.</returns>
+    public static bool IsForeignKeyViolation(this DbUpdateException exception)
+    {
+        for (Exception? current = exception; current is not null; current = current.InnerException)
+        {
+            if (!string.Equals(current.GetType().Name, "MySqlException", StringComparison.Ordinal)) continue;
+            var numberProperty = current.GetType().GetProperty("Number");
+            if (numberProperty?.PropertyType == typeof(int) &&
+                numberProperty.GetValue(current) is int errorCode &&
+                errorCode is 1451 or 1452)
+                return true;
+        }
+
+        return false;
+    }
 }

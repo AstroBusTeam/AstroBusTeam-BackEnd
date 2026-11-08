@@ -37,6 +37,9 @@ public static class ActionResultFromDeleteVehicleResultAssembler
                     DeleteVehicleError.VehicleHasActiveAssignment =>
                         controller.Conflict(localizer["VehicleHasActiveAssignment"].Value),
 
+                    DeleteVehicleError.VehicleHasRelatedData =>
+                        controller.Conflict(localizer["VehicleHasRelatedData"].Value),
+
                     DeleteVehicleError.UnexpectedError =>
                         controller.Problem(
                             title: localizer["UnexpectedServerError"].Value,

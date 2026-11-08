@@ -5,91 +5,95 @@ using AstroBusTeamBackEnd.Shared.Domain.Model;
 namespace AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
 
 /// <summary>
-///     Represents a delivery in the Alerts bounded context.
+///     Represents the delivery of an alert to a recipient through a notification channel
 /// </summary>
-/// <remarks>
-///     This aggregate root protects its invariants: every creation and update goes through the same validation.
-///     Audit timestamps (CreatedAt, UpdatedAt) are managed by the persistence layer.
-/// </remarks>
 public partial class Delivery
 {
     /// <summary>
-    ///     Protected parameterless constructor for EF Core.
+    ///     The priorities accepted for a delivery.
+    /// </summary>
+    public static readonly string[] Priorities = ["low", "medium", "high", "critical"];
+
+    /// <summary>
+    ///     Required by Entity Framework Core.
     /// </summary>
     protected Delivery()
     {
-        RecipientName = string.Empty;
-        Channel = string.Empty;
-        AlertType = string.Empty;
         Priority = string.Empty;
         Status = null!;
     }
 
     /// <summary>
-    ///     Creates a new Delivery from a creation command.
+    ///     Creates a delivery from a command.
     /// </summary>
-    /// <remarks>
-    ///     This constructor acts as the command handler for CreateDeliveryCommand.
-    /// </remarks>
-    /// <param name="command">The CreateDeliveryCommand command</param>
-    /// <exception cref="ArgumentNullException">Thrown when command is null.</exception>
+    /// <param name="command">The command with the delivery data.</param>
     public Delivery(CreateDeliveryCommand command)
     {
         ArgumentNullException.ThrowIfNull(command);
 
-        RecipientName = command.RecipientName;
-        Channel = command.Channel;
-        AlertType = command.AlertType;
-        Priority = command.Priority;
+        AlertId = command.AlertId;
+        RecipientId = command.RecipientId;
+        ChannelId = command.ChannelId;
+        AlertTypeId = command.AlertTypeId;
+        Priority = command.Priority.Trim().ToLowerInvariant();
         Status = command.Status;
         SentAt = command.SentAt;
+        ErrorMessage = command.ErrorMessage;
         Validate();
     }
 
     /// <summary>
-    ///     Gets the server-generated identifier for this delivery.
+    ///     Gets the identifier.
     /// </summary>
     public int Id { get; private set; }
 
     /// <summary>
-    ///     Gets the name of the recipient.
+    ///     Gets the identifier of the alert.
     /// </summary>
-    public string RecipientName { get; private set; }
+    public int AlertId { get; private set; }
 
     /// <summary>
-    ///     Gets the notification channel.
+    ///     Gets the identifier of the recipient.
     /// </summary>
-    public string Channel { get; private set; }
+    public int RecipientId { get; private set; }
 
     /// <summary>
-    ///     Gets the type of the alert delivered.
+    ///     Gets the identifier of the notification channel.
     /// </summary>
-    public string AlertType { get; private set; }
+    public int ChannelId { get; private set; }
 
     /// <summary>
-    ///     Gets the message priority.
+    ///     Gets the identifier of the alert type.
+    /// </summary>
+    public int AlertTypeId { get; private set; }
+
+    /// <summary>
+    ///     Gets the priority.
     /// </summary>
     public string Priority { get; private set; }
 
     /// <summary>
-    ///     Gets the delivery status (sent or failed).
+    ///     Gets the status.
     /// </summary>
     public DeliveryStatus Status { get; private set; }
 
     /// <summary>
-    ///     Gets the date and time of the delivery.
+    ///     Gets the moment the delivery was sent.
     /// </summary>
     public DateTime SentAt { get; private set; }
 
+    /// <summary>
+    ///     Gets the error message when the delivery failed.
+    /// </summary>
+    public string? ErrorMessage { get; private set; }
+
     private void Validate()
     {
-        Guard.NotBlank(RecipientName, nameof(RecipientName));
-        Guard.NotLongerThan(RecipientName, 100, nameof(RecipientName));
-        Guard.NotBlank(Channel, nameof(Channel));
-        Guard.NotLongerThan(Channel, 50, nameof(Channel));
-        Guard.NotBlank(AlertType, nameof(AlertType));
-        Guard.NotLongerThan(AlertType, 100, nameof(AlertType));
-        Guard.NotBlank(Priority, nameof(Priority));
-        Guard.NotLongerThan(Priority, 20, nameof(Priority));
+        Guard.AtLeast(AlertId, 1, nameof(AlertId));
+        Guard.AtLeast(RecipientId, 1, nameof(RecipientId));
+        Guard.AtLeast(ChannelId, 1, nameof(ChannelId));
+        Guard.AtLeast(AlertTypeId, 1, nameof(AlertTypeId));
+        Guard.OneOf(Priority, Priorities, nameof(Priority));
+        if (ErrorMessage is not null) Guard.NotLongerThan(ErrorMessage, 255, nameof(ErrorMessage));
     }
 }

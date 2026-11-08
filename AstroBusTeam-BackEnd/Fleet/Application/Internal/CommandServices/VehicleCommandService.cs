@@ -181,6 +181,12 @@ public class VehicleCommandService(
             await unitOfWork.CompleteAsync(cancellationToken);
             return new Result<Vehicle, DeleteVehicleError>.Success(entity);
         }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Vehicle {Id} cannot be deleted because it is referenced by other records", entity.Id);
+            return new Result<Vehicle, DeleteVehicleError>.Failure(
+                DeleteVehicleError.VehicleHasRelatedData);
+        }
         catch (DbUpdateException ex)
         {
             logger.LogError(ex, "Database update failed while deleting vehicle");

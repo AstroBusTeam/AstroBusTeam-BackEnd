@@ -327,6 +327,9 @@
     <data name="DriverHasActiveAssignment" xml:space="preserve">
         <value>The driver has an active assignment and cannot be deleted.</value>
     </data>
+    <data name="DriverHasRelatedData" xml:space="preserve">
+        <value>The driver is referenced by other records (assignments or shifts) and cannot be deleted.</value>
+    </data>
     <data name="DriverId" xml:space="preserve">
         <value>Server-generated identifier of the driver.</value>
     </data>
@@ -999,6 +1002,9 @@
     <data name="VehicleHasActiveAssignment" xml:space="preserve">
         <value>The vehicle has an active assignment and cannot be deleted.</value>
     </data>
+    <data name="VehicleHasRelatedData" xml:space="preserve">
+        <value>The vehicle is referenced by other records (assignments, alerts or shifts) and cannot be deleted.</value>
+    </data>
     <data name="VehicleId" xml:space="preserve">
         <value>Server-generated identifier of the vehicle.</value>
     </data>
@@ -1064,5 +1070,500 @@
     </data>
     <data name="VerifyDriverSummary" xml:space="preserve">
         <value>Verify a driver identity</value>
+    </data>
+    <data name="RequiredBusRouteCode" xml:space="preserve">
+        <value>The route Code is required.</value>
+    </data>
+    <data name="RequiredBusRouteName" xml:space="preserve">
+        <value>The route Name is required.</value>
+    </data>
+    <data name="RequiredBusRouteOrigin" xml:space="preserve">
+        <value>The route Origin is required.</value>
+    </data>
+    <data name="RequiredBusRouteDestination" xml:space="preserve">
+        <value>The route Destination is required.</value>
+    </data>
+    <data name="InvalidBusRouteRequest" xml:space="preserve">
+        <value>The route request is invalid.</value>
+    </data>
+    <data name="InvalidBusRouteQuery" xml:space="preserve">
+        <value>The route query is invalid.</value>
+    </data>
+    <data name="InvalidBusRouteData" xml:space="preserve">
+        <value>The route data is invalid.</value>
+    </data>
+    <data name="BusRouteNotFound" xml:space="preserve">
+        <value>The route was not found.</value>
+    </data>
+    <data name="InvalidBusRouteReference" xml:space="preserve">
+        <value>The route refers to a record that does not exist.</value>
+    </data>
+    <data name="BusRouteHasRelatedData" xml:space="preserve">
+        <value>The route is referenced by other records and cannot be deleted.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingBusRoute" xml:space="preserve">
+        <value>An unexpected error occurred while creating the route.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingBusRoute" xml:space="preserve">
+        <value>An unexpected error occurred while updating the route.</value>
+    </data>
+    <data name="UnexpectedErrorDeletingBusRoute" xml:space="preserve">
+        <value>An unexpected error occurred while deleting the route.</value>
+    </data>
+    <data name="CreateBusRouteSummary" xml:space="preserve">
+        <value>Create a route</value>
+    </data>
+    <data name="CreateBusRouteDescription" xml:space="preserve">
+        <value>Creates a new route.</value>
+    </data>
+    <data name="GetBusRoutesFromQuerySummary" xml:space="preserve">
+        <value>List routes</value>
+    </data>
+    <data name="GetBusRoutesFromQueryDescription" xml:space="preserve">
+        <value>Returns the registered routes.</value>
+    </data>
+    <data name="GetBusRouteByIdSummary" xml:space="preserve">
+        <value>Get a route by id</value>
+    </data>
+    <data name="GetBusRouteByIdDescription" xml:space="preserve">
+        <value>Returns the route with the given identifier.</value>
+    </data>
+    <data name="UpdateBusRouteSummary" xml:space="preserve">
+        <value>Update a route</value>
+    </data>
+    <data name="UpdateBusRouteDescription" xml:space="preserve">
+        <value>Updates the route with the given identifier.</value>
+    </data>
+    <data name="DeleteBusRouteSummary" xml:space="preserve">
+        <value>Delete a route</value>
+    </data>
+    <data name="DeleteBusRouteDescription" xml:space="preserve">
+        <value>Deletes the route if no other record references it.</value>
+    </data>
+    <data name="DuplicateBusRouteCode" xml:space="preserve">
+        <value>A route with the same Code already exists.</value>
+    </data>
+    <data name="InvalidVehiclePositionRequest" xml:space="preserve">
+        <value>The vehicle position request is invalid.</value>
+    </data>
+    <data name="InvalidVehiclePositionQuery" xml:space="preserve">
+        <value>The vehicle position query is invalid.</value>
+    </data>
+    <data name="InvalidVehiclePositionData" xml:space="preserve">
+        <value>The vehicle position data is invalid.</value>
+    </data>
+    <data name="VehiclePositionNotFound" xml:space="preserve">
+        <value>The vehicle position was not found.</value>
+    </data>
+    <data name="InvalidVehiclePositionReference" xml:space="preserve">
+        <value>The vehicle position refers to a record that does not exist.</value>
+    </data>
+    <data name="VehiclePositionHasRelatedData" xml:space="preserve">
+        <value>The vehicle position is referenced by other records and cannot be deleted.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingVehiclePosition" xml:space="preserve">
+        <value>An unexpected error occurred while creating the vehicle position.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingVehiclePosition" xml:space="preserve">
+        <value>An unexpected error occurred while updating the vehicle position.</value>
+    </data>
+    <data name="UnexpectedErrorDeletingVehiclePosition" xml:space="preserve">
+        <value>An unexpected error occurred while deleting the vehicle position.</value>
+    </data>
+    <data name="CreateVehiclePositionSummary" xml:space="preserve">
+        <value>Create a vehicle position</value>
+    </data>
+    <data name="CreateVehiclePositionDescription" xml:space="preserve">
+        <value>Creates a new vehicle position.</value>
+    </data>
+    <data name="GetVehiclePositionsFromQuerySummary" xml:space="preserve">
+        <value>List vehicle positions</value>
+    </data>
+    <data name="GetVehiclePositionsFromQueryDescription" xml:space="preserve">
+        <value>Returns the registered vehicle positions.</value>
+    </data>
+    <data name="GetVehiclePositionByIdSummary" xml:space="preserve">
+        <value>Get a vehicle position by id</value>
+    </data>
+    <data name="GetVehiclePositionByIdDescription" xml:space="preserve">
+        <value>Returns the vehicle position with the given identifier.</value>
+    </data>
+    <data name="UpdateVehiclePositionSummary" xml:space="preserve">
+        <value>Update a vehicle position</value>
+    </data>
+    <data name="UpdateVehiclePositionDescription" xml:space="preserve">
+        <value>Updates the vehicle position with the given identifier.</value>
+    </data>
+    <data name="DeleteVehiclePositionSummary" xml:space="preserve">
+        <value>Delete a vehicle position</value>
+    </data>
+    <data name="DeleteVehiclePositionDescription" xml:space="preserve">
+        <value>Deletes the vehicle position if no other record references it.</value>
+    </data>
+    <data name="RequiredAlertTypeName" xml:space="preserve">
+        <value>The alert type Name is required.</value>
+    </data>
+    <data name="RequiredAlertTypeDefaultPriority" xml:space="preserve">
+        <value>The alert type DefaultPriority is required.</value>
+    </data>
+    <data name="InvalidAlertTypeRequest" xml:space="preserve">
+        <value>The alert type request is invalid.</value>
+    </data>
+    <data name="InvalidAlertTypeQuery" xml:space="preserve">
+        <value>The alert type query is invalid.</value>
+    </data>
+    <data name="InvalidAlertTypeData" xml:space="preserve">
+        <value>The alert type data is invalid.</value>
+    </data>
+    <data name="AlertTypeNotFound" xml:space="preserve">
+        <value>The alert type was not found.</value>
+    </data>
+    <data name="InvalidAlertTypeReference" xml:space="preserve">
+        <value>The alert type refers to a record that does not exist.</value>
+    </data>
+    <data name="AlertTypeHasRelatedData" xml:space="preserve">
+        <value>The alert type is referenced by other records and cannot be deleted.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingAlertType" xml:space="preserve">
+        <value>An unexpected error occurred while creating the alert type.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingAlertType" xml:space="preserve">
+        <value>An unexpected error occurred while updating the alert type.</value>
+    </data>
+    <data name="UnexpectedErrorDeletingAlertType" xml:space="preserve">
+        <value>An unexpected error occurred while deleting the alert type.</value>
+    </data>
+    <data name="CreateAlertTypeSummary" xml:space="preserve">
+        <value>Create a alert type</value>
+    </data>
+    <data name="CreateAlertTypeDescription" xml:space="preserve">
+        <value>Creates a new alert type.</value>
+    </data>
+    <data name="GetAlertTypesFromQuerySummary" xml:space="preserve">
+        <value>List alert types</value>
+    </data>
+    <data name="GetAlertTypesFromQueryDescription" xml:space="preserve">
+        <value>Returns the registered alert types.</value>
+    </data>
+    <data name="GetAlertTypeByIdSummary" xml:space="preserve">
+        <value>Get a alert type by id</value>
+    </data>
+    <data name="GetAlertTypeByIdDescription" xml:space="preserve">
+        <value>Returns the alert type with the given identifier.</value>
+    </data>
+    <data name="UpdateAlertTypeSummary" xml:space="preserve">
+        <value>Update a alert type</value>
+    </data>
+    <data name="UpdateAlertTypeDescription" xml:space="preserve">
+        <value>Updates the alert type with the given identifier.</value>
+    </data>
+    <data name="DeleteAlertTypeSummary" xml:space="preserve">
+        <value>Delete a alert type</value>
+    </data>
+    <data name="DeleteAlertTypeDescription" xml:space="preserve">
+        <value>Deletes the alert type if no other record references it.</value>
+    </data>
+    <data name="DuplicateAlertTypeName" xml:space="preserve">
+        <value>A alert type with the same Name already exists.</value>
+    </data>
+    <data name="RequiredAlertAttemptResult" xml:space="preserve">
+        <value>The alert attempt Result is required.</value>
+    </data>
+    <data name="InvalidAlertAttemptRequest" xml:space="preserve">
+        <value>The alert attempt request is invalid.</value>
+    </data>
+    <data name="InvalidAlertAttemptQuery" xml:space="preserve">
+        <value>The alert attempt query is invalid.</value>
+    </data>
+    <data name="InvalidAlertAttemptData" xml:space="preserve">
+        <value>The alert attempt data is invalid.</value>
+    </data>
+    <data name="AlertAttemptNotFound" xml:space="preserve">
+        <value>The alert attempt was not found.</value>
+    </data>
+    <data name="InvalidAlertAttemptReference" xml:space="preserve">
+        <value>The alert attempt refers to a record that does not exist.</value>
+    </data>
+    <data name="AlertAttemptHasRelatedData" xml:space="preserve">
+        <value>The alert attempt is referenced by other records and cannot be deleted.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingAlertAttempt" xml:space="preserve">
+        <value>An unexpected error occurred while creating the alert attempt.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingAlertAttempt" xml:space="preserve">
+        <value>An unexpected error occurred while updating the alert attempt.</value>
+    </data>
+    <data name="UnexpectedErrorDeletingAlertAttempt" xml:space="preserve">
+        <value>An unexpected error occurred while deleting the alert attempt.</value>
+    </data>
+    <data name="CreateAlertAttemptSummary" xml:space="preserve">
+        <value>Create a alert attempt</value>
+    </data>
+    <data name="CreateAlertAttemptDescription" xml:space="preserve">
+        <value>Creates a new alert attempt.</value>
+    </data>
+    <data name="GetAlertAttemptsFromQuerySummary" xml:space="preserve">
+        <value>List alert attempts</value>
+    </data>
+    <data name="GetAlertAttemptsFromQueryDescription" xml:space="preserve">
+        <value>Returns the registered alert attempts.</value>
+    </data>
+    <data name="GetAlertAttemptByIdSummary" xml:space="preserve">
+        <value>Get a alert attempt by id</value>
+    </data>
+    <data name="GetAlertAttemptByIdDescription" xml:space="preserve">
+        <value>Returns the alert attempt with the given identifier.</value>
+    </data>
+    <data name="UpdateAlertAttemptSummary" xml:space="preserve">
+        <value>Update a alert attempt</value>
+    </data>
+    <data name="UpdateAlertAttemptDescription" xml:space="preserve">
+        <value>Updates the alert attempt with the given identifier.</value>
+    </data>
+    <data name="DeleteAlertAttemptSummary" xml:space="preserve">
+        <value>Delete a alert attempt</value>
+    </data>
+    <data name="DeleteAlertAttemptDescription" xml:space="preserve">
+        <value>Deletes the alert attempt if no other record references it.</value>
+    </data>
+    <data name="RequiredNotificationChannelCode" xml:space="preserve">
+        <value>The notification channel Code is required.</value>
+    </data>
+    <data name="InvalidNotificationChannelRequest" xml:space="preserve">
+        <value>The notification channel request is invalid.</value>
+    </data>
+    <data name="InvalidNotificationChannelQuery" xml:space="preserve">
+        <value>The notification channel query is invalid.</value>
+    </data>
+    <data name="InvalidNotificationChannelData" xml:space="preserve">
+        <value>The notification channel data is invalid.</value>
+    </data>
+    <data name="NotificationChannelNotFound" xml:space="preserve">
+        <value>The notification channel was not found.</value>
+    </data>
+    <data name="InvalidNotificationChannelReference" xml:space="preserve">
+        <value>The notification channel refers to a record that does not exist.</value>
+    </data>
+    <data name="NotificationChannelHasRelatedData" xml:space="preserve">
+        <value>The notification channel is referenced by other records and cannot be deleted.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingNotificationChannel" xml:space="preserve">
+        <value>An unexpected error occurred while creating the notification channel.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingNotificationChannel" xml:space="preserve">
+        <value>An unexpected error occurred while updating the notification channel.</value>
+    </data>
+    <data name="UnexpectedErrorDeletingNotificationChannel" xml:space="preserve">
+        <value>An unexpected error occurred while deleting the notification channel.</value>
+    </data>
+    <data name="CreateNotificationChannelSummary" xml:space="preserve">
+        <value>Create a notification channel</value>
+    </data>
+    <data name="CreateNotificationChannelDescription" xml:space="preserve">
+        <value>Creates a new notification channel.</value>
+    </data>
+    <data name="GetNotificationChannelsFromQuerySummary" xml:space="preserve">
+        <value>List notification channels</value>
+    </data>
+    <data name="GetNotificationChannelsFromQueryDescription" xml:space="preserve">
+        <value>Returns the registered notification channels.</value>
+    </data>
+    <data name="GetNotificationChannelByIdSummary" xml:space="preserve">
+        <value>Get a notification channel by id</value>
+    </data>
+    <data name="GetNotificationChannelByIdDescription" xml:space="preserve">
+        <value>Returns the notification channel with the given identifier.</value>
+    </data>
+    <data name="UpdateNotificationChannelSummary" xml:space="preserve">
+        <value>Update a notification channel</value>
+    </data>
+    <data name="UpdateNotificationChannelDescription" xml:space="preserve">
+        <value>Updates the notification channel with the given identifier.</value>
+    </data>
+    <data name="DeleteNotificationChannelSummary" xml:space="preserve">
+        <value>Delete a notification channel</value>
+    </data>
+    <data name="DeleteNotificationChannelDescription" xml:space="preserve">
+        <value>Deletes the notification channel if no other record references it.</value>
+    </data>
+    <data name="DuplicateNotificationChannelCode" xml:space="preserve">
+        <value>A notification channel with the same Code already exists.</value>
+    </data>
+    <data name="RequiredControlCenterCode" xml:space="preserve">
+        <value>The control center Code is required.</value>
+    </data>
+    <data name="RequiredControlCenterName" xml:space="preserve">
+        <value>The control center Name is required.</value>
+    </data>
+    <data name="RequiredControlCenterZone" xml:space="preserve">
+        <value>The control center Zone is required.</value>
+    </data>
+    <data name="InvalidControlCenterRequest" xml:space="preserve">
+        <value>The control center request is invalid.</value>
+    </data>
+    <data name="InvalidControlCenterQuery" xml:space="preserve">
+        <value>The control center query is invalid.</value>
+    </data>
+    <data name="InvalidControlCenterData" xml:space="preserve">
+        <value>The control center data is invalid.</value>
+    </data>
+    <data name="ControlCenterNotFound" xml:space="preserve">
+        <value>The control center was not found.</value>
+    </data>
+    <data name="InvalidControlCenterReference" xml:space="preserve">
+        <value>The control center refers to a record that does not exist.</value>
+    </data>
+    <data name="ControlCenterHasRelatedData" xml:space="preserve">
+        <value>The control center is referenced by other records and cannot be deleted.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingControlCenter" xml:space="preserve">
+        <value>An unexpected error occurred while creating the control center.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingControlCenter" xml:space="preserve">
+        <value>An unexpected error occurred while updating the control center.</value>
+    </data>
+    <data name="UnexpectedErrorDeletingControlCenter" xml:space="preserve">
+        <value>An unexpected error occurred while deleting the control center.</value>
+    </data>
+    <data name="CreateControlCenterSummary" xml:space="preserve">
+        <value>Create a control center</value>
+    </data>
+    <data name="CreateControlCenterDescription" xml:space="preserve">
+        <value>Creates a new control center.</value>
+    </data>
+    <data name="GetControlCentersFromQuerySummary" xml:space="preserve">
+        <value>List control centers</value>
+    </data>
+    <data name="GetControlCentersFromQueryDescription" xml:space="preserve">
+        <value>Returns the registered control centers.</value>
+    </data>
+    <data name="GetControlCenterByIdSummary" xml:space="preserve">
+        <value>Get a control center by id</value>
+    </data>
+    <data name="GetControlCenterByIdDescription" xml:space="preserve">
+        <value>Returns the control center with the given identifier.</value>
+    </data>
+    <data name="UpdateControlCenterSummary" xml:space="preserve">
+        <value>Update a control center</value>
+    </data>
+    <data name="UpdateControlCenterDescription" xml:space="preserve">
+        <value>Updates the control center with the given identifier.</value>
+    </data>
+    <data name="DeleteControlCenterSummary" xml:space="preserve">
+        <value>Delete a control center</value>
+    </data>
+    <data name="DeleteControlCenterDescription" xml:space="preserve">
+        <value>Deletes the control center if no other record references it.</value>
+    </data>
+    <data name="DuplicateControlCenterCode" xml:space="preserve">
+        <value>A control center with the same Code already exists.</value>
+    </data>
+    <data name="RequiredUserUsername" xml:space="preserve">
+        <value>The user Username is required.</value>
+    </data>
+    <data name="RequiredUserPassword" xml:space="preserve">
+        <value>The user Password is required.</value>
+    </data>
+    <data name="RequiredUserRole" xml:space="preserve">
+        <value>The user Role is required.</value>
+    </data>
+    <data name="InvalidUserRequest" xml:space="preserve">
+        <value>The user request is invalid.</value>
+    </data>
+    <data name="InvalidUserQuery" xml:space="preserve">
+        <value>The user query is invalid.</value>
+    </data>
+    <data name="InvalidUserData" xml:space="preserve">
+        <value>The user data is invalid.</value>
+    </data>
+    <data name="UserNotFound" xml:space="preserve">
+        <value>The user was not found.</value>
+    </data>
+    <data name="InvalidUserReference" xml:space="preserve">
+        <value>The user refers to a record that does not exist.</value>
+    </data>
+    <data name="UserHasRelatedData" xml:space="preserve">
+        <value>The user is referenced by other records and cannot be deleted.</value>
+    </data>
+    <data name="UnexpectedErrorCreatingUser" xml:space="preserve">
+        <value>An unexpected error occurred while creating the user.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingUser" xml:space="preserve">
+        <value>An unexpected error occurred while updating the user.</value>
+    </data>
+    <data name="UnexpectedErrorDeletingUser" xml:space="preserve">
+        <value>An unexpected error occurred while deleting the user.</value>
+    </data>
+    <data name="CreateUserSummary" xml:space="preserve">
+        <value>Create a user</value>
+    </data>
+    <data name="CreateUserDescription" xml:space="preserve">
+        <value>Creates a new user.</value>
+    </data>
+    <data name="GetUsersFromQuerySummary" xml:space="preserve">
+        <value>List users</value>
+    </data>
+    <data name="GetUsersFromQueryDescription" xml:space="preserve">
+        <value>Returns the registered users.</value>
+    </data>
+    <data name="GetUserByIdSummary" xml:space="preserve">
+        <value>Get a user by id</value>
+    </data>
+    <data name="GetUserByIdDescription" xml:space="preserve">
+        <value>Returns the user with the given identifier.</value>
+    </data>
+    <data name="UpdateUserSummary" xml:space="preserve">
+        <value>Update a user</value>
+    </data>
+    <data name="UpdateUserDescription" xml:space="preserve">
+        <value>Updates the user with the given identifier.</value>
+    </data>
+    <data name="DeleteUserSummary" xml:space="preserve">
+        <value>Delete a user</value>
+    </data>
+    <data name="DeleteUserDescription" xml:space="preserve">
+        <value>Deletes the user if no other record references it.</value>
+    </data>
+    <data name="DuplicateUserUsername" xml:space="preserve">
+        <value>A user with the same Username already exists.</value>
+    </data>
+    <data name="RequiredDriverLicenseCategory" xml:space="preserve">
+        <value>The driver license category is required.</value>
+    </data>
+    <data name="AssignmentRouteNotFound" xml:space="preserve">
+        <value>The route of the assignment does not exist.</value>
+    </data>
+    <data name="InvalidAssignmentReference" xml:space="preserve">
+        <value>A record referenced by the assignment does not exist.</value>
+    </data>
+    <data name="AssignmentHasRelatedData" xml:space="preserve">
+        <value>The assignment is referenced by other records (shifts) and cannot be deleted.</value>
+    </data>
+    <data name="ShiftRouteNotFound" xml:space="preserve">
+        <value>The route of the shift does not exist.</value>
+    </data>
+    <data name="ShiftAssignmentNotFound" xml:space="preserve">
+        <value>The assignment of the shift does not exist.</value>
+    </data>
+    <data name="InvalidAlertReference" xml:space="preserve">
+        <value>A record referenced by the alert does not exist.</value>
+    </data>
+    <data name="AlertHasRelatedData" xml:space="preserve">
+        <value>The alert is referenced by other records (deliveries) and cannot be deleted.</value>
+    </data>
+    <data name="InvalidRecipientReference" xml:space="preserve">
+        <value>A record referenced by the recipient does not exist.</value>
+    </data>
+    <data name="InvalidDeliveryReference" xml:space="preserve">
+        <value>A record referenced by the delivery does not exist.</value>
+    </data>
+    <data name="UnexpectedErrorUpdatingAssignment" xml:space="preserve">
+        <value>An unexpected error occurred while updating the assignment.</value>
+    </data>
+    <data name="UpdateAssignmentSummary" xml:space="preserve">
+        <value>Update an assignment</value>
+    </data>
+    <data name="UpdateAssignmentDescription" xml:space="preserve">
+        <value>Changes the status and the end date of an assignment, for example to release the driver and the vehicle.</value>
     </data>
 </root>

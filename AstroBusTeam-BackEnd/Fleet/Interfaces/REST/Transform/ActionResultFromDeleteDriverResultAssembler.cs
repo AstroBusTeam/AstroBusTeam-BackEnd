@@ -37,6 +37,9 @@ public static class ActionResultFromDeleteDriverResultAssembler
                     DeleteDriverError.DriverHasActiveAssignment =>
                         controller.Conflict(localizer["DriverHasActiveAssignment"].Value),
 
+                    DeleteDriverError.DriverHasRelatedData =>
+                        controller.Conflict(localizer["DriverHasRelatedData"].Value),
+
                     DeleteDriverError.UnexpectedError =>
                         controller.Problem(
                             title: localizer["UnexpectedServerError"].Value,

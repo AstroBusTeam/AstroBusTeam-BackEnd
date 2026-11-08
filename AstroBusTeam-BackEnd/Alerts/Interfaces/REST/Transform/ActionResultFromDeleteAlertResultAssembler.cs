@@ -34,6 +34,8 @@ public static class ActionResultFromDeleteAlertResultAssembler
                     DeleteAlertError.AlertNotFound =>
                         controller.NotFound(localizer["AlertNotFound"].Value),
 
+                    DeleteAlertError.AlertHasRelatedData =>
+                        controller.Conflict(localizer["AlertHasRelatedData"].Value),
                     DeleteAlertError.UnexpectedError =>
                         controller.Problem(
                             title: localizer["UnexpectedServerError"].Value,

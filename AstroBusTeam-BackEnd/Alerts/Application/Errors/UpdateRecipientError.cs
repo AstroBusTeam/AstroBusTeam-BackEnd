@@ -16,6 +16,11 @@ public enum UpdateRecipientError
 	InvalidData,
 
 	/// <summary>
+	/// A referenced record (control center or notification channel) does not exist.
+	/// </summary>
+	InvalidReference,
+
+	/// <summary>
 	/// An unexpected error occurred during the operation.
 	/// </summary>
 	UnexpectedError

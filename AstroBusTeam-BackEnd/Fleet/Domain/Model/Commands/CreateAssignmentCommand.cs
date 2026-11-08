@@ -3,11 +3,6 @@ using AstroBusTeamBackEnd.Fleet.Domain.Model.ValueObjects;
 namespace AstroBusTeamBackEnd.Fleet.Domain.Model.Commands;
 
 /// <summary>
-///     Command to create a assignment
+///     Command to create an assignment
 /// </summary>
-/// <param name="DriverId">Driver ID</param>
-/// <param name="VehicleId">Vehicle ID</param>
-/// <param name="Route">Route</param>
-/// <param name="StartTime">Start time (HH:mm)</param>
-/// <param name="Status">Assignment status (active or inactive)</param>
-public record CreateAssignmentCommand(int DriverId, int VehicleId, string Route, TimeOnly StartTime, AssignmentStatus Status);
+public record CreateAssignmentCommand(int DriverId, int VehicleId, int RouteId, TimeOnly StartTime, DateOnly ValidFrom, DateOnly? ValidTo, AssignmentStatus Status, int? AssignedBy);

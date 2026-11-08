@@ -11,6 +11,11 @@ public enum CreateDeliveryError
 	InvalidData,
 
 	/// <summary>
+	/// A referenced record (alert, recipient, channel or alert type) does not exist.
+	/// </summary>
+	InvalidReference,
+
+	/// <summary>
 	/// An unexpected error occurred during the operation.
 	/// </summary>
 	UnexpectedError

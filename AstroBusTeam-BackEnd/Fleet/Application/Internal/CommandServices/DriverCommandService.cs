@@ -181,6 +181,12 @@ public class DriverCommandService(
             await unitOfWork.CompleteAsync(cancellationToken);
             return new Result<Driver, DeleteDriverError>.Success(entity);
         }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Driver {Id} cannot be deleted because it is referenced by other records", entity.Id);
+            return new Result<Driver, DeleteDriverError>.Failure(
+                DeleteDriverError.DriverHasRelatedData);
+        }
         catch (DbUpdateException ex)
         {
             logger.LogError(ex, "Database update failed while deleting driver");

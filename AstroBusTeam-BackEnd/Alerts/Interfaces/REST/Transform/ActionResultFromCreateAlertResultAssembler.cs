@@ -43,6 +43,8 @@ public static class ActionResultFromCreateAlertResultAssembler
                     CreateAlertError.DuplicateAlertCode =>
                         controller.Conflict(localizer["DuplicateAlertCode"].Value),
 
+                    CreateAlertError.InvalidReference =>
+                        controller.BadRequest(localizer["InvalidAlertReference"].Value),
                     CreateAlertError.UnexpectedError =>
                         controller.Problem(
                             title: localizer["UnexpectedServerError"].Value,

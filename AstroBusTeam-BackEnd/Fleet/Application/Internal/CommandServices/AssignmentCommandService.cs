@@ -25,6 +25,7 @@ public class AssignmentCommandService(
     IAssignmentRepository assignmentRepository,
     IDriverRepository driverRepository,
     IVehicleRepository vehicleRepository,
+    IBusRouteRepository routeRepository,
     IUnitOfWork unitOfWork,
     ILogger<AssignmentCommandService> logger)
     : IAssignmentCommandService
@@ -51,6 +52,15 @@ public class AssignmentCommandService(
                 command.VehicleId);
             return new Result<Assignment, CreateAssignmentError>.Failure(
                 CreateAssignmentError.VehicleNotFound);
+        }
+
+        if (await routeRepository.FindByIdAsync(command.RouteId, cancellationToken) is null)
+        {
+            logger.LogWarning(
+                "Assignment rejected because route {RouteId} does not exist",
+                command.RouteId);
+            return new Result<Assignment, CreateAssignmentError>.Failure(
+                CreateAssignmentError.RouteNotFound);
         }
 
         if (!driver.Status.IsActive)
@@ -102,6 +112,18 @@ public class AssignmentCommandService(
             return new Result<Assignment, CreateAssignmentError>.Failure(
                 CreateAssignmentError.InvalidData);
         }
+        catch (DbUpdateException ex) when (ex.IsDuplicateKeyViolation())
+        {
+            logger.LogWarning(ex, "Duplicate active assignment while creating assignment");
+            return new Result<Assignment, CreateAssignmentError>.Failure(
+                CreateAssignmentError.DriverAlreadyAssigned);
+        }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Invalid reference while creating assignment");
+            return new Result<Assignment, CreateAssignmentError>.Failure(
+                CreateAssignmentError.InvalidReference);
+        }
         catch (DbUpdateException ex)
         {
             logger.LogError(ex, "Database update failed while creating assignment");
@@ -117,6 +139,68 @@ public class AssignmentCommandService(
             logger.LogError(ex, "Unexpected error while creating assignment");
             return new Result<Assignment, CreateAssignmentError>.Failure(
                 CreateAssignmentError.UnexpectedError);
+        }
+    }
+
+    /// <inheritdoc />
+    public async Task<Result<Assignment, UpdateAssignmentError>> Handle(UpdateAssignmentCommand command,
+        CancellationToken cancellationToken = default)
+    {
+        var entity = await assignmentRepository.FindByIdAsync(command.Id, cancellationToken);
+        if (entity is null)
+        {
+            logger.LogWarning("Assignment {Id} was not found for update", command.Id);
+            return new Result<Assignment, UpdateAssignmentError>.Failure(
+                UpdateAssignmentError.AssignmentNotFound);
+        }
+
+        if (command.Status.IsActive)
+        {
+            var driverActive = await assignmentRepository.FindActiveByDriverIdAsync(entity.DriverId, cancellationToken);
+            if (driverActive is not null && driverActive.Id != entity.Id)
+                return new Result<Assignment, UpdateAssignmentError>.Failure(
+                    UpdateAssignmentError.DriverAlreadyAssigned);
+
+            var vehicleActive = await assignmentRepository.FindActiveByVehicleIdAsync(entity.VehicleId, cancellationToken);
+            if (vehicleActive is not null && vehicleActive.Id != entity.Id)
+                return new Result<Assignment, UpdateAssignmentError>.Failure(
+                    UpdateAssignmentError.VehicleAlreadyAssigned);
+        }
+
+        try
+        {
+            entity.Update(command);
+            assignmentRepository.Update(entity);
+            await unitOfWork.CompleteAsync(cancellationToken);
+            return new Result<Assignment, UpdateAssignmentError>.Success(entity);
+        }
+        catch (ArgumentException ex)
+        {
+            logger.LogWarning(ex, "Invalid data while updating assignment");
+            return new Result<Assignment, UpdateAssignmentError>.Failure(
+                UpdateAssignmentError.InvalidData);
+        }
+        catch (DbUpdateException ex) when (ex.IsDuplicateKeyViolation())
+        {
+            logger.LogWarning(ex, "Duplicate active assignment while updating assignment");
+            return new Result<Assignment, UpdateAssignmentError>.Failure(
+                UpdateAssignmentError.DriverAlreadyAssigned);
+        }
+        catch (DbUpdateException ex)
+        {
+            logger.LogError(ex, "Database update failed while updating assignment");
+            return new Result<Assignment, UpdateAssignmentError>.Failure(
+                UpdateAssignmentError.UnexpectedError);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Unexpected error while updating assignment");
+            return new Result<Assignment, UpdateAssignmentError>.Failure(
+                UpdateAssignmentError.UnexpectedError);
         }
     }
 
@@ -138,6 +222,12 @@ public class AssignmentCommandService(
             assignmentRepository.Remove(entity);
             await unitOfWork.CompleteAsync(cancellationToken);
             return new Result<Assignment, DeleteAssignmentError>.Success(entity);
+        }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Assignment {Id} cannot be deleted because it is referenced by other records", entity.Id);
+            return new Result<Assignment, DeleteAssignmentError>.Failure(
+                DeleteAssignmentError.AssignmentHasRelatedData);
         }
         catch (DbUpdateException ex)
         {
