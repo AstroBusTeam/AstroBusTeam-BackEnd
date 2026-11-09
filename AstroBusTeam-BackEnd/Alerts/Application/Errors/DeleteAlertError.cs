@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Alerts.Application.Errors;
+namespace AstroBusTeamBackEnd.Alerts.Application.Errors;
 
 /// <summary>
 /// Represents errors that can occur when deleting a alert.
@@ -9,6 +9,11 @@ public enum DeleteAlertError
 	/// The alert was not found.
 	/// </summary>
 	AlertNotFound,
+
+	/// <summary>
+	/// The alert is referenced by other records (deliveries) and cannot be deleted.
+	/// </summary>
+	AlertHasRelatedData,
 
 	/// <summary>
 	/// An unexpected error occurred during the operation.

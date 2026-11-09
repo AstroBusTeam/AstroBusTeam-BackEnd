@@ -1,9 +1,9 @@
-using SecurityBus.API.Alerts.Application.Services;
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Domain.Model.Queries;
-using SecurityBus.API.Alerts.Domain.Repositories;
+using AstroBusTeamBackEnd.Alerts.Application.Services;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Queries;
+using AstroBusTeamBackEnd.Alerts.Domain.Repositories;
 
-namespace SecurityBus.API.Alerts.Application.Internal.QueryServices;
+namespace AstroBusTeamBackEnd.Alerts.Application.Internal.QueryServices;
 
 /// <summary>
 ///     Application service for querying deliveries.

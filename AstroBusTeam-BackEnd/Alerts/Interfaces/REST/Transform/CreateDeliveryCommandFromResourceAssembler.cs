@@ -1,31 +1,28 @@
-using SecurityBus.API.Shared.Domain.Model;
-using SecurityBus.API.Alerts.Domain.Model.Commands;
-using SecurityBus.API.Alerts.Domain.Model.ValueObjects;
-using SecurityBus.API.Alerts.Interfaces.REST.Resources;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Alerts.Interfaces.REST.Resources;
 
-namespace SecurityBus.API.Alerts.Interfaces.REST.Transform;
+namespace AstroBusTeamBackEnd.Alerts.Interfaces.REST.Transform;
 
 /// <summary>
-///     Assembles a CreateDeliveryCommand from a CreateDeliveryResource.
+///     Assembler that converts a create delivery resource into a command
 /// </summary>
 public static class CreateDeliveryCommandFromResourceAssembler
 {
     /// <summary>
-    ///     Assembles a CreateDeliveryCommand from a CreateDeliveryResource.
+    ///     Converts the resource into a command.
     /// </summary>
-    /// <param name="resource">The CreateDeliveryResource resource</param>
-    /// <returns>
-    ///     A CreateDeliveryCommand assembled from the CreateDeliveryResource
-    /// </returns>
-    /// <exception cref="ArgumentException">Thrown when a value object rejects its raw value.</exception>
     public static CreateDeliveryCommand ToCommandFromResource(CreateDeliveryResource resource)
     {
         return new CreateDeliveryCommand(
-            resource.RecipientName,
-            resource.Channel,
-            resource.AlertType,
+            resource.AlertId,
+            resource.RecipientId,
+            resource.ChannelId,
+            resource.AlertTypeId,
             resource.Priority,
             new DeliveryStatus(resource.Status ?? "sent"),
-            resource.SentAt ?? LocalClock.Now());
+            resource.SentAt ?? LocalClock.Now(),
+            resource.ErrorMessage);
     }
 }

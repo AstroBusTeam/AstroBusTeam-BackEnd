@@ -1,14 +1,15 @@
-using SecurityBus.API.Alerts.Application.Errors;
-using SecurityBus.API.Alerts.Application.Services;
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Domain.Model.Commands;
-using SecurityBus.API.Alerts.Domain.Repositories;
-using SecurityBus.API.Shared.Application.Extensions;
-using SecurityBus.API.Shared.Application.Patterns;
-using SecurityBus.API.Shared.Domain.Repositories;
+using AstroBusTeamBackEnd.Alerts.Application.Errors;
+using AstroBusTeamBackEnd.Alerts.Application.Services;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Alerts.Domain.Repositories;
+using AstroBusTeamBackEnd.Shared.Application.Extensions;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Shared.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Alerts.Application.Internal.CommandServices;
+
+namespace AstroBusTeamBackEnd.Alerts.Application.Internal.CommandServices;
 
 /// <summary>
 ///     Application service for handling recipient commands.
@@ -31,7 +32,7 @@ public class RecipientCommandService(
     public async Task<Result<Recipient, UpdateRecipientError>> Handle(UpdateRecipientCommand command,
         CancellationToken cancellationToken = default)
     {
-        var entity = await recipientRepository.FindByIdAsync(command.Id, cancellationToken);
+        var entity = await recipientRepository.FindByIdWithChannelsAsync(command.Id, cancellationToken);
         if (entity is null)
         {
             logger.LogWarning("Recipient {Id} was not found for update", command.Id);
@@ -52,6 +53,12 @@ public class RecipientCommandService(
             logger.LogWarning(ex, "Invalid data while updating recipient");
             return new Result<Recipient, UpdateRecipientError>.Failure(
                 UpdateRecipientError.InvalidData);
+        }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Invalid reference while updating recipient");
+            return new Result<Recipient, UpdateRecipientError>.Failure(
+                UpdateRecipientError.InvalidReference);
         }
         catch (DbUpdateException ex)
         {

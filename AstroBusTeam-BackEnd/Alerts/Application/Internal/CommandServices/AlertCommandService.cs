@@ -1,15 +1,15 @@
-using SecurityBus.API.Fleet.Interfaces.ACL;
-using SecurityBus.API.Alerts.Application.Errors;
-using SecurityBus.API.Alerts.Application.Services;
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Domain.Model.Commands;
-using SecurityBus.API.Alerts.Domain.Repositories;
-using SecurityBus.API.Shared.Application.Extensions;
-using SecurityBus.API.Shared.Application.Patterns;
-using SecurityBus.API.Shared.Domain.Repositories;
+using AstroBusTeamBackEnd.Fleet.Interfaces.ACL;
+using AstroBusTeamBackEnd.Alerts.Application.Errors;
+using AstroBusTeamBackEnd.Alerts.Application.Services;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Alerts.Domain.Repositories;
+using AstroBusTeamBackEnd.Shared.Application.Extensions;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Shared.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace SecurityBus.API.Alerts.Application.Internal.CommandServices;
+namespace AstroBusTeamBackEnd.Alerts.Application.Internal.CommandServices;
 
 /// <summary>
 ///     Application service for handling alert commands.
@@ -69,6 +69,12 @@ public class AlertCommandService(
             logger.LogWarning(ex, "Duplicate key violation while creating alert");
             return new Result<Alert, CreateAlertError>.Failure(
                 CreateAlertError.DuplicateAlertCode);
+        }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Invalid reference while creating alert");
+            return new Result<Alert, CreateAlertError>.Failure(
+                CreateAlertError.InvalidReference);
         }
         catch (DbUpdateException ex)
         {
@@ -137,6 +143,12 @@ public class AlertCommandService(
             return new Result<Alert, UpdateAlertError>.Failure(
                 UpdateAlertError.DuplicateAlertCode);
         }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Invalid reference while updating alert");
+            return new Result<Alert, UpdateAlertError>.Failure(
+                UpdateAlertError.InvalidReference);
+        }
         catch (DbUpdateException ex)
         {
             logger.LogError(ex, "Database update failed while updating alert");
@@ -173,6 +185,12 @@ public class AlertCommandService(
             alertRepository.Remove(entity);
             await unitOfWork.CompleteAsync(cancellationToken);
             return new Result<Alert, DeleteAlertError>.Success(entity);
+        }
+        catch (DbUpdateException ex) when (ex.IsForeignKeyViolation())
+        {
+            logger.LogWarning(ex, "Alert {Id} cannot be deleted because it is referenced by other records", entity.Id);
+            return new Result<Alert, DeleteAlertError>.Failure(
+                DeleteAlertError.AlertHasRelatedData);
         }
         catch (DbUpdateException ex)
         {

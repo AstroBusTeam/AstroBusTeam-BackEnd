@@ -1,130 +1,155 @@
-using SecurityBus.API.Alerts.Domain.Model.Commands;
-using SecurityBus.API.Alerts.Domain.Model.ValueObjects;
-using SecurityBus.API.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
 
-namespace SecurityBus.API.Alerts.Domain.Model.Aggregates;
+namespace AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
 
 /// <summary>
-///     Represents a alert in the Alerts bounded context.
+///     Represents an alert raised by a vehicle
 /// </summary>
 /// <remarks>
-///     This aggregate root protects its invariants: every creation and update goes through the same validation.
-///     Audit timestamps (CreatedAt, UpdatedAt) are managed by the persistence layer.
+///     An alert can be tied to a driver and a shift, has a type and a receiver, and is confirmed by a user. When the
+///     number of attempts reaches <see cref="MaxAttempts"/>, a pending alert becomes critical.
 /// </remarks>
 public partial class Alert
 {
     /// <summary>
-    ///     Maximum number of delivery attempts before an alert becomes critical.
+    ///     The maximum number of delivery attempts of an alert.
     /// </summary>
     public const int MaxAttempts = 3;
 
     /// <summary>
-    ///     Protected parameterless constructor for EF Core.
+    ///     Required by Entity Framework Core.
     /// </summary>
     protected Alert()
     {
         Code = null!;
-        Type = string.Empty;
-        Receiver = string.Empty;
         Status = null!;
     }
 
     /// <summary>
-    ///     Creates a new Alert from a creation command.
+    ///     Creates an alert from a command.
     /// </summary>
-    /// <remarks>
-    ///     This constructor acts as the command handler for CreateAlertCommand.
-    /// </remarks>
-    /// <param name="command">The CreateAlertCommand command</param>
-    /// <exception cref="ArgumentNullException">Thrown when command is null.</exception>
+    /// <param name="command">The command with the alert data.</param>
     public Alert(CreateAlertCommand command)
     {
         ArgumentNullException.ThrowIfNull(command);
 
         Code = command.Code;
         VehicleId = command.VehicleId;
-        Type = command.Type;
-        Receiver = command.Receiver;
+        DriverId = command.DriverId;
+        ShiftId = command.ShiftId;
+        AlertTypeId = command.AlertTypeId;
+        ReceiverId = command.ReceiverId;
         Attempts = command.Attempts;
         Status = command.Status;
-        OccurredAt = command.OccurredAt;
+        CreatedAt = command.CreatedAt;
         Latitude = command.Latitude;
         Longitude = command.Longitude;
+        ConfirmedAt = command.ConfirmedAt;
+        ConfirmedBy = command.ConfirmedBy;
+        Notes = command.Notes;
         Normalize();
         Validate();
     }
 
     /// <summary>
-    ///     Gets the server-generated identifier for this alert.
+    ///     Gets the identifier.
     /// </summary>
     public int Id { get; private set; }
 
     /// <summary>
-    ///     Gets the alert code (generated when omitted).
+    ///     Gets the alert code.
     /// </summary>
     public AlertCode Code { get; private set; }
 
     /// <summary>
-    ///     Gets the vehicle ID.
+    ///     Gets the identifier of the vehicle that raised the alert.
     /// </summary>
     public int VehicleId { get; private set; }
 
     /// <summary>
-    ///     Gets the alert type.
+    ///     Gets the identifier of the driver, if known.
     /// </summary>
-    public string Type { get; private set; }
+    public int? DriverId { get; private set; }
 
     /// <summary>
-    ///     Gets the receiver of the alert.
+    ///     Gets the identifier of the shift, if known.
     /// </summary>
-    public string Receiver { get; private set; }
+    public int? ShiftId { get; private set; }
 
     /// <summary>
-    ///     Gets the delivery attempts (1 to 3).
+    ///     Gets the identifier of the alert type.
+    /// </summary>
+    public int AlertTypeId { get; private set; }
+
+    /// <summary>
+    ///     Gets the identifier of the recipient that receives the alert.
+    /// </summary>
+    public int ReceiverId { get; private set; }
+
+    /// <summary>
+    ///     Gets the number of delivery attempts.
     /// </summary>
     public int Attempts { get; private set; }
 
     /// <summary>
-    ///     Gets the alert status (pending, confirmed or critical).
+    ///     Gets the status.
     /// </summary>
     public AlertStatus Status { get; private set; }
 
     /// <summary>
-    ///     Gets the date and time when the alert occurred.
+    ///     Gets the moment the alert was created.
     /// </summary>
-    public DateTime OccurredAt { get; private set; }
+    public DateTime CreatedAt { get; private set; }
 
     /// <summary>
-    ///     Gets the latitude.
+    ///     Gets the latitude where the alert was raised.
     /// </summary>
     public double Latitude { get; private set; }
 
     /// <summary>
-    ///     Gets the longitude.
+    ///     Gets the longitude where the alert was raised.
     /// </summary>
     public double Longitude { get; private set; }
 
     /// <summary>
-    ///     Updates the alert with the values of an update command.
+    ///     Gets the moment the alert was confirmed, if it was.
     /// </summary>
-    /// <remarks>
-    ///     This method acts as the command handler for UpdateAlertCommand. The invariants are validated again.
-    /// </remarks>
-    /// <param name="command">The UpdateAlertCommand command</param>
-    /// <exception cref="ArgumentNullException">Thrown when command is null.</exception>
+    public DateTime? ConfirmedAt { get; private set; }
+
+    /// <summary>
+    ///     Gets the identifier of the user who confirmed the alert, if it was confirmed.
+    /// </summary>
+    public int? ConfirmedBy { get; private set; }
+
+    /// <summary>
+    ///     Gets the notes.
+    /// </summary>
+    public string? Notes { get; private set; }
+
+    /// <summary>
+    ///     Updates the alert from a command.
+    /// </summary>
+    /// <param name="command">The command with the new data.</param>
     public void Update(UpdateAlertCommand command)
     {
         ArgumentNullException.ThrowIfNull(command);
 
         Code = command.Code;
         VehicleId = command.VehicleId;
-        Type = command.Type;
-        Receiver = command.Receiver;
+        DriverId = command.DriverId;
+        ShiftId = command.ShiftId;
+        AlertTypeId = command.AlertTypeId;
+        ReceiverId = command.ReceiverId;
         Attempts = command.Attempts;
         Status = command.Status;
-        OccurredAt = command.OccurredAt;
+        CreatedAt = command.CreatedAt;
         Latitude = command.Latitude;
         Longitude = command.Longitude;
+        ConfirmedAt = command.ConfirmedAt;
+        ConfirmedBy = command.ConfirmedBy;
+        Notes = command.Notes;
         Normalize();
         Validate();
     }
@@ -137,11 +162,12 @@ public partial class Alert
     private void Validate()
     {
         Guard.AtLeast(VehicleId, 1, nameof(VehicleId));
-        Guard.NotBlank(Type, nameof(Type));
-        Guard.NotLongerThan(Type, 100, nameof(Type));
-        Guard.NotBlank(Receiver, nameof(Receiver));
-        Guard.NotLongerThan(Receiver, 100, nameof(Receiver));
-        Guard.InRange(Attempts, 1, 3, nameof(Attempts));
+        if (DriverId is not null) Guard.AtLeast(DriverId.Value, 1, nameof(DriverId));
+        if (ShiftId is not null) Guard.AtLeast(ShiftId.Value, 1, nameof(ShiftId));
+        Guard.AtLeast(AlertTypeId, 1, nameof(AlertTypeId));
+        Guard.AtLeast(ReceiverId, 1, nameof(ReceiverId));
+        if (ConfirmedBy is not null) Guard.AtLeast(ConfirmedBy.Value, 1, nameof(ConfirmedBy));
+        Guard.InRange(Attempts, 1, MaxAttempts, nameof(Attempts));
         Guard.InRange(Latitude, -90.0, 90.0, nameof(Latitude));
         Guard.InRange(Longitude, -180.0, 180.0, nameof(Longitude));
     }

@@ -1,0 +1,19 @@
+using System.ComponentModel.DataAnnotations;
+
+namespace AstroBusTeamBackEnd.Fleet.Interfaces.REST.Resources;
+
+/// <summary>
+///     Resource to create a vehicle
+/// </summary>
+public record CreateVehicleResource(
+    [Required(ErrorMessage = "RequiredVehicleCode")]
+    string Code,
+    [Required(ErrorMessage = "RequiredVehiclePlate")]
+    string Plate,
+    [Required(ErrorMessage = "RequiredVehicleModel")]
+    string Model,
+    int Capacity,
+    [Required(ErrorMessage = "RequiredVehicleStatus")]
+    string Status,
+    double CurrentLatitude,
+    double CurrentLongitude);

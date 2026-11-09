@@ -1,27 +1,30 @@
-using SecurityBus.API.Alerts.Application.Internal.CommandServices;
-using SecurityBus.API.Alerts.Application.Internal.QueryServices;
-using SecurityBus.API.Alerts.Application.Services;
-using SecurityBus.API.Alerts.Domain.Repositories;
-using SecurityBus.API.Alerts.Infrastructure.Persistence.EFC.Repositories;
-using SecurityBus.API.Fleet.Application.Internal.CommandServices;
-using SecurityBus.API.Fleet.Application.Internal.QueryServices;
-using SecurityBus.API.Fleet.Application.Services;
-using SecurityBus.API.Fleet.Domain.Repositories;
-using SecurityBus.API.Fleet.Infrastructure.Persistence.EFC.Repositories;
-using SecurityBus.API.Fleet.Interfaces.ACL.Services;
-using SecurityBus.API.Fleet.Interfaces.ACL;
-using SecurityBus.API.Iam.Application.Internal.CommandServices;
-using SecurityBus.API.Iam.Application.Services;
-using SecurityBus.API.Operations.Application.Internal.CommandServices;
-using SecurityBus.API.Operations.Application.Internal.QueryServices;
-using SecurityBus.API.Operations.Application.Services;
-using SecurityBus.API.Operations.Domain.Repositories;
-using SecurityBus.API.Operations.Infrastructure.Persistence.EFC.Repositories;
-using SecurityBus.API.Resources;
-using SecurityBus.API.Shared.Domain.Repositories;
-using SecurityBus.API.Shared.Infrastructure.Interfaces.ASP.Configuration;
-using SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Configuration;
-using SecurityBus.API.Shared.Infrastructure.Persistence.EFC.Repositories;
+using AstroBusTeamBackEnd.Alerts.Application.Internal.CommandServices;
+using AstroBusTeamBackEnd.Alerts.Application.Internal.QueryServices;
+using AstroBusTeamBackEnd.Alerts.Application.Services;
+using AstroBusTeamBackEnd.Alerts.Domain.Repositories;
+using AstroBusTeamBackEnd.Alerts.Infrastructure.Persistence.EFC.Repositories;
+using AstroBusTeamBackEnd.Fleet.Application.Internal.CommandServices;
+using AstroBusTeamBackEnd.Fleet.Application.Internal.QueryServices;
+using AstroBusTeamBackEnd.Fleet.Application.Services;
+using AstroBusTeamBackEnd.Fleet.Domain.Repositories;
+using AstroBusTeamBackEnd.Fleet.Infrastructure.Persistence.EFC.Repositories;
+using AstroBusTeamBackEnd.Fleet.Interfaces.ACL.Services;
+using AstroBusTeamBackEnd.Fleet.Interfaces.ACL;
+using AstroBusTeamBackEnd.Iam.Application.Internal.CommandServices;
+using AstroBusTeamBackEnd.Iam.Application.Internal.QueryServices;
+using AstroBusTeamBackEnd.Iam.Application.Services;
+using AstroBusTeamBackEnd.Iam.Domain.Repositories;
+using AstroBusTeamBackEnd.Iam.Infrastructure.Persistence.EFC.Repositories;
+using AstroBusTeamBackEnd.Operations.Application.Internal.CommandServices;
+using AstroBusTeamBackEnd.Operations.Application.Internal.QueryServices;
+using AstroBusTeamBackEnd.Operations.Application.Services;
+using AstroBusTeamBackEnd.Operations.Domain.Repositories;
+using AstroBusTeamBackEnd.Operations.Infrastructure.Persistence.EFC.Repositories;
+using AstroBusTeamBackEnd.Resources;
+using AstroBusTeamBackEnd.Shared.Domain.Repositories;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Interfaces.ASP.Configuration;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Configuration;
+using AstroBusTeamBackEnd.Shared.Infrastructure.Persistence.EFC.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
@@ -132,12 +135,19 @@ builder.Services.AddScoped<IVehicleQueryService, VehicleQueryService>();
 builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
 builder.Services.AddScoped<IAssignmentCommandService, AssignmentCommandService>();
 builder.Services.AddScoped<IAssignmentQueryService, AssignmentQueryService>();
+builder.Services.AddScoped<IBusRouteRepository, BusRouteRepository>();
+builder.Services.AddScoped<IBusRouteCommandService, BusRouteCommandService>();
+builder.Services.AddScoped<IBusRouteQueryService, BusRouteQueryService>();
 builder.Services.AddScoped<IFleetContextFacade, FleetContextFacade>();
 
 // Operations Bounded Context Injection Configuration
 builder.Services.AddScoped<IShiftRepository, ShiftRepository>();
 builder.Services.AddScoped<IShiftCommandService, ShiftCommandService>();
 builder.Services.AddScoped<IShiftQueryService, ShiftQueryService>();
+
+builder.Services.AddScoped<IVehiclePositionRepository, VehiclePositionRepository>();
+builder.Services.AddScoped<IVehiclePositionCommandService, VehiclePositionCommandService>();
+builder.Services.AddScoped<IVehiclePositionQueryService, VehiclePositionQueryService>();
 
 // Alerts Bounded Context Injection Configuration
 builder.Services.AddScoped<IAlertRepository, AlertRepository>();
@@ -150,8 +160,24 @@ builder.Services.AddScoped<IDeliveryRepository, DeliveryRepository>();
 builder.Services.AddScoped<IDeliveryCommandService, DeliveryCommandService>();
 builder.Services.AddScoped<IDeliveryQueryService, DeliveryQueryService>();
 
+builder.Services.AddScoped<IAlertTypeRepository, AlertTypeRepository>();
+builder.Services.AddScoped<IAlertTypeCommandService, AlertTypeCommandService>();
+builder.Services.AddScoped<IAlertTypeQueryService, AlertTypeQueryService>();
+builder.Services.AddScoped<IAlertAttemptRepository, AlertAttemptRepository>();
+builder.Services.AddScoped<IAlertAttemptCommandService, AlertAttemptCommandService>();
+builder.Services.AddScoped<IAlertAttemptQueryService, AlertAttemptQueryService>();
+builder.Services.AddScoped<INotificationChannelRepository, NotificationChannelRepository>();
+builder.Services.AddScoped<INotificationChannelCommandService, NotificationChannelCommandService>();
+builder.Services.AddScoped<INotificationChannelQueryService, NotificationChannelQueryService>();
+builder.Services.AddScoped<IControlCenterRepository, ControlCenterRepository>();
+builder.Services.AddScoped<IControlCenterCommandService, ControlCenterCommandService>();
+builder.Services.AddScoped<IControlCenterQueryService, ControlCenterQueryService>();
+
 // IAM Bounded Context Injection Configuration
 builder.Services.AddScoped<IDriverVerificationCommandService, DriverVerificationCommandService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserCommandService, UserCommandService>();
+builder.Services.AddScoped<IUserQueryService, UserQueryService>();
 var app = builder.Build();
 
 // Create the schema when it does not exist yet and, optionally, load the sample data of the Fake API.
@@ -162,6 +188,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDbContext>();
     context.Database.EnsureCreated();
+    await DatabaseViews.CreateAsync(context, app.Logger);
 
     if (builder.Configuration.GetValue<bool>("Database:SeedSampleData"))
         await DatabaseSeeder.SeedAsync(context);
@@ -170,8 +197,7 @@ using (var scope = app.Services.CreateScope())
 // Configure the HTTP request pipeline.
 app.UseExceptionHandler();
 
-// Localization must run before Swagger so generated
-// documentation follows the request culture.
+// Localization must run before Swagger so generated documentation follows the request culture.
 string[] supportedCultures = ["en", "en-US", "es", "es-PE"];
 var localizationOptions = new RequestLocalizationOptions()
     .SetDefaultCulture(supportedCultures[0])

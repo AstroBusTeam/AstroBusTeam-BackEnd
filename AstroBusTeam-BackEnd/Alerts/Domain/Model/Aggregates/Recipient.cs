@@ -1,89 +1,111 @@
-using SecurityBus.API.Alerts.Domain.Model.Commands;
-using SecurityBus.API.Alerts.Domain.Model.ValueObjects;
-using SecurityBus.API.Shared.Domain.Model;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Shared.Domain.Model;
 
-namespace SecurityBus.API.Alerts.Domain.Model.Aggregates;
+namespace AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
 
 /// <summary>
-///     Represents a recipient in the Alerts bounded context.
+///     Represents a person or unit that receives alerts
 /// </summary>
 /// <remarks>
-///     This aggregate root protects its invariants: every creation and update goes through the same validation.
-///     Audit timestamps (CreatedAt, UpdatedAt) are managed by the persistence layer.
+///     A recipient belongs to a control center and accepts alerts through one or more notification channels.
 /// </remarks>
 public partial class Recipient
 {
+    private readonly List<RecipientChannel> _channels = [];
+
     /// <summary>
-    ///     Protected parameterless constructor for EF Core.
+    ///     Required by Entity Framework Core.
     /// </summary>
     protected Recipient()
     {
         Name = string.Empty;
         Role = string.Empty;
-        Channel = string.Empty;
     }
 
     /// <summary>
-    ///     Creates a new Recipient from a creation command.
+    ///     Creates a recipient from a command.
     /// </summary>
-    /// <remarks>
-    ///     This constructor acts as the command handler for CreateRecipientCommand.
-    /// </remarks>
-    /// <param name="command">The CreateRecipientCommand command</param>
-    /// <exception cref="ArgumentNullException">Thrown when command is null.</exception>
+    /// <param name="command">The command with the recipient data.</param>
     public Recipient(CreateRecipientCommand command)
     {
         ArgumentNullException.ThrowIfNull(command);
 
         Name = command.Name;
         Role = command.Role;
-        Channel = command.Channel;
+        Email = command.Email;
+        Phone = command.Phone;
+        ControlCenterId = command.ControlCenterId;
         Active = command.Active;
+        SetChannels(command.ChannelIds);
         Validate();
     }
 
     /// <summary>
-    ///     Gets the server-generated identifier for this recipient.
+    ///     Gets the identifier.
     /// </summary>
     public int Id { get; private set; }
 
     /// <summary>
-    ///     Gets the recipient name.
+    ///     Gets the name.
     /// </summary>
     public string Name { get; private set; }
 
     /// <summary>
-    ///     Gets the role of the recipient.
+    ///     Gets the role.
     /// </summary>
     public string Role { get; private set; }
 
     /// <summary>
-    ///     Gets the notification channel.
+    ///     Gets the e-mail address.
     /// </summary>
-    public string Channel { get; private set; }
+    public string? Email { get; private set; }
 
     /// <summary>
-    ///     Gets the whether the recipient receives alerts.
+    ///     Gets the phone number.
+    /// </summary>
+    public string? Phone { get; private set; }
+
+    /// <summary>
+    ///     Gets the identifier of the control center, if the recipient belongs to one.
+    /// </summary>
+    public int? ControlCenterId { get; private set; }
+
+    /// <summary>
+    ///     Gets a value indicating whether the recipient is active.
     /// </summary>
     public bool Active { get; private set; }
 
     /// <summary>
-    ///     Updates the recipient with the values of an update command.
+    ///     Gets the notification channels the recipient accepts.
     /// </summary>
-    /// <remarks>
-    ///     This method acts as the command handler for UpdateRecipientCommand. The invariants are validated again.
-    /// </remarks>
-    /// <param name="command">The UpdateRecipientCommand command</param>
-    /// <exception cref="ArgumentNullException">Thrown when command is null.</exception>
+    public IReadOnlyCollection<RecipientChannel> Channels => _channels;
+
+    /// <summary>
+    ///     Updates the recipient from a command.
+    /// </summary>
+    /// <param name="command">The command with the new data.</param>
     public void Update(UpdateRecipientCommand command)
     {
         ArgumentNullException.ThrowIfNull(command);
 
         Name = command.Name;
         Role = command.Role;
-        Channel = command.Channel;
+        Email = command.Email;
+        Phone = command.Phone;
+        ControlCenterId = command.ControlCenterId;
         Active = command.Active;
+        if (command.ChannelIds is not null) SetChannels(command.ChannelIds);
         Validate();
+    }
+
+    private void SetChannels(IEnumerable<int> channelIds)
+    {
+        var wanted = channelIds.Distinct().ToList();
+        foreach (var channelId in wanted) Guard.AtLeast(channelId, 1, nameof(channelIds));
+
+        _channels.RemoveAll(link => !wanted.Contains(link.ChannelId));
+        foreach (var channelId in wanted.Where(id => _channels.All(link => link.ChannelId != id)))
+            _channels.Add(new RecipientChannel(channelId));
     }
 
     private void Validate()
@@ -91,8 +113,9 @@ public partial class Recipient
         Guard.NotBlank(Name, nameof(Name));
         Guard.NotLongerThan(Name, 100, nameof(Name));
         Guard.NotBlank(Role, nameof(Role));
-        Guard.NotLongerThan(Role, 100, nameof(Role));
-        Guard.NotBlank(Channel, nameof(Channel));
-        Guard.NotLongerThan(Channel, 50, nameof(Channel));
+        Guard.NotLongerThan(Role, 80, nameof(Role));
+        if (Email is not null) Guard.NotLongerThan(Email, 120, nameof(Email));
+        if (Phone is not null) Guard.NotLongerThan(Phone, 20, nameof(Phone));
+        if (ControlCenterId is not null) Guard.AtLeast(ControlCenterId.Value, 1, nameof(ControlCenterId));
     }
 }

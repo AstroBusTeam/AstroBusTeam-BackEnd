@@ -1,8 +1,8 @@
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Domain.Model.ValueObjects;
-using SecurityBus.API.Shared.Domain.Repositories;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Shared.Domain.Repositories;
 
-namespace SecurityBus.API.Alerts.Domain.Repositories;
+namespace AstroBusTeamBackEnd.Alerts.Domain.Repositories;
 
 /// <summary>
 ///     The Alert repository contract.

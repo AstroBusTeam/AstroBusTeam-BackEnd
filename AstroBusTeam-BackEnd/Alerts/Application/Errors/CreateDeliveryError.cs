@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Alerts.Application.Errors;
+namespace AstroBusTeamBackEnd.Alerts.Application.Errors;
 
 /// <summary>
 /// Represents errors that can occur when creating a delivery.
@@ -9,6 +9,11 @@ public enum CreateDeliveryError
 	/// The delivery data contains invalid values.
 	/// </summary>
 	InvalidData,
+
+	/// <summary>
+	/// A referenced record (alert, recipient, channel or alert type) does not exist.
+	/// </summary>
+	InvalidReference,
 
 	/// <summary>
 	/// An unexpected error occurred during the operation.

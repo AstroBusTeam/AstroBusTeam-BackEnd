@@ -1,6 +1,6 @@
-using SecurityBus.API.Alerts.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
 
-namespace SecurityBus.API.Alerts.Domain.Model.Queries;
+namespace AstroBusTeamBackEnd.Alerts.Domain.Model.Queries;
 
 /// <summary>
 ///     Query to get all alerts, optionally filtered

@@ -1,11 +1,11 @@
-using SecurityBus.API.Alerts.Application.Errors;
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Resources;
-using SecurityBus.API.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Alerts.Application.Errors;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Resources;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
-namespace SecurityBus.API.Alerts.Interfaces.REST.Transform;
+namespace AstroBusTeamBackEnd.Alerts.Interfaces.REST.Transform;
 
 /// <summary>
 ///     Assembles an HTTP action result from the result of the command handling to update a recipient in the application layer.
@@ -37,6 +37,8 @@ public static class ActionResultFromUpdateRecipientResultAssembler
                     UpdateRecipientError.InvalidData =>
                         controller.BadRequest(localizer["InvalidRecipientData"].Value),
 
+                    UpdateRecipientError.InvalidReference =>
+                        controller.BadRequest(localizer["InvalidRecipientReference"].Value),
                     UpdateRecipientError.UnexpectedError =>
                         controller.Problem(
                             title: localizer["UnexpectedServerError"].Value,

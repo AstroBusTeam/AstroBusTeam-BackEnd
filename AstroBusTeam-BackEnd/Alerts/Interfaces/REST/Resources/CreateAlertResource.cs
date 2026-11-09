@@ -1,28 +1,24 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace SecurityBus.API.Alerts.Interfaces.REST.Resources;
+namespace AstroBusTeamBackEnd.Alerts.Interfaces.REST.Resources;
 
 /// <summary>
-///     Represents the data required to create a alert.
+///     Resource to create an alert
 /// </summary>
-/// <param name="Code">Alert code (generated when omitted)</param>
-/// <param name="VehicleId">Vehicle ID</param>
-/// <param name="Type">Alert type</param>
-/// <param name="Receiver">Receiver of the alert</param>
-/// <param name="Attempts">Delivery attempts (1 to 3)</param>
-/// <param name="Status">Alert status (pending, confirmed or critical)</param>
-/// <param name="CreatedAt">Date and time when the alert occurred</param>
-/// <param name="Latitude">Latitude</param>
-/// <param name="Longitude">Longitude</param>
+/// <remarks>
+///     The code is generated when it is omitted, the attempts default to 1, the status to <c>pending</c> and the
+///     creation time to the local time of the server.
+/// </remarks>
 public record CreateAlertResource(
     int VehicleId,
-    [Required(ErrorMessage = "RequiredAlertType")]
-    string Type,
-    [Required(ErrorMessage = "RequiredAlertReceiver")]
-    string Receiver,
+    int AlertTypeId,
+    int ReceiverId,
     double Latitude,
     double Longitude,
+    int? DriverId = null,
+    int? ShiftId = null,
     string? Code = null,
     int? Attempts = null,
     string? Status = null,
-    DateTime? CreatedAt = null);
+    DateTime? CreatedAt = null,
+    DateTime? ConfirmedAt = null,
+    int? ConfirmedBy = null,
+    string? Notes = null);

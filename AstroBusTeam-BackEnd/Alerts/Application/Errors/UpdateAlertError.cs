@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Alerts.Application.Errors;
+namespace AstroBusTeamBackEnd.Alerts.Application.Errors;
 
 /// <summary>
 /// Represents errors that can occur when updating a alert.
@@ -19,6 +19,11 @@ public enum UpdateAlertError
 	/// An alert with this code already exists.
 	/// </summary>
 	DuplicateAlertCode,
+
+	/// <summary>
+	/// A referenced record (driver, shift, alert type, receiver or user) does not exist.
+	/// </summary>
+	InvalidReference,
 
 	/// <summary>
 	/// The number of attempts of an alert cannot decrease.

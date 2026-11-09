@@ -1,11 +1,11 @@
-using SecurityBus.API.Alerts.Application.Errors;
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Resources;
-using SecurityBus.API.Shared.Application.Patterns;
+using AstroBusTeamBackEnd.Alerts.Application.Errors;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Resources;
+using AstroBusTeamBackEnd.Shared.Application.Patterns;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
-namespace SecurityBus.API.Alerts.Interfaces.REST.Transform;
+namespace AstroBusTeamBackEnd.Alerts.Interfaces.REST.Transform;
 
 /// <summary>
 ///     Assembles an HTTP action result from the result of the command handling to update a alert in the application layer.
@@ -43,6 +43,8 @@ public static class ActionResultFromUpdateAlertResultAssembler
                     UpdateAlertError.AttemptsCannotDecrease =>
                         controller.Conflict(localizer["AlertAttemptsCannotDecrease"].Value),
 
+                    UpdateAlertError.InvalidReference =>
+                        controller.BadRequest(localizer["InvalidAlertReference"].Value),
                     UpdateAlertError.UnexpectedError =>
                         controller.Problem(
                             title: localizer["UnexpectedServerError"].Value,

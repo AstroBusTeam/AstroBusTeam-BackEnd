@@ -1,15 +1,15 @@
 using System.Net.Mime;
-using SecurityBus.API.Alerts.Application.Services;
-using SecurityBus.API.Alerts.Domain.Model.Queries;
-using SecurityBus.API.Alerts.Domain.Model.ValueObjects;
-using SecurityBus.API.Alerts.Domain.Model.Commands;
-using SecurityBus.API.Alerts.Interfaces.REST.Resources;
-using SecurityBus.API.Alerts.Interfaces.REST.Transform;
-using SecurityBus.API.Resources;
+using AstroBusTeamBackEnd.Alerts.Application.Services;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Queries;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.ValueObjects;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Commands;
+using AstroBusTeamBackEnd.Alerts.Interfaces.REST.Resources;
+using AstroBusTeamBackEnd.Alerts.Interfaces.REST.Transform;
+using AstroBusTeamBackEnd.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
-namespace SecurityBus.API.Alerts.Interfaces.REST;
+namespace AstroBusTeamBackEnd.Alerts.Interfaces.REST;
 
 /// <summary>
 ///     Deliveries' controller.

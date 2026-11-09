@@ -1,4 +1,4 @@
-namespace SecurityBus.API.Alerts.Domain.Model.Queries;
+namespace AstroBusTeamBackEnd.Alerts.Domain.Model.Queries;
 
 /// <summary>
 ///     Query to get a delivery by ID

@@ -1,9 +1,9 @@
-using SecurityBus.API.Alerts.Application.Services;
-using SecurityBus.API.Alerts.Domain.Model.Aggregates;
-using SecurityBus.API.Alerts.Domain.Model.Queries;
-using SecurityBus.API.Alerts.Domain.Repositories;
+using AstroBusTeamBackEnd.Alerts.Application.Services;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Aggregates;
+using AstroBusTeamBackEnd.Alerts.Domain.Model.Queries;
+using AstroBusTeamBackEnd.Alerts.Domain.Repositories;
 
-namespace SecurityBus.API.Alerts.Application.Internal.QueryServices;
+namespace AstroBusTeamBackEnd.Alerts.Application.Internal.QueryServices;
 
 /// <summary>
 ///     Application service for querying recipients.
@@ -20,5 +20,5 @@ public class RecipientQueryService(IRecipientRepository recipientRepository) : I
 
     /// <inheritdoc />
     public async Task<Recipient?> Handle(GetRecipientByIdQuery query, CancellationToken cancellationToken = default) =>
-        await recipientRepository.FindByIdAsync(query.Id, cancellationToken);
+        await recipientRepository.FindByIdWithChannelsAsync(query.Id, cancellationToken);
 }
